@@ -64,9 +64,10 @@ class Register(APIView):
         serializer = CourseSerializer(data=request.data)
         if serializer.is_valid():
             name = serializer.validated_data.get('name')
+            instructor_name = serializer.validated_data.get('instructor_name')
             description = serializer.validated_data.get('description')
             context = serializer.validated_data.get('context')
-            course = Course.objects.create(name=name, description=description, context=context)
+            course = Course.objects.create(name=name,instructor_name=instructor_name, description=description, context=context)
             if course:
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             else:
