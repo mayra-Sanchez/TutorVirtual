@@ -10,7 +10,7 @@ function Navbar({ image, role, href }) {
       <div className="container-fluid d-flex justify-content-between align-items-center">
         <ul className="navbarListado d-flex">
           <a href="/">
-            <img src={image} alt="Logo" height="110" width="120" />
+            <img src={image} alt="Logo" className="imageNav" />
           </a>
           {role === "users" ? (
             <li className="navbarItems">

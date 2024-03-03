@@ -1,7 +1,7 @@
 import React from "react";
+import Image from "../Resources/title.png";
+import Navbar from "../Components/Navbar";
 import "../index.css";
-import Navbar from "../Components/Navbar.js";
-import Image from "../Resources/title.svg";
 
 function Home() {
   return (

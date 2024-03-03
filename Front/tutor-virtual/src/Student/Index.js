@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
-import Image from "../Resources/SS.png";
+import Image from "../Resources/Student.png";
 import "./Student.css";
 
 function Student() {

@@ -1,3 +1,8 @@
+.imageNav{
+  height: 85px;
+  width: 180px;
+  padding: 10px;
+}
 
 .navbarListado {
     list-style: none;
@@ -11,6 +16,7 @@
     display: flex;
     margin-left: auto; /* Alinea los elementos a la derecha */
     margin-top: 45px;
+    padding: 20px;
   }
   
   .navbar-home{

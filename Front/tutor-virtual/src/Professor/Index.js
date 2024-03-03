@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../Components/Navbar.js";
-import Image from "../Resources/Professor.svg";
+import Image from "../Resources/Professor.png";
 
 function Professor() {
   return (
