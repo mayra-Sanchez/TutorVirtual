@@ -26,7 +26,11 @@ openai.api_key = api_key
 
 
 def ask_open_ai(context, question, model="gpt-3.5-turbo-16k"):
-    prompt = f'using the context: {context}\n answer the next question:{question} in maxime 150 words'
+    prompt = f'''using the context: {context}
+answer the next question: {question} in maximum 150 words. 
+If the answer is not related to the context, 
+give the following answer: "The question is not related to the course". 
+Provide your answer using the language used in the question.'''
 
     messages = [{"role": "user", "content": prompt}]
     response = openai.chat.completions.create(
