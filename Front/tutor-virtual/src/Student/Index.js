@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../Components/Navbar.js";
 import Image from "../Resources/Student.png";
 import "./Student.css";
-import CourseCard from "../Components/courseCard.js";
+import CourseCard from "../Components/CourseCard.js";
 
 function Student() {
   const courses = [
@@ -71,7 +71,7 @@ function Student() {
     <>
       <Navbar href={"/Student"} image={Image} role={"users"} />
       <div className="titleStudent">
-        <h1>Cursos</h1>
+        <h2>Cursos</h2>
       </div>
       <div className="course-container-scroll">
         <div className="course-container">
@@ -87,6 +87,7 @@ function Student() {
           ))}
         </div>
       </div>
+
     </>
   );
 }

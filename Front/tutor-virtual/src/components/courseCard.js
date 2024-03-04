@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import "../Components/courseCard.css";
+import "./CourseCard.css";
 import { Link } from "react-router-dom";
 
 const CourseCard = ({ name, teacher, creationDate, description }) => {
