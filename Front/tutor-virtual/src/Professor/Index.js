@@ -27,7 +27,7 @@ function Professor() {
       ...courseData,
     };
 
-    console.log(data);
+    console.log("LA INFO", data);
 
     Swal.fire({
       title: "Atención, estás seguro de realizar esta acción",
@@ -82,7 +82,7 @@ function Professor() {
       <div className="container">
         <h1 className="title">Creación del curso</h1>
         <form className="forms-container" onSubmit={handleSubmit}>
-          <form className="form1">
+          <div className="form1">
             <h2 className="title2">Registro</h2>
             <div className="input-group">
               <span className="spanName">
@@ -91,6 +91,7 @@ function Professor() {
               <input
                 type="text"
                 className="form-control"
+                name="name"
                 onChange={handleChange}
                 required
               />
@@ -102,6 +103,7 @@ function Professor() {
               <input
                 type="text"
                 className="form-control"
+                name="teacher"
                 onChange={handleChange}
                 required
               />
@@ -114,13 +116,14 @@ function Professor() {
                 rows="7"
                 type="text"
                 className="form-control"
+                name="description"
                 onChange={handleChange}
                 required
               />
             </div>
-          </form>
+          </div>
           <div className="container2">
-            <form className="form2">
+            <div className="form2">
               <div className="input-group">
                 <span className="spanName">
                   Escribele al tutor virtual que temas se verán en el curso:{" "}
@@ -130,11 +133,12 @@ function Professor() {
                   rows="10"
                   type="text"
                   className="form-control"
+                  name="context"
                   onChange={handleChange}
                   required
                 />
               </div>
-            </form>
+            </div>
             <button type="submit" className="buttonRegister">
               Registrar
             </button>
