@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "../components/navbar.js";
-import Image from "../resources/title.png";
+import Navbar from "../Components/Navbar";
+import Image from "../Resources/Student.png";
 
 function Tutor() {
   return (

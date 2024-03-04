@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { AiOutlineClose } from 'react-icons/ai';
-import "../components/courseCard.css";
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
+import "../Components/courseCard.css";
+import { Link } from "react-router-dom";
 
 const CourseCard = ({ name, teacher, creationDate, description }) => {
   const [showModal, setShowModal] = useState(false);
@@ -34,7 +34,9 @@ const CourseCard = ({ name, teacher, creationDate, description }) => {
             <h3>{teacher}</h3>
             <p>Creado: {creationDate}</p>
             <p>{description}</p>
-            <Link to="/Tutor" className="ask-btn">Preguntale al tutor</Link>
+            <Link to="/Tutor" className="ask-btn">
+              Preguntale al tutor
+            </Link>
           </div>
         </div>
       )}

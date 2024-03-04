@@ -1,6 +1,11 @@
 import React from "react";
 import Navbar from "../Components/Navbar.js";
 import Image from "../Resources/Professor.png";
+import { useNavigate } from "react-router";
+import { useState } from "react";
+import { addCourse } from "../Services/Course";
+import Swal from "sweetalert2";
+import "./Professor.css";
 
 function Professor() {
   const navigate = useNavigate();
@@ -125,7 +130,7 @@ function Professor() {
                   <span className="redStar"> *</span>
                 </span>
                 <textarea
-                  rows="10"
+                  rows="14"
                   type="text"
                   className="form-control"
                   name="context"
