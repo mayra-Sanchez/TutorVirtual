@@ -32,6 +32,7 @@ function Student() {
           {courses.map((course) => (
             <div key={course.id} className="course-card">
               <CourseCard
+                courseId={course.id}
                 name={course.name}
                 teacher={course.instructor_name}
                 creationDate={course.creation_date}

@@ -10,6 +10,10 @@
     align-items: center;
   }
 
+  .h10{
+    font-weight: bold;
+  }
+
   .modal {
     background-color: white;
     padding: 20px;
@@ -17,6 +21,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     position: relative;
     text-align: center; 
+    cursor: pointer;
   }
   
   .close-btn {
@@ -45,8 +50,9 @@
 
   .card-body {
     padding: 10px;
+    cursor: pointer;
   }
-  
+
   .card-title, .card-subtitle, .card-text {
     margin-bottom: 5px; 
   }

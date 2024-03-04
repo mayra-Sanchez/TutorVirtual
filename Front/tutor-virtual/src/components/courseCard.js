@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./CourseCard.css";
 import { listCourses } from "../Services/Course";
 
-const CourseCard = ({ courseId }) => {
+const CourseCard = ({ courseId, name, teacher, creationDate, description }) => {
   const [course, setCourse] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -30,16 +30,34 @@ const CourseCard = ({ courseId }) => {
     setShowModal(false);
   };
 
+  var creation_date = creationDate;
+  var dateObj = new Date(creation_date);
+  var year = dateObj.getFullYear();
+  var month = dateObj.getMonth() + 1;
+  var day = dateObj.getDate();
+  var date =
+    (day < 10 ? "0" : "") +
+    day +
+    "-" +
+    (month < 10 ? "0" : "") +
+    month +
+    "-" +
+    year;
+
   return (
     <>
       {course && (
         <div className="card" onClick={openModal}>
           <div className="card-body">
-            <h5 className="card-title">{course.name}</h5>
+            <h5 className="card-title">
+              <h10>Nombre del curso:</h10> {name}
+            </h5>
             <h6 className="card-subtitle mb-2 text-muted">
-              {course.instructor_name}
+              Profesor: {teacher}
             </h6>
-            <p className="card-text">Creado: {course.creation_date}</p>
+            <p className="card-text">
+              <h10>Creado:</h10> {date}
+            </p>
           </div>
         </div>
       )}
@@ -50,10 +68,11 @@ const CourseCard = ({ courseId }) => {
             <button className="close-btn" onClick={closeModal}>
               <AiOutlineClose />
             </button>
-            <h2>{course.name}</h2>
-            <h3>{course.instructor_name}</h3>
-            <p>Creado: {course.creation_date}</p>
-            <p>{course.description}</p>
+            <h2>Nomre del curso: {name}</h2>
+            <h3>Profesor: {teacher}</h3>
+            <p>Creado: {date}</p>
+            <p>Descripción: {description}</p>
+            <br></br>
             <Link to="/Tutor" className="ask-btn">
               Preguntale al tutor
             </Link>
