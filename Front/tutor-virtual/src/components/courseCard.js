@@ -50,10 +50,10 @@ const CourseCard = ({ courseId }) => {
             <button className="close-btn" onClick={closeModal}>
               <AiOutlineClose />
             </button>
-            <h2>Nombre del curso: {course.name}</h2>
-            <h3>Profesor: {course.instructor_name}</h3>
+            <h2>{course.name}</h2>
+            <h3>{course.instructor_name}</h3>
             <p>Creado: {course.creation_date}</p>
-            <p>Descripcion: {course.description}</p>
+            <p>{course.description}</p>
             <Link to="/Tutor" className="ask-btn">
               Preguntale al tutor
             </Link>
