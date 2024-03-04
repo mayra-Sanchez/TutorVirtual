@@ -16,4 +16,19 @@ const addCourse = async (body) => {
   return response.data;
 };
 
-export { addCourse };
+const listCourses = async (body) => {
+  const config = {
+    headers: {
+      accept: "*/*",
+      "Content-Type": "application/json",
+    },
+  };
+  const response = await Axios.get(
+    endpoints.student.coursesList,
+    body,
+    config
+  );
+  return response.data;
+};
+
+export { addCourse, listCourses };

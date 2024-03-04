@@ -1,7 +1,9 @@
 const URL = "http://127.0.0.1:8000";
 
 const endpoints = {
-  student: {},
+  student: {
+    coursesList: `${URL}/course/estudent/list`,
+  },
   course: {
     registerCourse: `${URL}/course/teacher/register`,
   },
