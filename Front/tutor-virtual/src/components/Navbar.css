@@ -14,14 +14,15 @@
   
   .navbarItems {
     display: flex;
-    margin-left: auto; /* Alinea los elementos a la derecha */
+    margin-left: auto; 
     margin-top: 45px;
     padding: 20px;
   }
   
-  .navbar-home{
+  .navbar-home {
     text-decoration: none;
     color: #000000;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 20px;
   }
+  

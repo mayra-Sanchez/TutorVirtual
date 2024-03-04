@@ -1,4 +1,5 @@
 import { FaArrowUp } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
 import Image from "../resources/title.png";
 import Image2 from "../resources/6.png";
@@ -33,7 +34,7 @@ function Home() {
   return (
     <div className="App">
       <Navbar href={"/"} image={Image} role={"home"} />
-      <div className="title"></div>
+      <div id="AboutUs" name="AboutUs" className="title"></div>
       <div className="about-us-container">
         <div className="about-us-content">
           <h2>¿Eres estudiante o profesor?</h2>
@@ -46,13 +47,13 @@ function Home() {
         <h3 style={{ color: "white", fontWeight: "bold" }}> ¡Desbloquea tu potencial y alcanza tus metas educativas de manera inteligente y eficiente!</h3>
       </div>
       <div className="falseSpace"></div>
-      <div className="title">
+      <div id="Home" name="Home" className="title">
         <div className="container">
           <h2 style={{ color: "white", fontWeight: "bold" }}>¿Cómo deseas continuar?</h2>
         </div>
         <div className="button-container">
-          <button className="button">Profesor</button>
-          <button className="button">Estudiante</button>
+          <Link to="/Professor" className="button">Profesor</Link>
+          <Link to="/Student" className="button">Estudiante</Link>
         </div>
       </div>
       {showScrollButton && (

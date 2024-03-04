@@ -1,3 +1,41 @@
-.container{
-    background-color: #012B36;
+.titleStudent {
+    margin-top: 40px;
+    text-align: center;
+    color: white;
 }
+  
+  .course-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .course-container-scroll {
+    overflow-y: auto; 
+    max-height: 400px; 
+  }
+  
+  
+  
+  .course-container-scroll::-webkit-scrollbar {
+    width: 12px; 
+    padding: 10px 20px; 
+    margin-top: 20px; 
+  }
+  
+  .course-container-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  
+  .course-container-scroll::-webkit-scrollbar-thumb {
+    background-color: #DD4D42; 
+    border-radius: 6px; 
+  }
+  
+  .course-card {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
