@@ -12,7 +12,7 @@ function Professor() {
 
   const [courseData, setCourseData] = useState({
     name: "",
-    teacher: "",
+    instructor_name: "",
     description: "",
     context: "",
   });
@@ -56,7 +56,7 @@ function Professor() {
               });
             })
             .catch((err) => {
-              onError("Error al crear el usuario, intenta de nuevo.");
+              onError("Error al crear el curso, intenta de nuevo.");
               console.log(err);
             });
         });
@@ -103,7 +103,7 @@ function Professor() {
               <input
                 type="text"
                 className="form-control"
-                name="teacher"
+                name="instructor_name"
                 onChange={handleChange}
                 required
               />
