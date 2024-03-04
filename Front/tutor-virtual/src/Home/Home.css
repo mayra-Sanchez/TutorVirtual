@@ -1,0 +1,82 @@
+/* Home.css */
+.title {
+    margin-top: 40px;
+    text-align: center;
+    color: white;
+    margin-bottom: 200px; 
+}
+
+.button-container {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    text-decoration: none; 
+    color: #FFFFFF;
+    background-color: #DD4D42;
+    padding: 15px 25px;
+    margin: 0 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 18px;
+    display: inline-block; 
+  }
+  
+
+#Home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-us-container {
+    display: flex; 
+    justify-content: space-between; 
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    border-radius: 10px;
+}
+
+.about-us-content {
+    flex: 3;
+}
+
+.about-us-image {
+    width: 100px;
+    height: 100px;
+    align-self: flex-end; 
+}
+
+.falseSpace {
+    width: 100vh;
+    height: 30vh;
+}
+
+.scroll-top-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #DD4D42;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%; 
+    font-size: 20px;
+  }
+  

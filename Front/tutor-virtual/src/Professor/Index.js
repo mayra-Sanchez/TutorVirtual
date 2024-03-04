@@ -1,11 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { addCourse } from "../Services/Course.js";
 import Navbar from "../Components/Navbar.js";
 import Image from "../Resources/Professor.png";
-import Swal from "sweetalert2";
-import "./Professor.css";
 
 function Professor() {
   const navigate = useNavigate();

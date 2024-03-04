@@ -5,7 +5,7 @@ function Navbar({ image, role, href }) {
   return (
     <nav
       className="navbar navbar-expand-lg"
-      style={{ backgroundColor: "#FFFFFF" }}
+      style={{ backgroundColor: "#FFFFFF", width: "100%" }}
     >
       <div className="container-fluid d-flex justify-content-between align-items-center">
         <ul className="navbarListado d-flex">
@@ -20,11 +20,11 @@ function Navbar({ image, role, href }) {
             </li>
           ) : (
             <li className="navbarItems">
-              <a href="/" className="navbar-home">
+              <a href="#Home" className="navbar-home">
                 Inicio
               </a>
               <span style={{ marginRight: "30px" }}></span>
-              <a href="/SobreNosotros" className="navbar-home">
+              <a href="#AboutUs" className="navbar-home">
                 Acerca de nosotros
               </a>
             </li>
