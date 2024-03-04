@@ -4,7 +4,7 @@ import { useState } from "react";
 import { addCourse } from "../Services/Course.js";
 import Navbar from "../Components/Navbar.js";
 import Image from "../Resources/Professor.png";
-import Swal from "sweetalert";
+import Swal from "sweetalert2";
 import "./Professor.css";
 
 function Professor() {
