@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home/Index";
 import Student from "./Student/Index";
 import Professor from "./Professor/Index";
-import Tutor from "./Student/Tutor";
+import ChatStudent from "./Student/ChatStudent/Index";
 
 function AppRouter() {
   return (
@@ -11,7 +11,7 @@ function AppRouter() {
         <Route path="/" element={<Home />} />
         <Route path="/Student" element={<Student />} />
         <Route path="/Professor" element={<Professor />} />
-        <Route path="/Student/Tutor" element={<Tutor />} />
+        <Route path="/Student/Tutor" element={<ChatStudent />} />
       </Routes>
     </Router>
   );

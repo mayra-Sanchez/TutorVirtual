@@ -1,0 +1,110 @@
+.container_chat_student{
+    display: flex;
+    margin-top: 50px;
+}
+
+.left-column{
+    flex: 1;
+    padding: 10px;
+}
+
+.right-column{
+    flex: 1;
+    padding: 10px;
+}
+
+.course-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.info_course{
+    padding: 10px;
+    margin-top: 20px;
+    align-self: center;
+}
+
+.imageDice-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card_course{
+    justify-self: center;
+    align-self: center;
+    background-color: #DD4D42;
+    padding: 20px;
+    border-radius: 36px;
+    width: 302px;
+    height: 240px;
+}
+
+.imageDice{
+    margin-top: 20px;
+    width: 20%;
+    height: 20%;
+    transition: transform 2s ease;
+}
+
+.imageDice:hover{
+    transform: rotate(360deg);
+}
+
+.chat-containerStudent {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 36px;
+    height: 500px;
+    width: 90%;
+    flex-direction: column;
+}
+
+.answers{
+    border: 2px solid #012B36;
+    border-radius: 36px;
+    padding: 10px;
+    height: 360px;
+    background-color: #ffff;
+}
+
+.questions{
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.input-container{
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.input-questions{
+    padding: 10px;
+    height: 40px;
+    border-radius: 36px;
+    border: 2px solid #012B36;
+    width: 100%;
+    background-color: #ffff;
+    font-size: 20px;
+}
+
+.imageArrow{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+}
+
+.imageButton{
+    position: absolute; 
+    right: 0; 
+    top: 50%; 
+    transform: translateY(-50%);
+    border: none;
+    padding: 0;
+    margin: 0; 
+    background: none;
+    cursor: pointer;
+}
