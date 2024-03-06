@@ -1,6 +1,13 @@
 .container_chat_student{
     display: flex;
-    margin-top: 50px;
+    margin: 5%
+}
+
+.content-course{
+    color: white;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
 }
 
 .left-column{
@@ -20,8 +27,8 @@
 
 .info_course{
     padding: 10px;
-    margin-top: 20px;
     align-self: center;
+    margin: 10.1%;
 }
 
 .imageDice-container{

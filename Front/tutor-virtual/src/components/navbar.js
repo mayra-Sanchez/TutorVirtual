@@ -15,7 +15,7 @@ function Navbar({ image, role, href }) {
           {role === "users" ? (
             <li className="navbarItems">
               <a href={href} className="navbar-home">
-                Mis cursos
+                Cursos
               </a>
             </li>
           ) : (

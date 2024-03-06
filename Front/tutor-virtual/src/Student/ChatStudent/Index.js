@@ -15,7 +15,7 @@ function ChatStudent() {
             <div className="card_course">
               <div className="info_course">
                 <h1>Curso</h1>
-                <p>Conceptos básicos de python</p>
+                <p className="content-course">Conceptos básicos de python</p>
                 <br />
                 <h1>Raul Quintero</h1>
               </div>

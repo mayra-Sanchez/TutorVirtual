@@ -1,7 +1,6 @@
 import Axios from "axios";
 import { endpoints } from "./index.js";
 
-
 const chatTutor = async (id_course, body) => {
     const config = {
       headers: {
