@@ -12,7 +12,7 @@ from .models import Course
 
 def validate_context(value):
     words = value.split()
-    if len(words) > 30:
+    if len(words) > 40:
         return False
     return True
 
@@ -37,7 +37,7 @@ Provide your answer using the language used in the question.'''
         model=model,
         messages=messages,
         temperature=0,
-        max_tokens= 150,
+        max_tokens= 300,
         n=1
     )
     answer = response.choices[0].message
