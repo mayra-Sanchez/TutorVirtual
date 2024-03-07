@@ -5,13 +5,15 @@ import Arrow from "../../Resources/arrow.png";
 import { listCourses } from "../../Services/Course";
 import React, { useState, useEffect } from "react";
 import { chatTutor } from "../../Services/Tutor";
-import Axios from "axios";
 import { useParams } from "react-router-dom";
 import "./ChatStudent.css";
 
 function ChatStudent() {
   const { selectedCourseId } = useParams();
   const [course, setCourse] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
   const [chat, setChat] = useState({
     content: "",
   });
@@ -39,12 +41,22 @@ function ChatStudent() {
   };
 
   const sendChat = async () => {
+    setLoading(true);
+    var word = chat.content.trim().split(/\s+/)
+    if(word.length < 40){
+      setError(false)
     try {
       const response = await chatTutor(selectedCourseId, chat);
       setResponse(response);
+      setLoading(false);
     } catch (error) {
       console.error("Ocurrio un error", error);
+      setLoading(false);
     }
+  }else{
+    setLoading(false);
+    setError(true);
+  }
   };
 
   return (
@@ -67,6 +79,10 @@ function ChatStudent() {
                 <h1>Instructor</h1>
                 <br />
                 {course && <p className="ptext">{course.instructor_name}</p>}
+                <br />
+                <h1 className="course-description">Descripción del curso:</h1>
+                <br />
+                {course && <p className="ptext">{course.description}</p>}
               </div>
             </div>
             <div className="imageDice-container">
@@ -78,12 +94,42 @@ function ChatStudent() {
           <div className="chat-containerStudent">
             <div className="answers">
               <div className="inner-content">
-                <p>
-                  {response.answer}</p>
+                {/* <div className="loading">
+                  <div class="loader">
+                  <div class="scanner">
+                  <span>Cargando...</span>
+               </div>
+              </div>
+              </div> */}
+              {/* <div className="loading">
+                    <div className="typing-indicator">
+                      <div className="typing-circle"></div>
+                      <div className="typing-circle"></div>
+                      <div className="typing-circle"></div>
+                      <div className="typing-shadow"></div>
+                      <div className="typing-shadow"></div>
+                      <div className="typing-shadow"></div>
+                    </div>
+                  </div> */}
+                  {/* <div class="progress-loader">
+                  <div class="progress"></div>
+                  </div> */}
+                {loading ? (
+                <div class="progress-loader">
+                <div class="progress"></div>
+                </div>
+                ) : (
+                  response && response.answer ? <p>{response.answer}</p> : null)
+                }
               </div>
             </div>
             <div className="questions">
-              <div className="input-container">
+            {
+              error ? (
+                <span className="error">No puedes realizar preguntas con más de 40 palabras</span>
+                
+              ) : (
+                <div className="input-container">
                 <input
                   name="content"
                   onChange={chatChange}
@@ -93,7 +139,11 @@ function ChatStudent() {
                   <img src={Arrow} alt="Logo" className="imageArrow" />
                 </button>
               </div>
+              )
+            }
+              
             </div>
+            
           </div>
         </div>
       </div>
