@@ -4,7 +4,6 @@ import { endpoints } from "./index.js";
 const chatTutor = async (id_course, body) => {
     const config = {
       headers: {
-        accept: "*/*",
         "Content-Type": "application/json",
       },
     };
