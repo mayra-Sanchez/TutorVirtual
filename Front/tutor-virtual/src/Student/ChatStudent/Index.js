@@ -95,8 +95,8 @@ function ChatStudent() {
             <div className="answers">
               <div className="inner-content">
                 {/* <div className="loading">
-                  <div class="loader">
-                  <div class="scanner">
+                  <div className="loader">
+                  <div className="scanner">
                   <span>Cargando...</span>
                </div>
               </div>
@@ -111,12 +111,12 @@ function ChatStudent() {
                       <div className="typing-shadow"></div>
                     </div>
                   </div> */}
-                  {/* <div class="progress-loader">
-                  <div class="progress"></div>
+                  {/* <div className="progress-loader">
+                  <div className="progress"></div>
                   </div> */}
                 {loading ? (
-                <div class="progress-loader">
-                <div class="progress"></div>
+                <div className="progress-loader">
+                <div className="progress"></div>
                 </div>
                 ) : (
                   response && response.answer ? <p>{response.answer}</p> : null)

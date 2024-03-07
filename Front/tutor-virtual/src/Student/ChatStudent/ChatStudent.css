@@ -167,7 +167,6 @@ h1.course-description{
 
 /*THE LOADINGS----------------*/
 
-/**/
 .loading{
     display: flex;
     justify-content: center;
@@ -297,9 +296,6 @@ h1.course-description{
       width: 0%;
     }
   }
-
-
-
 
   .scanner span {
     color: transparent;
