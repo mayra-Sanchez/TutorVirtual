@@ -12,18 +12,13 @@
   gap: 20px;
   padding: 10px;
   justify-content: center;
-  /* Centra el grid horizontalmente */
 }
 
 .course-container-scroll {
   overflow-y: auto;
   max-height: 400px;
   margin: 0 auto;
-  /* Centra el contenedor verticalmente */
 }
-
-
-
 
 .course-container-scroll::-webkit-scrollbar {
   width: 12px;

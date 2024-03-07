@@ -15,9 +15,12 @@ function ChatStudent() {
             <div className="card_course">
               <div className="info_course">
                 <h1>Curso</h1>
-                <p className="content-course">Conceptos básicos de python</p>
                 <br />
-                <h1>Raul Quintero</h1>
+                <p className="ptext">Conceptos básicos de python</p>
+                <br />
+                <h1>Instructor</h1>
+                <br />
+                <p className="ptext">Raul Quintero</p>
               </div>
             </div>
             <div className="imageDice-container">
@@ -27,12 +30,13 @@ function ChatStudent() {
         </div>
         <div className="right-column">
           <div className="chat-containerStudent">
-            <div className="answers"></div>
+            <div className="answers">
+
+            </div>
             <div className="questions">
-                <div className="input-container">
-                    <input className="input-questions"/>
-                    <button className="imageButton"><img src={Arrow} alt="Logo" className="imageArrow"/></button>
-                
+              <div className="input-container">
+                <input className="input-questions" />
+                <button className="imageButton"><img src={Arrow} alt="Logo" className="imageArrow" /></button>
               </div>
             </div>
           </div>
