@@ -11,7 +11,7 @@ function AppRouter() {
         <Route path="/" element={<Home />} />
         <Route path="/Student" element={<Student />} />
         <Route path="/Professor" element={<Professor />} />
-        <Route path="/Student/Tutor" element={<ChatStudent />} />
+        <Route path="/Student/:selectedCourseId/Tutor" element={<ChatStudent />} />
       </Routes>
     </Router>
   );

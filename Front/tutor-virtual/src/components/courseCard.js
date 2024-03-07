@@ -7,6 +7,7 @@ import { listCourses } from "../Services/Course";
 const CourseCard = ({ courseId, name, teacher, creationDate, description }) => {
   const [course, setCourse] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [selectedCourseId, setSelectedCourseId] = useState(null);
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -24,10 +25,12 @@ const CourseCard = ({ courseId, name, teacher, creationDate, description }) => {
 
   const openModal = () => {
     setShowModal(true);
+    setSelectedCourseId(courseId);
   };
 
   const closeModal = () => {
     setShowModal(false);
+    setSelectedCourseId(null);
   };
 
   var creation_date = creationDate;
@@ -73,7 +76,10 @@ const CourseCard = ({ courseId, name, teacher, creationDate, description }) => {
             <p>Creado: {date}</p>
             <p>Descripción: {description}</p>
             <br></br>
-            <Link to="/Tutor" className="ask-btn">
+            <Link
+              to={`/Student/${selectedCourseId}/Tutor`}
+              className="ask-btn"
+            >
               Preguntale al tutor
             </Link>
           </div>
