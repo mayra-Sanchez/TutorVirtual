@@ -80,7 +80,7 @@ function ChatStudent() {
                 <br />
                 {course && <p className="ptext">{course.instructor_name}</p>}
                 <br />
-                <h1 className="course-description">Descripción del curso:</h1>
+                <h1 >Descripción del curso</h1>
                 <br />
                 {course && <p className="ptext">{course.description}</p>}
               </div>
