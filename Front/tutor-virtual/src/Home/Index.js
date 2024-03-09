@@ -6,6 +6,7 @@ import Image2 from "../Resources/6.png";
 import Navbar from "../Components/Navbar";
 import "../Home/Home.css";
 
+//Funcion principal
 function Home() {
   const [showScrollButton, setShowScrollButton] = useState(false);
 
