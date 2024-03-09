@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./CourseCard.css";
 import { listCourses } from "../Services/Course";
 
+//Component courses
 const CourseCard = ({ courseId, name, teacher, creationDate, description }) => {
   const [course, setCourse] = useState(null);
   const [showModal, setShowModal] = useState(false);
