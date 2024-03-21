@@ -40,6 +40,20 @@ function ChatStudent() {
     setChat({ ...chat, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    if (response && response.answer) {
+      speakResponse(response.answer);
+    }
+  }, [response]);
+
+  const speakResponse = (text) => {
+    if ('speechSynthesis' in window) {
+      const synth = window.speechSynthesis;
+      const utterance = new SpeechSynthesisUtterance(text);
+      synth.speak(utterance);
+    }
+  };
+
   const sendChat = async () => {
     setLoading(true);
     var word = chat.content.trim().split(/\s+/)
