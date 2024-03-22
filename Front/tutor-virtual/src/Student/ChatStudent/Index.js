@@ -6,8 +6,8 @@ import { listCourses } from "../../Services/Course";
 import React, { useState, useEffect } from "react";
 import { chatTutor } from "../../Services/Tutor";
 import { useParams } from "react-router-dom";
+import Microfono from "../../Resources/11.png";
 import "./ChatStudent.css";
-import Microfono from "../../Resources/microfono.png";
 
 function ChatStudent() {
   const { selectedCourseId } = useParams();
@@ -61,7 +61,7 @@ function ChatStudent() {
       const recognition = new window.webkitSpeechRecognition();
       recognition.continuous = false;
       recognition.interimResults = false;
-      recognition.lang = "es-ES"; // Configura el idioma en español
+      recognition.lang = "es-ES";
 
       recognition.onstart = () => {
         console.log("Recording started");
@@ -88,9 +88,9 @@ function ChatStudent() {
     }
   };
 
-  const clearInput = () => {
-    setChat({ ...chat, content: "" });
-  };
+  // const clearInput = () => {
+  //   setChat({ ...chat, content: "" });
+  // };
 
   const sendChat = async () => {
     setLoading(true);
@@ -110,17 +110,6 @@ function ChatStudent() {
       setError(true);
     }
   };
-
-  // const speak = (text) => {
-  //   if ("speechSynthesis" in window) {
-  //     const speech = new SpeechSynthesisUtterance(text);
-  //     speech.lang = "es-ES"; // Configura el idioma
-
-  //     window.speechSynthesis.speak(speech);
-  //   } else {
-  //     console.log("La síntesis de voz no es soportada en este navegador.");
-  //   }
-  // };
 
   return (
     <>
@@ -177,7 +166,11 @@ function ChatStudent() {
                     name="content"
                     onChange={chatChange}
                     className="input-questions"
+                    value={chat.content}
                   />
+                  <button onClick={startRecording} className="imageButton2">
+                    <img src={Microfono} alt="Logo" className="record-button" />
+                  </button>
                   <button onClick={sendChat} className="imageButton">
                     <img src={Arrow} alt="Logo" className="imageArrow" />
                   </button>

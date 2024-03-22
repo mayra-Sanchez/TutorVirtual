@@ -6,7 +6,6 @@ import { useState } from "react";
 import { addCourse } from "../Services/Course";
 import { useSpeechApi } from "../Components/Hooks/SpeechApi.js";
 import activate from "../Resources/11.png";
-import unActivate from "../Resources/12.png";
 import Swal from "sweetalert2";
 import "./Professor.css";
 
@@ -26,10 +25,10 @@ function Professor() {
   };
 
   useEffect(() => {
-    if (isListening) {
+    if (!isListening) {
       setCourseData((prevData) => ({
         ...prevData,
-        context: transcript,
+        context: prevData.context + transcript,
       }));
     }
   }, [transcript, isListening]);
@@ -38,10 +37,6 @@ function Professor() {
     if (isListening) {
       stopListening();
     } else {
-      setCourseData((prevData) => ({
-        ...prevData,
-        context: "",
-      }));
       startListening();
     }
   };
@@ -171,13 +166,17 @@ function Professor() {
                 >
                   {" "}
                   {isListening ? (
-                    <img
-                      src={unActivate}
-                      alt="Logo"
-                      className="microfoneImage"
-                    />
+                    <div className="ContainerVoice">
+                      <div className="visualizador-audio">
+                        <div className="linea"></div>
+                        <div className="linea"></div>
+                        <div className="linea"></div>
+                        <div className="linea"></div>
+                        <div className="linea"></div>
+                      </div>
+                    </div>
                   ) : (
-                    <img src={activate} alt="Logo" className="microfoneImage" />
+                    <img src={activate} alt="Logo" className="microphone" />
                   )}
                 </button>
               </div>

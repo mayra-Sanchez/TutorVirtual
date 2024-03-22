@@ -128,12 +128,12 @@ h1.course-description{
 .input-container {
   position: relative;
   display: flex;
-  align-items: center; /* Centra verticalmente los elementos */
-  justify-content: space-between; /* Espacio entre los elementos */
+  align-items: center; 
+  justify-content: space-between; 
 }
 
 .input-questions {
-  flex: 1; /* El input ocupa todo el espacio restante */
+  flex: 1; 
   padding: 10px;
   height: 40px;
   border-radius: 36px;
@@ -150,8 +150,7 @@ h1.course-description{
   border-radius: 50%;
 }
 
-.imageButton,
-.imageButton2 {
+.imageButton{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -162,24 +161,45 @@ h1.course-description{
   cursor: pointer;
 }
 
-.imageButton {
-  right: 10px; /* Ajusta la posición del primer botón */
+.imageButton2 {
+  position: absolute;
+  top: 40%; 
+  transform: translateY(20%); 
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  cursor: pointer;
+  right: 70px; 
+  animation: breath 1.5s ease-in-out infinite;
 }
 
-.imageButton2 {
-  right: 70px; /* Ajusta la posición del segundo botón */
+@keyframes breath {
+  0%, 100% {
+    transform: scale(1.2); 
+  }
+  50% {
+    transform: scale(1.05); 
+  }
 }
+
+.imageButton {
+  right: 10px; 
+}
+
 
 .record-button {
   width: 40px;
   height: 40px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 50%;
+  transform: translateY(-30%);
+
 }
 
 .error{
   color: red;
 }
+
 /*THE LOADINGS----------------*/
 
 .loading{
