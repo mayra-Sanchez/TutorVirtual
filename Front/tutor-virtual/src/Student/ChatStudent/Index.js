@@ -42,22 +42,33 @@ function ChatStudent() {
 
   const sendChat = async () => {
     setLoading(true);
-    var word = chat.content.trim().split(/\s+/)
-    if(word.length < 40){
-      setError(false)
-    try {
-      const response = await chatTutor(selectedCourseId, chat);
-      setResponse(response);
+    var word = chat.content.trim().split(/\s+/);
+    if (word.length < 40) {
+      setError(false);
+      try {
+        const response = await chatTutor(selectedCourseId, chat);
+        setResponse(response);
+        setLoading(false);
+      } catch (error) {
+        console.error("Ocurrio un error", error);
+        setLoading(false);
+      }
+    } else {
       setLoading(false);
-    } catch (error) {
-      console.error("Ocurrio un error", error);
-      setLoading(false);
+      setError(true);
     }
-  }else{
-    setLoading(false);
-    setError(true);
-  }
   };
+
+  // const speak = (text) => {
+  //   if ("speechSynthesis" in window) {
+  //     const speech = new SpeechSynthesisUtterance(text);
+  //     speech.lang = "es-ES"; // Configura el idioma
+
+  //     window.speechSynthesis.speak(speech);
+  //   } else {
+  //     console.log("La síntesis de voz no es soportada en este navegador.");
+  //   }
+  // };
 
   return (
     <>
@@ -80,7 +91,7 @@ function ChatStudent() {
                 <br />
                 {course && <p className="ptext">{course.instructor_name}</p>}
                 <br />
-                <h1 >Descripción del curso</h1>
+                <h1>Descripción del curso</h1>
                 <br />
                 {course && <p className="ptext">{course.description}</p>}
               </div>
@@ -94,56 +105,33 @@ function ChatStudent() {
           <div className="chat-containerStudent">
             <div className="answers">
               <div className="inner-content">
-                {/* <div className="loading">
-                  <div className="loader">
-                  <div className="scanner">
-                  <span>Cargando...</span>
-               </div>
-              </div>
-              </div> */}
-              {/* <div className="loading">
-                    <div className="typing-indicator">
-                      <div className="typing-circle"></div>
-                      <div className="typing-circle"></div>
-                      <div className="typing-circle"></div>
-                      <div className="typing-shadow"></div>
-                      <div className="typing-shadow"></div>
-                      <div className="typing-shadow"></div>
-                    </div>
-                  </div> */}
-                  {/* <div className="progress-loader">
-                  <div className="progress"></div>
-                  </div> */}
                 {loading ? (
-                <div className="progress-loader">
-                <div className="progress"></div>
-                </div>
-                ) : (
-                  response && response.answer ? <p>{response.answer}</p> : null)
-                }
+                  <div className="progress-loader">
+                    <div className="progress"></div>
+                  </div>
+                ) : response && response.answer ? (
+                  <p>{response.answer}</p>
+                ) : null}
               </div>
             </div>
             <div className="questions">
-            {
-              error ? (
-                <span className="error">No puedes realizar preguntas con más de 40 palabras</span>
-                
+              {error ? (
+                <span className="error">
+                  No puedes realizar preguntas con más de 40 palabras
+                </span>
               ) : (
                 <div className="input-container">
-                <input
-                  name="content"
-                  onChange={chatChange}
-                  className="input-questions"
-                />
-                <button onClick={sendChat} className="imageButton">
-                  <img src={Arrow} alt="Logo" className="imageArrow" />
-                </button>
-              </div>
-              )
-            }
-              
+                  <input
+                    name="content"
+                    onChange={chatChange}
+                    className="input-questions"
+                  />
+                  <button onClick={sendChat} className="imageButton">
+                    <img src={Arrow} alt="Logo" className="imageArrow" />
+                  </button>
+                </div>
+              )}
             </div>
-            
           </div>
         </div>
       </div>

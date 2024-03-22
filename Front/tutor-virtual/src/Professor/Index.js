@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../Components/Navbar.js";
 import Image from "../Resources/Professor.png";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import { addCourse } from "../Services/Course";
+import { useSpeechApi } from "../Components/Hooks/SpeechApi.js";
+import activate from "../Resources/11.png";
+import unActivate from "../Resources/12.png";
 import Swal from "sweetalert2";
 import "./Professor.css";
 
 function Professor() {
   const navigate = useNavigate();
-
+  const { transcript, isListening, startListening, stopListening } =
+    useSpeechApi();
   const [courseData, setCourseData] = useState({
     name: "",
     instructor_name: "",
@@ -19,6 +23,27 @@ function Professor() {
 
   const handleChange = (e) => {
     setCourseData({ ...courseData, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    if (isListening) {
+      setCourseData((prevData) => ({
+        ...prevData,
+        context: transcript,
+      }));
+    }
+  }, [transcript, isListening]);
+
+  const toggleListening = () => {
+    if (isListening) {
+      stopListening();
+    } else {
+      setCourseData((prevData) => ({
+        ...prevData,
+        context: "",
+      }));
+      startListening();
+    }
   };
 
   const handleSubmit = (e) => {
@@ -134,9 +159,27 @@ function Professor() {
                   type="text"
                   className="form-control"
                   name="context"
+                  value={courseData.context}
                   onChange={handleChange}
+                  disabled={isListening}
                   required
                 />
+                <button
+                  type="button"
+                  onClick={toggleListening}
+                  className="microfoneButton"
+                >
+                  {" "}
+                  {isListening ? (
+                    <img
+                      src={unActivate}
+                      alt="Logo"
+                      className="microfoneImage"
+                    />
+                  ) : (
+                    <img src={activate} alt="Logo" className="microfoneImage" />
+                  )}
+                </button>
               </div>
             </div>
             <button type="submit" className="buttonRegister">
