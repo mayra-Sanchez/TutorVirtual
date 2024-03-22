@@ -1,170 +1,185 @@
 .container_chat_student {
-    display: flex;
-    margin: 5%
+  display: flex;
+  margin: 5%;
 }
 
 .content-course {
-    color: white;
-    font-weight: bold;
-    justify-content: center;
-    align-items: center;
+  color: white;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
 }
 
 .instructor-course {
-    color: white;
-    font-weight: bold;
-    justify-content: center;
-    align-items: center;
+  color: white;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
 }
 
 .left-column {
-    flex: 1;
-    padding: 10px;
+  flex: 1;
+  padding: 10px;
 }
 
 .right-column {
-    flex: 1;
-    padding: 10px;
+  flex: 1;
+  padding: 10px;
 }
 
 .course-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .ptext {
-    display: flex;
-    color: rgb(1, 1, 1);
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    align-items: center;
-    justify-content: center;
-    margin-top: -7%;
+  display: flex;
+  color: rgb(1, 1, 1);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  align-items: center;
+  justify-content: center;
+  margin-top: -7%;
 }
 
 .info_course {
-    padding: 10px;
-    align-self: center;
-    margin: 10.1%;
+  padding: 10px;
+  align-self: center;
+  margin: 10.1%;
 }
 
 .imageDice-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 h1.course-description{
-    font-size:large
+  font-size:large
 }
 
 .card_course {
-    justify-self: center;
-    align-self: center;
-    background-color: #DD4D42;
-    padding: 20px;
-    border-radius: 36px;
-    width: 350px;
-    height: 380px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+  justify-self: center;
+  align-self: center;
+  background-color: #DD4D42;
+  padding: 20px;
+  border-radius: 36px;
+  width: 350px;
+  height: 380px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .imageDice {
-    margin-top: 20px;
-    width: 20%;
-    height: 20%;
-    transition: transform 2s ease;
+  margin-top: 20px;
+  width: 20%;
+  height: 20%;
+  transition: transform 2s ease;
 }
 
 .imageDice:hover {
-    transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
 .chat-containerStudent {
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 36px;
-    height: 500px;
-    width: 90%;
-    flex-direction: column;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 36px;
+  height: auto;
+  width: 90%;
+  flex-direction: column;
 }
 
 .answers {
-    border: 2px solid #012B36;
-    border-radius: 36px;
-    padding: 10px;
-    height: 360px;
-    background-color: #ffff;
-    overflow: hidden; 
-    position: relative; 
+  border: 2px solid #012B36;
+  border-radius: 36px;
+  padding: 10px;
+  height: 360px;
+  background-color: #ffff;
+  overflow: hidden; 
+  position: relative; 
 }
 
 .inner-content {
-    height: 100%; 
-    overflow-y: auto; 
-    padding-right: 10px; 
+  height: 100%; 
+  overflow-y: auto; 
+  padding-right: 10px; 
 }
 
 .inner-content::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 .inner-content::-webkit-scrollbar-thumb {
-    background-color: #DD4D42;
-    border-radius: 10px;
+  background-color: #DD4D42;
+  border-radius: 10px;
 }
 
 .inner-content::-webkit-scrollbar-track {
-    background-color: #ffff;
+  background-color: #ffff;
 }
 
 
 .questions {
-    margin-top: 10px;
-    padding: 10px;
+  margin-top: 10px;
+  padding: 10px;
 }
 
 .input-container {
-    display: flex;
-    position: relative;
-    align-items: center;
+  position: relative;
+  display: flex;
+  align-items: center; /* Centra verticalmente los elementos */
+  justify-content: space-between; /* Espacio entre los elementos */
 }
 
 .input-questions {
-    padding: 10px;
-    height: 40px;
-    border-radius: 36px;
-    border: 2px solid #012B36;
-    width: 100%;
-    background-color: #ffff;
-    font-size: 20px;
+  flex: 1; /* El input ocupa todo el espacio restante */
+  padding: 10px;
+  height: 40px;
+  border-radius: 36px;
+  border: 2px solid #012B36;
+  background-color: #ffff;
+  font-size: 20px;
 }
 
 .imageArrow {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+}
+
+.imageButton,
+.imageButton2 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  cursor: pointer;
 }
 
 .imageButton {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    border: none;
-    padding: 0;
-    margin: 0;
-    background: none;
-    cursor: pointer;
+  right: 10px; /* Ajusta la posición del primer botón */
+}
+
+.imageButton2 {
+  right: 70px; /* Ajusta la posición del segundo botón */
+}
+
+.record-button {
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
 }
 
 .error{
-    color: red;
+  color: red;
 }
-
 /*THE LOADINGS----------------*/
 
 .loading{

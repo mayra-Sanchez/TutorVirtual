@@ -7,6 +7,7 @@ import React, { useState, useEffect } from "react";
 import { chatTutor } from "../../Services/Tutor";
 import { useParams } from "react-router-dom";
 import "./ChatStudent.css";
+import Microfono from "../../Resources/microfono.png";
 
 function ChatStudent() {
   const { selectedCourseId } = useParams();
@@ -40,43 +41,80 @@ function ChatStudent() {
     setChat({ ...chat, [e.target.name]: e.target.value });
   };
 
-  useEffect(() => {
-    if (response && response.answer) {
-      speakResponse(response.answer);
-    }
-  }, [response]);
-
-  const speakResponse = (text) => {
+  const speakTutorResponse = (text) => {
     if ('speechSynthesis' in window) {
       const synth = window.speechSynthesis;
       const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'es-ES';
       synth.speak(utterance);
     }
+  };
+
+  useEffect(() => {
+    if (response && response.answer) {
+      speakTutorResponse(response.answer);
+    }
+  }, [response]);
+
+  const startRecording = () => {
+    if ('webkitSpeechRecognition' in window) {
+      const recognition = new window.webkitSpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = 'es-ES'; // Configura el idioma en español
+
+      recognition.onstart = () => {
+        console.log('Recording started');
+      };
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setChat({ ...chat, content: transcript });
+        recognition.stop();
+      };
+
+      recognition.onerror = (event) => {
+        console.error('Error during recording:', event.error);
+        recognition.stop();
+      };
+
+      recognition.onend = () => {
+        console.log('Recording ended');
+      };
+
+      recognition.start();
+    } else {
+      console.error('Speech recognition not supported by this browser');
+    }
+  };
+
+  const clearInput = () => {
+    setChat({ ...chat, content: "" });
   };
 
   const sendChat = async () => {
     setLoading(true);
     var word = chat.content.trim().split(/\s+/)
-    if(word.length < 40){
+    if (word.length < 40) {
       setError(false)
-    try {
-      const response = await chatTutor(selectedCourseId, chat);
-      setResponse(response);
+      try {
+        const response = await chatTutor(selectedCourseId, chat);
+        setResponse(response);
+        setLoading(false);
+      } catch (error) {
+        console.error("Ocurrio un error", error);
+        setLoading(false);
+      }
+    } else {
       setLoading(false);
-    } catch (error) {
-      console.error("Ocurrio un error", error);
-      setLoading(false);
+      setError(true);
     }
-  }else{
-    setLoading(false);
-    setError(true);
-  }
   };
 
   return (
     <>
       <Navbar
-        href={"/Student/:selectedCourseId/Tutor"}
+        href={`/Student/${selectedCourseId}/Tutor`}
         image={Image}
         role={"users"}
       />
@@ -108,56 +146,39 @@ function ChatStudent() {
           <div className="chat-containerStudent">
             <div className="answers">
               <div className="inner-content">
-                {/* <div className="loading">
-                  <div className="loader">
-                  <div className="scanner">
-                  <span>Cargando...</span>
-               </div>
-              </div>
-              </div> */}
-              {/* <div className="loading">
-                    <div className="typing-indicator">
-                      <div className="typing-circle"></div>
-                      <div className="typing-circle"></div>
-                      <div className="typing-circle"></div>
-                      <div className="typing-shadow"></div>
-                      <div className="typing-shadow"></div>
-                      <div className="typing-shadow"></div>
-                    </div>
-                  </div> */}
-                  {/* <div className="progress-loader">
-                  <div className="progress"></div>
-                  </div> */}
                 {loading ? (
-                <div className="progress-loader">
-                <div className="progress"></div>
-                </div>
+                  <div className="progress-loader">
+                    <div className="progress"></div>
+                  </div>
                 ) : (
                   response && response.answer ? <p>{response.answer}</p> : null)
                 }
               </div>
+
             </div>
             <div className="questions">
-            {
-              error ? (
-                <span className="error">No puedes realizar preguntas con más de 40 palabras</span>
-                
-              ) : (
-                <div className="input-container">
-                <input
-                  name="content"
-                  onChange={chatChange}
-                  className="input-questions"
-                />
-                <button onClick={sendChat} className="imageButton">
-                  <img src={Arrow} alt="Logo" className="imageArrow" />
-                </button>
-              </div>
-              )
-            }
-              
+              {
+                error ? (
+                  <span className="error">No puedes realizar preguntas con más de 40 palabras</span>
+
+                ) : (
+                  <div className="input-container">
+                    <input
+                      name="content"
+                      onChange={chatChange}
+                      className="input-questions"
+                      value={chat.content}
+                    />
+                    <button onClick={startRecording} className="imageButton2">
+                      <img src={Microfono} alt="Logo" className="record-button" />
+                    </button>
+                    <button onClick={sendChat} className="imageButton">
+                      <img src={Arrow} alt="Logo" className="imageArrow" />
+                    </button>
+                  </div>
+                )
+              }
             </div>
-            
           </div>
         </div>
       </div>
