@@ -16,8 +16,10 @@
 
 .course-container-scroll {
   overflow-y: auto;
-  max-height: 400px;
-  margin: 0 auto;
+  max-height: 500px;
+  min-height: 400px;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 .course-container-scroll::-webkit-scrollbar {
@@ -28,6 +30,7 @@
 
 .course-container-scroll::-webkit-scrollbar-track {
   background: #f1f1f1;
+  border-radius: 6px;
 }
 
 .course-container-scroll::-webkit-scrollbar-thumb {
