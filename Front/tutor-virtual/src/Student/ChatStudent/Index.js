@@ -7,6 +7,7 @@ import React, { useState, useEffect } from "react";
 import { chatTutor } from "../../Services/Tutor";
 import { useParams } from "react-router-dom";
 import "./ChatStudent.css";
+import Microfono from "../../Resources/microfono.png";
 
 function ChatStudent() {
   const { selectedCourseId } = useParams();
@@ -38,6 +39,57 @@ function ChatStudent() {
 
   const chatChange = (e) => {
     setChat({ ...chat, [e.target.name]: e.target.value });
+  };
+
+  const speakTutorResponse = (text) => {
+    if ("speechSynthesis" in window) {
+      const synth = window.speechSynthesis;
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "es-ES";
+      synth.speak(utterance);
+    }
+  };
+
+  useEffect(() => {
+    if (response && response.answer) {
+      speakTutorResponse(response.answer);
+    }
+  }, [response]);
+
+  const startRecording = () => {
+    if ("webkitSpeechRecognition" in window) {
+      const recognition = new window.webkitSpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.lang = "es-ES"; // Configura el idioma en español
+
+      recognition.onstart = () => {
+        console.log("Recording started");
+      };
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        setChat({ ...chat, content: transcript });
+        recognition.stop();
+      };
+
+      recognition.onerror = (event) => {
+        console.error("Error during recording:", event.error);
+        recognition.stop();
+      };
+
+      recognition.onend = () => {
+        console.log("Recording ended");
+      };
+
+      recognition.start();
+    } else {
+      console.error("Speech recognition not supported by this browser");
+    }
+  };
+
+  const clearInput = () => {
+    setChat({ ...chat, content: "" });
   };
 
   const sendChat = async () => {
@@ -73,7 +125,7 @@ function ChatStudent() {
   return (
     <>
       <Navbar
-        href={"/Student/:selectedCourseId/Tutor"}
+        href={`/Student/${selectedCourseId}/Tutor`}
         image={Image}
         role={"users"}
       />
