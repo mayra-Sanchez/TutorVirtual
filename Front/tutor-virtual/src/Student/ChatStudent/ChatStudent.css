@@ -159,6 +159,7 @@ h1.course-description{
   margin: 0;
   background: none;
   cursor: pointer;
+  filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.4));
 }
 
 .imageButton2 {
@@ -171,29 +172,18 @@ h1.course-description{
   background: none;
   cursor: pointer;
   right: 70px; 
-  animation: breath 1.5s ease-in-out infinite;
-}
-
-@keyframes breath {
-  0%, 100% {
-    transform: scale(1.2); 
-  }
-  50% {
-    transform: scale(1.05); 
-  }
+  filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.4));
 }
 
 .imageButton {
   right: 10px; 
 }
 
-
 .record-button {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  transform: translateY(-30%);
-
+  transform: translateY(-50%);
 }
 
 .error{

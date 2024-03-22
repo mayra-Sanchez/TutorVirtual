@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import { useState } from "react";
 import { addCourse } from "../Services/Course";
 import { useSpeechApi } from "../Components/Hooks/SpeechApi.js";
-import activate from "../Resources/11.png";
+import activate from "../Resources/microphone.png";
 import Swal from "sweetalert2";
 import "./Professor.css";
 

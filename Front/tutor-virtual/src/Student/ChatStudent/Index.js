@@ -6,7 +6,8 @@ import { listCourses } from "../../Services/Course";
 import React, { useState, useEffect } from "react";
 import { chatTutor } from "../../Services/Tutor";
 import { useParams } from "react-router-dom";
-import Microfono from "../../Resources/11.png";
+import Microfono from "../../Resources/microphone.png";
+import { useSpeechApi } from "../../Components/Hooks/SpeechApi.js";
 import "./ChatStudent.css";
 
 function ChatStudent() {
@@ -14,6 +15,9 @@ function ChatStudent() {
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const { transcript, isListening, startListening, stopListening } =
+    useSpeechApi();
 
   const [chat, setChat] = useState({
     content: "",
@@ -33,7 +37,6 @@ function ChatStudent() {
         console.error("Error fetching course info:", error);
       }
     };
-
     fetchData();
   }, [selectedCourseId]);
 
@@ -41,6 +44,7 @@ function ChatStudent() {
     setChat({ ...chat, [e.target.name]: e.target.value });
   };
 
+  //For the speaker
   const speakTutorResponse = (text) => {
     if ("speechSynthesis" in window) {
       const synth = window.speechSynthesis;
@@ -56,37 +60,55 @@ function ChatStudent() {
     }
   }, [response]);
 
-  const startRecording = () => {
-    if ("webkitSpeechRecognition" in window) {
-      const recognition = new window.webkitSpeechRecognition();
-      recognition.continuous = false;
-      recognition.interimResults = false;
-      recognition.lang = "es-ES";
+  //For the listening
+  useEffect(() => {
+    if (!isListening) {
+      setChat((prevData) => ({
+        ...prevData,
+        content: prevData.content + transcript,
+      }));
+    }
+  }, [transcript, isListening]);
 
-      recognition.onstart = () => {
-        console.log("Recording started");
-      };
-
-      recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript;
-        setChat({ ...chat, content: transcript });
-        recognition.stop();
-      };
-
-      recognition.onerror = (event) => {
-        console.error("Error during recording:", event.error);
-        recognition.stop();
-      };
-
-      recognition.onend = () => {
-        console.log("Recording ended");
-      };
-
-      recognition.start();
+  const toggleListening = () => {
+    if (isListening) {
+      stopListening();
     } else {
-      console.error("Speech recognition not supported by this browser");
+      startListening();
     }
   };
+
+  // const startRecording = () => {
+  //   if ("webkitSpeechRecognition" in window) {
+  //     const recognition = new window.webkitSpeechRecognition();
+  //     recognition.continuous = false;
+  //     recognition.interimResults = false;
+  //     recognition.lang = "es-ES";
+
+  //     recognition.onstart = () => {
+  //       console.log("Recording started");
+  //     };
+
+  //     recognition.onresult = (event) => {
+  //       const transcript = event.results[0][0].transcript;
+  //       setChat({ ...chat, content: transcript });
+  //       recognition.stop();
+  //     };
+
+  //     recognition.onerror = (event) => {
+  //       console.error("Error during recording:", event.error);
+  //       recognition.stop();
+  //     };
+
+  //     recognition.onend = () => {
+  //       console.log("Recording ended");
+  //     };
+
+  //     recognition.start();
+  //   } else {
+  //     console.error("Speech recognition not supported by this browser");
+  //   }
+  // };
 
   // const clearInput = () => {
   //   setChat({ ...chat, content: "" });
@@ -167,13 +189,35 @@ function ChatStudent() {
                     onChange={chatChange}
                     className="input-questions"
                     value={chat.content}
+                    disabled={isListening}
                   />
-                  <button onClick={startRecording} className="imageButton2">
-                    <img src={Microfono} alt="Logo" className="record-button" />
-                  </button>
-                  <button onClick={sendChat} className="imageButton">
-                    <img src={Arrow} alt="Logo" className="imageArrow" />
-                  </button>
+                  {isListening ? (
+                    <div className="ContainerVoiceChat">
+                      <div className="visualizador-audio">
+                        <div className="linea"></div>
+                        <div className="linea"></div>
+                        <div className="linea"></div>
+                        <div className="linea"></div>
+                        <div className="linea"></div>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <button
+                        onClick={toggleListening}
+                        className="imageButton2"
+                      >
+                        <img
+                          src={Microfono}
+                          alt="Micrófono"
+                          className="record-button"
+                        />
+                      </button>
+                      <button onClick={sendChat} className="imageButton">
+                        <img src={Arrow} alt="Enviar" className="imageArrow" />
+                      </button>
+                    </>
+                  )}
                 </div>
               )}
             </div>
