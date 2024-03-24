@@ -48,14 +48,7 @@
   }
   
   .input-questions, .imageArrow, .record-button {
-    /* Ajusta el tamaño de los elementos interactivos para pantallas pequeñas */
     width: 80%;
-  }
-}
-
-@media (max-width: 768px) {
-  .imageButton, .imageButton2 {
-    /* Ajusta el posicionamiento o el tamaño para pantallas más pequeñas si es necesario */
   }
 }
 
