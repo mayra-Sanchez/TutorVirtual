@@ -40,7 +40,7 @@
   }
   
   .container2{
-  display: flex;
+  display: flex; 
   flex-direction: column;
   }
   
@@ -97,6 +97,8 @@
     padding: 5px;
     border: #012B36 solid thin;
     margin-right: 15px;
+    resize: none;
+    height: auto;
   }
   
   /*PHONES*/
@@ -111,7 +113,7 @@
       margin-bottom: 20px; 
     }
     .form2 {
-      margin-left: 0; /* Elimina el margen izquierdo adicional en dispositivos móviles */
+      margin-left: 0; 
     }
   }
     
