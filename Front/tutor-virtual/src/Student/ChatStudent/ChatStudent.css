@@ -159,6 +159,8 @@ h1.course-description{
   border: 2px solid #012B36;
   background-color: #ffff;
   font-size: 20px;
+  padding-right: 100px;
+  position: relative;
 }
 
 .imageArrow {
@@ -179,6 +181,7 @@ h1.course-description{
   background: none;
   cursor: pointer;
   filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.4));
+  right: 10px;
 }
 
 .imageButton2 {
@@ -190,7 +193,7 @@ h1.course-description{
   margin: 0;
   background: none;
   cursor: pointer;
-  right: 70px; 
+  right: 65px; 
   filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.4));
 }
 
