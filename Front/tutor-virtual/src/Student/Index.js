@@ -22,7 +22,7 @@ function Student() {
     };
 
     fetchData();
-    
+
   }, []);
 
   return (
@@ -31,30 +31,31 @@ function Student() {
       <div className="titleStudent">
         <h2>Cursos</h2>
       </div>
-      {loading? (
-      <div className="loading">
-      <div className="loader">
-      <div className="scanner">
-      <span>Cargando...</span>
-   </div>
-  </div>
-  </div>
-      ):(
-        <div className="course-container-scroll">
-        <div className="course-container">
-        {courses.map((course) => (
-            <div key={course.id} className="course-card">
-              <CourseCard
-                courseId={course.id}
-                name={course.name}
-                teacher={course.instructor_name}
-                creationDate={course.creation_date}
-                description={course.description}
-              />
+      {loading ? (
+        <div className="loading">
+          <div className="loader">
+            <div className="scanner">
+              <span>Cargando...</span>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="course-container-scroll">
+          <div className="course-container">
+            {courses.map((course) => (
+              <div key={course.id} className="course-card">
+                <CourseCard
+                  courseId={course.id}
+                  name={course.name}
+                  teacher={course.instructor_name}
+                  creationDate={course.creation_date}
+                  description={course.description}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
       )}
     </>
   );

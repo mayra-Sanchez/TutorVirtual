@@ -143,7 +143,7 @@ function ChatStudent() {
       <br />
       <div className="container_chat_student">
         <div className="left-column">
-          <div className="course-container">
+          <div className="course-container2">
             <div className="card_course">
               <div className="info_course">
                 <h1>Curso</h1>

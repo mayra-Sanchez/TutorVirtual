@@ -10,7 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
+
 from pathlib import Path
+
+import dj_database_url 
+
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +32,7 @@ SECRET_KEY = 'django-insecure-wrrt&&%8t0#x(ttgmfqk72e@o3(&&zzy_gdf)0gml3fn%%oitv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'laboratorio1-pi2.onrender.com']
 
 
 
@@ -57,6 +64,9 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
+    'https://tutor-virtual-ten.vercel.app',
+    'http://127.0.0.1:8000',
+    'http://localhost:8000',
 ]
 
 ROOT_URLCONF = 'lab1_pi2.urls'
@@ -83,10 +93,19 @@ WSGI_APPLICATION = 'lab1_pi2.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+    #uncomment these lines to test the api locally and comment the lines below 
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': os.getenv('DB_NAME'),
+       'USER': os.getenv( 'DB_USER'),
+       'PASSWORD': os.getenv('DB_PASSWORD'),
+       'HOST': os.getenv('DB_CONTAINER_NAME', 'localhost'),
+       'PORT': os.getenv('DB_PORT','5432'),
     }
+
+    #comment this line if you run the api locally 
+
+    #'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 # Password validation
