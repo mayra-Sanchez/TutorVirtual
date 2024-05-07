@@ -11,13 +11,23 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 10px;
-  justify-content: center;
+  justify-content: center; /* Centra el grid horizontalmente */
 }
+
+.course-card {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+
 
 .course-container-scroll {
   overflow-y: auto;
-  max-height: 400px;
-  margin: 0 auto;
+  max-height: 500px;
+  min-height: 400px;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 .course-container-scroll::-webkit-scrollbar {
@@ -28,6 +38,7 @@
 
 .course-container-scroll::-webkit-scrollbar-track {
   background: #f1f1f1;
+  border-radius: 6px;
 }
 
 .course-container-scroll::-webkit-scrollbar-thumb {
@@ -35,8 +46,48 @@
   border-radius: 6px;
 }
 
-.course-card {
-  background-color: #FFFFFF;
-  border-radius: 8px;
-  padding: 10px;
+
+.loading{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 1vh;
+}
+
+.scanner span {
+  color: transparent;
+  font-size: 1.4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.scanner span::before {
+  content: "Cargando...";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  border-right: 4px solid #012B36;
+  overflow: hidden;
+  color: #DD4D42;
+  animation: load91371 2s linear infinite;
+}
+
+@keyframes load91371 {
+  0%, 10%, 100% {
+    width: 0;
+  }
+
+  10%,20%,30%,40%,50%,60%,70%,80%,90%,100% {
+    border-right-color: transparent;
+  }
+
+  11%,21%,31%,41%,51%,61%,71%,81%,91% {
+      border-right-color: #DD4D42;
+  }
+
+  60%, 80% {
+    width: 100%;
+  }
 }

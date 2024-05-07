@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../Components/Navbar.js";
 import Image from "../Resources/Professor.png";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 import { addCourse } from "../Services/Course";
+import { useSpeechApi } from "../Components/Hooks/SpeechApi.js";
+import activate from "../Resources/microphone.png";
 import Swal from "sweetalert2";
 import "./Professor.css";
 
 function Professor() {
   const navigate = useNavigate();
-
+  const { transcript, isListening, startListening, stopListening } =
+    useSpeechApi();
   const [courseData, setCourseData] = useState({
     name: "",
     instructor_name: "",
@@ -19,6 +22,23 @@ function Professor() {
 
   const handleChange = (e) => {
     setCourseData({ ...courseData, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    if (!isListening) {
+      setCourseData((prevData) => ({
+        ...prevData,
+        context: prevData.context + transcript,
+      }));
+    }
+  }, [transcript, isListening]);
+
+  const toggleListening = () => {
+    if (isListening) {
+      stopListening();
+    } else {
+      startListening();
+    }
   };
 
   const handleSubmit = (e) => {
@@ -134,9 +154,31 @@ function Professor() {
                   type="text"
                   className="form-control"
                   name="context"
+                  value={courseData.context}
                   onChange={handleChange}
+                  disabled={isListening}
                   required
                 />
+                <button
+                  type="button"
+                  onClick={toggleListening}
+                  className="microfoneButton"
+                >
+                  {" "}
+                  {isListening ? (
+                    <div className="ContainerVoice">
+                      <div className="visualizador-audio">
+                        <div className="linea"></div>
+                        <div className="linea"></div>
+                        <div className="linea"></div>
+                        <div className="linea"></div>
+                        <div className="linea"></div>
+                      </div>
+                    </div>
+                  ) : (
+                    <img src={activate} alt="Logo" className="microphone" />
+                  )}
+                </button>
               </div>
             </div>
             <button type="submit" className="buttonRegister">
