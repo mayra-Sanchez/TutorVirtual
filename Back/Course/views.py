@@ -21,8 +21,8 @@ def get_secret_key():
         secrets = json.load(f)
     return secrets['OPENAI_KEY']
 
-api_key = get_secret_key()
-openai.api_key = api_key
+#api_key = get_secret_key()
+openai.api_key = 'api_key'
 
 
 def ask_open_ai(context, question, model="gpt-3.5-turbo-16k"):
