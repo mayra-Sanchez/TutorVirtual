@@ -10,7 +10,7 @@ import { login } from "../Services/Users";
 
 function Login() {
   const [isVisible, setIsVisible] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     email: "",
     password: "",
