@@ -7,13 +7,14 @@ if (process.env.REACT_APP_API_URL) {
 }
 
 const endpoints = {
+  login: `${URL}/api/auth/login`,
   student: {
     coursesList: `${URL}/course/list`,
-    chatTutor: (id_course) => `${URL}/course/student/${id_course}/chat`
+    chatTutor: (id_course) => `${URL}/course/student/${id_course}/chat`,
   },
   course: {
     registerCourse: `${URL}/course/teacher/register`,
-  }
+  },
 };
 
 const token = () => {};

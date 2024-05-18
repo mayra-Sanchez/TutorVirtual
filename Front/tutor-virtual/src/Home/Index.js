@@ -59,9 +59,10 @@ function Home() {
           ¡Desbloquea tu potencial y alcanza tus metas educativas de manera
           inteligente y eficiente!
         </h3>
+        <Link to="/Register">Registro provicional</Link>
       </div>
       <div className="falseSpace"></div>
-      <div id="Home" name="Home" className="title">
+      {/* <div id="Home" name="Home" className="title">
         <div className="container">
           <h2 style={{ color: "white", fontWeight: "bold" }}>
             ¿Cómo deseas continuar?
@@ -80,7 +81,7 @@ function Home() {
         <button className="scroll-top-button" onClick={scrollToTop}>
           <FaArrowUp />
         </button>
-      )}
+      )} */}
     </div>
   );
 }
