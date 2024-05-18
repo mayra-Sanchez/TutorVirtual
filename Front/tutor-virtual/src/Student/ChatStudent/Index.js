@@ -78,42 +78,6 @@ function ChatStudent() {
     }
   };
 
-  // const startRecording = () => {
-  //   if ("webkitSpeechRecognition" in window) {
-  //     const recognition = new window.webkitSpeechRecognition();
-  //     recognition.continuous = false;
-  //     recognition.interimResults = false;
-  //     recognition.lang = "es-ES";
-
-  //     recognition.onstart = () => {
-  //       console.log("Recording started");
-  //     };
-
-  //     recognition.onresult = (event) => {
-  //       const transcript = event.results[0][0].transcript;
-  //       setChat({ ...chat, content: transcript });
-  //       recognition.stop();
-  //     };
-
-  //     recognition.onerror = (event) => {
-  //       console.error("Error during recording:", event.error);
-  //       recognition.stop();
-  //     };
-
-  //     recognition.onend = () => {
-  //       console.log("Recording ended");
-  //     };
-
-  //     recognition.start();
-  //   } else {
-  //     console.error("Speech recognition not supported by this browser");
-  //   }
-  // };
-
-  // const clearInput = () => {
-  //   setChat({ ...chat, content: "" });
-  // };
-
   const sendChat = async () => {
     setLoading(true);
     var word = chat.content.trim().split(/\s+/);
