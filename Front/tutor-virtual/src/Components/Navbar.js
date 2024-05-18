@@ -21,12 +21,8 @@ function Navbar({ image, role, href }) {
             </li>
           ) : (
             <li className="navbarItems">
-              <a href="#Home" className="navbar-home">
-                Inicio
-              </a>
-              <span style={{ marginRight: "30px" }}></span>
-              <a href="#AboutUs" className="navbar-home">
-                Acerca de nosotros
+              <a href="/Login" className="navbar-home">
+                Iniciar sesión
               </a>
             </li>
           )}
