@@ -42,14 +42,13 @@ function Login() {
           <div className="button-container">
             <button className="button-login">Iniciar sesión</button>
             <p className="text-register">
-              ¿No tienes una cuenta? <a href="/register">Registrate</a>
+              ¿No tienes una cuenta?{" "}
+              <a className="link-register" href="/register">
+                Registrate
+              </a>
             </p>
           </div>
         </form>
-
-        {/* <div>
-                <p className="text-register">¿No tienes una cuenta? <a href="/register">Registrate</a></p>
-            </div> */}
       </div>
     </div>
   );
