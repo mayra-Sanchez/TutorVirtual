@@ -73,8 +73,8 @@
 .input-gmail-register, .input-password-register {
     font-size: 20px;
     width: 100%;
-    height: 60px;
-    padding: 3px;
+    height: 50px;
+    padding: 10px;
     border: none;
     background-color: #E9E4E4;
     color: #5C5A5A;
@@ -144,14 +144,3 @@ p a:hover {
     font-weight: bold;
     color: #012B36;
 }
-
-.label-root {
-    transform: translateY(0);
-    transition: transform 0.2s ease-out;
-}
-
-.label-shrink {
-    transform: translateY(-120%);
-    font-size: 0.8rem; /* Ejemplo de reducción de tamaño de fuente cuando la etiqueta se reduce */
-}
-

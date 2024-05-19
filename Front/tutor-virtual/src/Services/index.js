@@ -7,7 +7,10 @@ if (process.env.REACT_APP_API_URL) {
 }
 
 const endpoints = {
-  login: `${URL}/api/auth/login`,
+  users: {
+    registerUser: `${URL}/users/create-user/`,
+    loginUser: `${URL}/users/login/`,
+  },
   student: {
     coursesList: `${URL}/course/list`,
     chatTutor: (id_course) => `${URL}/course/student/${id_course}/chat`,
