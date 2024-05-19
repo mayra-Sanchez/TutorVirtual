@@ -12,7 +12,7 @@ function Register() {
     const [showPassword, setShowPassword] = useState(false);
     let navigate = useNavigate();
 
-    const [fromData, setFromData] = useState({
+    const [formData, setFormData] = useState({
         first_name: "",
         last_name: "",
         email: "",
@@ -22,7 +22,7 @@ function Register() {
 
     const handleRoleChange = (event) => {
         setRole(event.target.value);
-        setFromData({ ...fromData, rol: event.target.value });
+        setFormData({ ...formData, rol: event.target.value });
     };
 
     const handleClickShowPassword = () => {
@@ -30,18 +30,13 @@ function Register() {
     };
 
     const handleChange = (e) => {
-        setFromData({ ...fromData, [e.target.name]: e.target.value });
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleCombinedChange = (event) => {
-        handleRoleChange(event);
-        handleChange(event);
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {
-            ...fromData,
+            ...formData,
         };
 
         console.log(data);
@@ -73,8 +68,8 @@ function Register() {
                             });
                         })
                         .catch((err) => {
-                            onError("Error al crear el usuario, intenta de nuevo.");
-                            console.log(err);
+                            console.error("Error creating user:", err.response.data); // Log the detailed error response
+                            onError(err.response.data);
                         });
                 });
             },
@@ -85,7 +80,7 @@ function Register() {
         Swal.fire({
             icon: "error",
             title: "Algo salió mal",
-            text: "Ocurrió un error al crear el usuario, intenta de nuevo",
+            text: error || "Ocurrió un error al crear el usuario, intenta de nuevo",
             confirmButtonText: "Continuar",
             allowOutsideClick: false,
             showCancelButton: false,
@@ -102,7 +97,7 @@ function Register() {
                     <div className="title-form-register">
                         <label className="title-register">Registro</label>
                     </div>
-                    <form onSubmit={handleSubmit}>
+                    <form>
                         <div className="inputs-container-register">
                             <div className="input-with-icon-register">
                                 <FormControl className="form-control-register" margin="dense" required>
@@ -140,7 +135,8 @@ function Register() {
                                             </IconButton>
                                         }
                                         disableUnderline
-                                        placeholder="Contraseña *" onChange={handleChange}
+                                        placeholder="Contraseña *"
+                                        onChange={handleChange}
                                     />
                                     <FormHelperText>Por favor ingresa tu contraseña</FormHelperText>
                                 </FormControl>
@@ -154,7 +150,7 @@ function Register() {
                                         name="rol"
                                         className="input-gmail-register"
                                         value={role}
-                                        onChange={handleCombinedChange}
+                                        onChange={handleRoleChange}
                                         disableUnderline
                                     >
                                         <MenuItem value={'Estudiante'}>Estudiante</MenuItem>
@@ -164,7 +160,7 @@ function Register() {
                             </div>
                         </div>
                         <div className="button-container-register">
-                            <button className="buttonregister" type="submit">
+                            <button className="buttonregister" type="submit" onClick={handleSubmit}>
                                 Crear cuenta
                             </button>
                             <p>¿Ya tienes cuenta? <a href='/Login'>Iniciar sesión</a></p>

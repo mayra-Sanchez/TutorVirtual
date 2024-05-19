@@ -4,12 +4,15 @@ import { endpoints } from "./index.js";
 const createUser = async (body) => {
   const config = {
     headers: {
-      accept: "*/*",
       "Content-Type": "application/json",
     },
   };
-  const response = await Axios.post(endpoints.users.registerUser, body, config);
-  return response.data;
+  try {
+    const response = await Axios.post(endpoints.users.registerUser, body, config);
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
 };
 
 const login = async (body) => {
