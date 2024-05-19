@@ -6,3 +6,6 @@ psycopg2
 python-dotenv
 django-database-url
 gunicorn
+djangorestframework-simplejwt
+drf-yasg
+setuptools

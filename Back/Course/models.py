@@ -1,4 +1,5 @@
 from django.db import models
+from Users.models import User
 
 def validate_context(value):
     words = value.split()
@@ -9,7 +10,7 @@ def validate_context(value):
 
 class Course(models.Model):
     name = models.CharField(max_length=100, verbose_name="Tittle for your course")
-    instructor_name = models.CharField(max_length = 50, blank =False, null = False)
+    instructor = models.ForeignKey(User, on_delete=models.PROTECT, related_name="courses", blank=True)
     description = models.CharField(max_length=200, verbose_name="Write a quick description of your course")
     context = models.TextField(
         verbose_name="Write the topics, context and a large description for your course", 
