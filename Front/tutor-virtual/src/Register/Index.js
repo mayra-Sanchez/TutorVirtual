@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { FormControl, Input, FormHelperText, Select, MenuItem, IconButton, InputLabel } from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
 import './Register.css';
 import imagen from "../Resources/LogoAPP (2).png";
 import Swal from "sweetalert2";
@@ -123,17 +122,7 @@ function Register() {
                                         id="password"
                                         name="password"
                                         className="input-password-register"
-                                        type={showPassword ? 'text' : 'password'}
-                                        endAdornment={
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
-                                                edge="end"
-                                                className="toggle-password-register"
-                                            >
-                                                {showPassword ? <VisibilityOff /> : <Visibility />}
-                                            </IconButton>
-                                        }
+                                        type="password"
                                         disableUnderline
                                         placeholder="Contraseña *"
                                         onChange={handleChange}
