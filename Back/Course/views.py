@@ -2,7 +2,7 @@ import json
 import openai
 
 from django.shortcuts import redirect, render
-from rest_framework import status
+from rest_framework import status, generics, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Course
@@ -59,21 +59,11 @@ class List(APIView):
         return Response(serializer.data)
 
 
-class Register(APIView):
-    def post(self, request, format=None):
-        serializer = CourseSerializer(data=request.data)
-        if serializer.is_valid():
-            name = serializer.validated_data.get('name')
-            instructor_name = serializer.validated_data.get('instructor_name')
-            description = serializer.validated_data.get('description')
-            context = serializer.validated_data.get('context')
-            course = Course.objects.create(name=name,instructor_name=instructor_name, description=description, context=context)
-            if course:
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-            else:
-                return Response({"error": "No se pudo crear el curso"}, status=status.HTTP_400_BAD_REQUEST)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+class Register(generics.CreateAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+    permission_classes = [permissions.AllowAny]
+
 
 class Chat(APIView):
     def post(self, request, pk):
