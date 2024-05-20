@@ -61,7 +61,7 @@ function Home() {
         </h3>
       </div>
       <div className="falseSpace"></div>
-      <div id="Home" name="Home" className="title">
+      {/* <div id="Home" name="Home" className="title">
         <div className="container">
           <h2 style={{ color: "white", fontWeight: "bold" }}>
             ¿Cómo deseas continuar?
@@ -80,7 +80,7 @@ function Home() {
         <button className="scroll-top-button" onClick={scrollToTop}>
           <FaArrowUp />
         </button>
-      )}
+      )} */}
     </div>
   );
 }

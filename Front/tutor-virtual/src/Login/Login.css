@@ -1,0 +1,121 @@
+.login-container{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.icon-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFF;
+    max-width: 35%;
+    height: 100vh;
+}
+
+.icon-container, .login-form-container{
+    flex: 1 1; 
+}
+
+.login-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 617px;
+    height: 550px;
+    background-color: #FFFF;
+    padding: 20px;
+}
+
+.title-form{
+    margin-bottom: 10px;
+    margin-top: 50px;
+}
+
+.title-login{
+    margin-top: 50px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #012B36;
+}
+
+.login-form-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    margin-top:40px;
+}
+
+.input-with-icon{
+    position: relative;
+}
+
+.input-gmail, .input-password{
+    font-size: 20px;
+    width: 507px;
+    height: 70px;
+    padding: 5px;
+    border: none;
+    border: black;
+    background-color: #E9E4E4;
+    color: #5C5A5A;
+    border-radius: 10px;
+}
+
+.input-password{
+    margin-top: 60px;
+}
+
+.toggle-password {
+    position: absolute;
+    bottom: 0.5%;
+    right: 10px;
+    width: 40px; 
+    height: 40px; 
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+  }
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;    
+}
+
+.button-login{
+    width: 200px;
+    height: 50px;
+    color: white;
+    background-color: #DD4D42;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.4));
+    font-size: 25px;
+}
+
+.text-register{
+    margin-top: 20px;
+    font-size: 13px;
+}
+
+.link-register{
+    color: black;
+}
