@@ -42,6 +42,8 @@ function Login() {
           allowOutsideClick: false,
           showCancelButton: false,
         }).then(() => {
+          localStorage.setItem("token_access", response.access);
+          localStorage.setItem("token_refresh", response.refresh);
           navigate("/Home");
         });
       } catch (error) {

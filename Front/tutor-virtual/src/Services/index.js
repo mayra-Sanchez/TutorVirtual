@@ -1,15 +1,17 @@
-let URL;
+// let URL;
 
-if (process.env.REACT_APP_API_URL) {
-  URL = process.env.REACT_APP_API_URL;
-} else {
-  URL = "https://laboratorio1-pi2.onrender.com";
-}
+// if (process.env.REACT_APP_API_URL) {
+//   URL = process.env.REACT_APP_API_URL;
+// } else {
+//   URL = "https://laboratorio1-pi2.onrender.com";
+// }
+
+const URL = "http://127.0.0.1:8000";
 
 const endpoints = {
   users: {
     registerUser: `${URL}/users/create-user/`,
-    loginUser: `${URL}/users/login/`,
+    loginUser: `${URL}/users/api/token/`,
   },
   student: {
     coursesList: `${URL}/course/list`,
