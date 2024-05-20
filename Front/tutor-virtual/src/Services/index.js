@@ -11,7 +11,7 @@ const URL = "http://127.0.0.1:8000";
 const endpoints = {
   users: {
     registerUser: `${URL}/users/create-user/`,
-    loginUser: `${URL}/users/api/token/`,
+    loginUser: `${URL}/users/login/`,
   },
   student: {
     coursesList: `${URL}/course/list`,

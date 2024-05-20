@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { Loading } from "../Components/loading";
+import { jwtDecode } from "jwt-decode";
 // import { useAuth } from "../Context/AuthContext";
 import { login } from "../Services/Users";
 
@@ -44,7 +45,14 @@ function Login() {
         }).then(() => {
           localStorage.setItem("token_access", response.access);
           localStorage.setItem("token_refresh", response.refresh);
-          navigate("/Home");
+          let data = localStorage.getItem("token_access");
+          const decoded = jwtDecode(data);
+          if (decoded.rol === "Estudiante") {
+            navigate("/Student");
+          }
+          if (decoded.rol === "Profesor") {
+            navigate("/Professor");
+          }
         });
       } catch (error) {
         onError(error);
