@@ -16,14 +16,20 @@ class CourseSerializer(serializers.ModelSerializer):
         }
     
     def create(self, validated_data):
-        user_id = validated_data['instructor']
-        user = User.objects.filter(pk=user_id)
-        if user.rol == "Profesor":
-            course = Course(**validated_data)
-            course.save()
-            return course
-        return None
-
+        course = Course(**validated_data)
+        course.save()
+        return course
+    
+    def is_valid(self, raise_exception=False):
+        if 'instructor' in self.initial_data:
+            user = User.objects.get(pk=self.initial_data['instructor'])
+            if user.rol != "Profesor":
+                self._errors = {'instructor': 'Only professors can create courses.'}
+                if raise_exception:
+                    raise serializers.ValidationError(self.errors)
+                return False
+        return super().is_valid(raise_exception=raise_exception)
+    
 
 class QuestionSerializer(serializers.Serializer):
     content = serializers.CharField(max_length=200)

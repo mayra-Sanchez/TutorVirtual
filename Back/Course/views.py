@@ -1,4 +1,5 @@
 import json
+from Users.models import User
 import openai
 
 from django.shortcuts import redirect, render
@@ -60,14 +61,16 @@ class List(APIView):
 
 
 class Register(generics.CreateAPIView):
-    queryset = Course.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = CourseSerializer
-    permission_classes = [permissions.AllowAny]
 
 
 class Chat(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = QuestionSerializer
+
     def post(self, request, pk):
-        serializer = QuestionSerializer(data=request.data)
+        serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             question = serializer.validated_data.get('content')
             if validate_context(question):
