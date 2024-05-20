@@ -1,20 +1,14 @@
 import React, { useState } from "react";
-import {
-  FormControl,
-  Input,
-  FormHelperText,
-  Select,
-  MenuItem,
-} from "@mui/material";
 import "./Register.css";
 import imagen from "../Resources/LogoAPP (2).png";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "../Services/Users";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Register() {
   const [role, setRole] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   let navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -25,13 +19,13 @@ function Register() {
     rol: role,
   });
 
+  const togglePassword = () => {
+    setIsVisible(!isVisible);
+  };
+
   const handleRoleChange = (event) => {
     setRole(event.target.value);
     setFormData({ ...formData, rol: event.target.value });
-  };
-
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
   };
 
   const handleChange = (e) => {
@@ -102,112 +96,91 @@ function Register() {
           <div className="title-form-register">
             <label className="title-register">Registro</label>
           </div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="inputs-container-register">
               <div className="input-with-icon-register">
-                <FormControl
-                  className="form-control-register"
-                  margin="dense"
-                  required
-                >
-                  <Input
+                <div className="form-control-register">
+                  <input
                     id="first_name"
                     name="first_name"
                     className="input-gmail-register"
                     type="text"
-                    disableUnderline
                     placeholder="Nombre *"
                     onChange={handleChange}
+                    required
                   />
-                  <FormHelperText>Por favor ingresa tu nombre</FormHelperText>
-                </FormControl>
+                  <small>Por favor ingresa tu nombre</small>
+                </div>
               </div>
               <div className="input-with-icon-register">
-                <FormControl
-                  className="form-control-register"
-                  margin="dense"
-                  required
-                >
-                  <Input
+                <div className="form-control-register">
+                  <input
                     id="last_name"
                     name="last_name"
                     className="input-gmail-register"
                     type="text"
-                    disableUnderline
                     placeholder="Apellido *"
                     onChange={handleChange}
+                    required
                   />
-                  <FormHelperText>Por favor ingresa tu apellido</FormHelperText>
-                </FormControl>
+                  <small>Por favor ingresa tu apellido</small>
+                </div>
               </div>
               <div className="input-with-icon-register">
-                <FormControl
-                  className="form-control-register"
-                  margin="dense"
-                  required
-                >
-                  <Input
+                <div className="form-control-register">
+                  <input
                     id="email"
                     name="email"
                     className="input-gmail-register"
                     type="email"
-                    disableUnderline
                     placeholder="Correo electrónico *"
                     onChange={handleChange}
+                    required
                   />
-                  <FormHelperText>
-                    Por favor ingresa tu correo electrónico
-                  </FormHelperText>
-                </FormControl>
+                  <small>Por favor ingresa tu correo electrónico</small>
+                </div>
               </div>
               <div className="input-with-icon-register">
-                <FormControl
-                  className="form-control-register"
-                  margin="dense"
-                  required
-                >
-                  <Input
+                <div className="form-control-register">
+                  <input
                     id="password"
                     name="password"
                     className="input-password-register"
-                    type="password"
-                    disableUnderline
+                    type={isVisible ? "text" : "password"}
                     placeholder="Contraseña *"
                     onChange={handleChange}
+                    required
                   />
-                  <FormHelperText>
-                    Por favor ingresa tu contraseña
-                  </FormHelperText>
-                </FormControl>
+                  <button
+                    type="button"
+                    className="toggle-password"
+                    onClick={togglePassword}
+                  >
+                    {isVisible ? <FaEyeSlash /> : <FaEye />}
+                  </button>
+                  <small>Por favor ingresa tu contraseña</small>
+                </div>
               </div>
               <div className="input-with-icon-register">
-                <FormControl
-                  className="form-control-register"
-                  margin="dense"
-                  required
-                >
-                  <FormHelperText>Por favor seleccione su rol</FormHelperText>
-                  <Select
-                    labelId="role-label"
+                <div className="form-control-register">
+                  <select
                     id="rol"
                     name="rol"
                     className="input-gmail-register"
                     value={role}
                     onChange={handleRoleChange}
-                    disableUnderline
+                    required
                   >
-                    <MenuItem value={"Estudiante"}>Estudiante</MenuItem>
-                    <MenuItem value={"Profesor"}>Profesor</MenuItem>
-                  </Select>
-                </FormControl>
+                    <option value="">Selecciona tu rol</option>
+                    <option value="Estudiante">Estudiante</option>
+                    <option value="Profesor">Profesor</option>
+                  </select>
+                  <small>Por favor seleccione su rol</small>
+                </div>
               </div>
             </div>
             <div className="button-container-register">
-              <button
-                className="buttonregister"
-                type="submit"
-                onClick={handleSubmit}
-              >
+              <button className="buttonregister" type="submit">
                 Crear cuenta
               </button>
               <p>
