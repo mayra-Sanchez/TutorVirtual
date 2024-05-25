@@ -53,11 +53,10 @@ def home(request):
     return render(request, 'home.html')
 
 
-class List(APIView):
-    def get(self, request, format=None):
-        courses = Course.objects.all()
-        serializer = CourseSerializer(courses, many=True)
-        return Response(serializer.data)
+class List(generics.ListAPIView):
+    queryset = Course.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = CourseSerializer
 
 
 class Register(generics.CreateAPIView):

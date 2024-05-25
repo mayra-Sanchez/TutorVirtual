@@ -10,7 +10,7 @@ def validate_context(value):
 
 class Course(models.Model):
     name = models.CharField(max_length=100, verbose_name="Tittle for your course")
-    instructor = models.ForeignKey(User, on_delete=models.PROTECT, related_name="courses", blank=True)
+    instructor = models.ForeignKey(User, on_delete=models.PROTECT, related_name="courses", blank=False)
     description = models.CharField(max_length=200, verbose_name="Write a quick description of your course")
     context = models.TextField(
         verbose_name="Write the topics, context and a large description for your course", 
