@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { endpoints } from "./index.js";
+import { endpoints, tokenAccess } from "./index.js";
 
 const addCourse = async (body) => {
   const config = {
@@ -19,15 +19,10 @@ const addCourse = async (body) => {
 const listCourses = async (body) => {
   const config = {
     headers: {
-      accept: "*/*",
-      "Content-Type": "application/json",
+      Authorization: `Token ${tokenAccess}`,
     },
   };
-  const response = await Axios.get(
-    endpoints.student.coursesList,
-    body,
-    config
-  );
+  const response = await Axios.get(endpoints.student.coursesList, body, config);
   return response.data;
 };
 
