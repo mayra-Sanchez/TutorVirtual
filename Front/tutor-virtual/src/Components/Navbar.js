@@ -58,7 +58,11 @@ function Navbar({ image, role, href }) {
               <a href={href} className="navbar-home">
                 Cursos
               </a>
-              <a onClick={handleLogout} className="navbar-home">
+              <a
+                href={"javasvript:void(0)"}
+                onClick={handleLogout}
+                className="navbar-home"
+              >
                 Cerrar sesión
               </a>
             </li>

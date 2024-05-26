@@ -1,0 +1,26 @@
+.course-container-teacher{
+    display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 10px;
+  justify-content: center;
+} 
+.course-card-teacher {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+.card-body-teacher {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.title-teacher{
+    font-size: 18px;
+}
+
+.card-title-teacher, .card-text-teacher {
+    margin-bottom: 2px; 
+}
+

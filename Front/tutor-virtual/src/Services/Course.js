@@ -4,12 +4,11 @@ import { endpoints, tokenAccess } from "./index.js";
 const addCourse = async (body) => {
   const config = {
     headers: {
-      accept: "*/*",
-      "Content-Type": "application/json",
+      Authorization: `Bearer ${tokenAccess()}`,
     },
   };
   const response = await Axios.post(
-    endpoints.course.registerCourse,
+    endpoints.Professor.registerCourse,
     body,
     config
   );
@@ -19,11 +18,21 @@ const addCourse = async (body) => {
 const listCourses = async (body) => {
   const config = {
     headers: {
-      Authorization: `Token ${tokenAccess}`,
+      Authorization: `Bearer ${tokenAccess}`,
     },
   };
   const response = await Axios.get(endpoints.student.coursesList, body, config);
   return response.data;
 };
 
-export { addCourse, listCourses };
+const listCoursesProfessor = async () => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${tokenAccess()}`,
+    },
+  };
+  const response = await Axios.get(endpoints.Professor.listCourses, config);
+  return response.data;
+};
+
+export { addCourse, listCourses, listCoursesProfessor };
