@@ -13,9 +13,10 @@ function Professor() {
   const navigate = useNavigate();
   const { transcript, isListening, startListening, stopListening } =
     useSpeechApi();
+  const user_id = localStorage.getItem("user_id");
   const [courseData, setCourseData] = useState({
     name: "",
-    instructor_name: "",
+    instructor: user_id,
     description: "",
     context: "",
   });
@@ -112,18 +113,6 @@ function Professor() {
                 type="text"
                 className="form-control"
                 name="name"
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="input-group">
-              <span className="spanName">
-                Nombre del instructor: <span className="redStar"> *</span>
-              </span>
-              <input
-                type="text"
-                className="form-control"
-                name="instructor_name"
                 onChange={handleChange}
                 required
               />
