@@ -14,6 +14,8 @@ const endpoints = {
     loginUser: `${URL}/users/login`,
     logout: `${URL}/users/logout`,
     tokenRefresh: `${URL}/users/token/refresh`,
+    // getUserDetails: (userId) => `${URL}/users/${userId}`,
+    update: (userId) => `${URL}/users/update/${userId}`,
   },
   student: {
     coursesList: `${URL}/course/student/list`,
