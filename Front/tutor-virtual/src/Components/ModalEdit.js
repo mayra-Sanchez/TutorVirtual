@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Dialog } from 'primereact/dialog';
 import './ModalEdit.css';
+import Axios from 'axios';
+import { endpoints, tokenAccess } from './index.js';
 
-function ModalEdit({ visible, onHide }) {
+function ModalEdit({ visible, onHide, userId }) {
     const [formData, setFormData] = useState({
         first_name: '',
         last_name: '',
@@ -14,10 +16,21 @@ function ModalEdit({ visible, onHide }) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Submitted data:', formData);
-        onHide();
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${tokenAccess()}`,
+                },
+            };
+            await Axios.put(`${endpoints.users.update}/${userId}`, formData, config);
+            console.log('Submitted data:', formData);
+            onHide();
+        } catch (error) {
+            console.error('Error updating user:', error.response.data);
+        }
     };
 
     return (

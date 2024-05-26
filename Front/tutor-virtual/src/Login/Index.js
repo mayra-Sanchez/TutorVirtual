@@ -47,6 +47,7 @@ function Login() {
           localStorage.setItem("token_refresh", response.refresh);
           let data = localStorage.getItem("token_access");
           const decoded = jwtDecode(data);
+          localStorage.setItem("user_id", decoded.user_id);
           if (decoded.rol === "Estudiante") {
             navigate("/Student");
           }

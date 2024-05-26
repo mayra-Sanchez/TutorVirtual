@@ -12,6 +12,10 @@ const endpoints = {
   users: {
     registerUser: `${URL}/users/create-user/`,
     loginUser: `${URL}/users/login/`,
+    logout: `${URL}/users/token/blacklist/`,
+    // logout: `${URL}/users/logout/`,
+    update: `${URL}/update`,
+    updatePassword: `${URL}/update-password`,
   },
   student: {
     coursesList: `${URL}/course/list`,
@@ -22,6 +26,12 @@ const endpoints = {
   },
 };
 
-const token = () => {};
+const tokenAccess = () => {
+  return localStorage.getItem("token_access");
+};
 
-export { endpoints, token };
+const tokenRefresh = () => {
+  return localStorage.getItem("token_refresh");
+};
+
+export { endpoints, tokenAccess, tokenRefresh };

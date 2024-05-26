@@ -8,7 +8,11 @@ const createUser = async (body) => {
     },
   };
   try {
-    const response = await Axios.post(endpoints.users.registerUser, body, config);
+    const response = await Axios.post(
+      endpoints.users.registerUser,
+      body,
+      config
+    );
     return response.data;
   } catch (error) {
     throw error.response.data;
@@ -26,4 +30,30 @@ const login = async (body) => {
   return response.data;
 };
 
-export { createUser, login };
+const logout = async (body) => {
+  const config = {
+    headers: {
+      accept: "*/*",
+      "Content-Type": "application/json",
+    },
+  };
+  const response = await Axios.post(endpoints.users.logout, body, config);
+  return response.data;
+};
+
+const updateUser = async (userId, body) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${tokenAccess()}`,
+    },
+  };
+  try {
+    const response = await Axios.put(`${endpoints.users.update}/${userId}`, body, config);
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+export { createUser, login, logout, updateUser };
