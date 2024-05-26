@@ -10,19 +10,20 @@ const URL = "http://127.0.0.1:8000";
 
 const endpoints = {
   users: {
-    registerUser: `${URL}/users/create-user/`,
-    loginUser: `${URL}/users/login/`,
-    logout: `${URL}/users/token/blacklist/`,
-    // logout: `${URL}/users/logout/`,
-    update: `${URL}/update`,
-    updatePassword: `${URL}/update-password`,
+    registerUser: `${URL}/users/create`,
+    loginUser: `${URL}/users/login`,
+    logout: `${URL}/users/logout`,
+    tokenRefresh: `${URL}/users/token/refresh`,
+    // getUserDetails: (userId) => `${URL}/users/${userId}`,
+    update: (userId) => `${URL}/users/update/${userId}`,
   },
   student: {
-    coursesList: `${URL}/course/list`,
+    coursesList: `${URL}/course/student/list`,
     chatTutor: (id_course) => `${URL}/course/student/${id_course}/chat`,
   },
-  course: {
-    registerCourse: `${URL}/course/teacher/register`,
+  Professor: {
+    registerCourse: `${URL}/course/instructor/create`,
+    listCourses: `${URL}/course/instructor/list`,
   },
 };
 

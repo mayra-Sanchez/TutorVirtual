@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { endpoints } from "./index.js";
+import { endpoints, tokenAccess, tokenRefresh } from "./index.js";
 
 const createUser = async (body) => {
   const config = {
@@ -45,15 +45,29 @@ const updateUser = async (userId, body) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${tokenAccess()}`,
+      Authorization: `Bearer ${tokenAccess()}`,
     },
   };
   try {
-    const response = await Axios.put(`${endpoints.users.update}/${userId}`, body, config);
+    const response = await Axios.put(endpoints.users.update(userId), body, config); 
     return response.data;
   } catch (error) {
     throw error.response.data;
   }
 };
+// const getUserData = async (userId) => {
+//   const config = {
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Authorization": `Bearer ${tokenAccess()}`,
+//     },
+//   };
+//   try {
+//     const response = await Axios.get(`${endpoints.users.update}${userId}`, config);
+//     return response.data;
+//   } catch (error) {
+//     throw error.response.data;
+//   }
+// };
 
 export { createUser, login, logout, updateUser };

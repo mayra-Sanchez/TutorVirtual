@@ -1,37 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dialog } from 'primereact/dialog';
+import { updateUser } from '../Services/Users';
 import './ModalEdit.css';
-import Axios from 'axios';
-import { endpoints, tokenAccess } from './index.js';
+import Swal from 'sweetalert2';
 
-function ModalEdit({ visible, onHide, userId }) {
+
+function ModalEdit({ visible, onHide }) {
     const [formData, setFormData] = useState({
         first_name: '',
         last_name: '',
         email: '',
-        role: '',
     });
+
+    const userId = localStorage.getItem("user_id");
+
+    // useEffect(() => {
+    //     if (visible && userId) {
+    //         getUserData(userId)
+    //             .then(data => {
+    //                 setFormData({
+    //                     first_name: data.first_name,
+    //                     last_name: data.last_name,
+    //                     email: data.email,
+    //                 });
+    //             })
+    //             .catch(error => {
+    //                 console.error("Error fetching user data:", error);
+    //             });
+    //     }
+    // }, [visible, userId]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        try {
-            const config = {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${tokenAccess()}`,
-                },
-            };
-            await Axios.put(`${endpoints.users.update}/${userId}`, formData, config);
-            console.log('Submitted data:', formData);
-            onHide();
-        } catch (error) {
-            console.error('Error updating user:', error.response.data);
-        }
+        updateUser(userId, formData)
+            .then(() => {
+                console.log('User data updated successfully');
+                onHide();
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Éxito!',
+                    text: 'Los cambios se guardaron correctamente.',
+                    confirmButtonText: 'Aceptar'
+                });
+            })
+            .catch(error => {
+                console.error('Error updating user data:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un problema al guardar los cambios. Por favor, inténtalo de nuevo.',
+                    confirmButtonText: 'Aceptar'
+                });
+            });
     };
+    
 
     return (
         <Dialog
@@ -87,23 +113,6 @@ function ModalEdit({ visible, onHide, userId }) {
                                 required
                             />
                             <small>Por favor ingresa tu correo electrónico</small>
-                        </div>
-                    </div>
-                    <div className="input-with-icon-modal">
-                        <div className="form-control-modal">
-                            <select
-                                id="role"
-                                name="role"
-                                className="input-modal"
-                                value={formData.role}
-                                onChange={handleChange}
-                                required
-                            >
-                                <option value="">Selecciona tu rol</option>
-                                <option value="Estudiante">Estudiante</option>
-                                <option value="Profesor">Profesor</option>
-                            </select>
-                            <small>Por favor seleccione su rol</small>
                         </div>
                     </div>
                 </div>
