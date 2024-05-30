@@ -6,10 +6,12 @@ import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { Loading } from "../Components/loading";
 import { jwtDecode } from "jwt-decode";
-// import { useAuth } from "../Context/AuthContext";
+import { useContext } from "react";
+import { LoginContext } from "../Components/Context/LoginContext";
 import { login } from "../Services/Users";
 
 function Login() {
+  const { setLogin } = useContext(LoginContext);
   const [isVisible, setIsVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
@@ -35,6 +37,11 @@ function Login() {
     login(dataLogin).then((response) => {
       try {
         setLoading(false);
+        localStorage.setItem("token_access", response.access);
+        localStorage.setItem("token_refresh", response.refresh);
+        let data = localStorage.getItem("token_access");
+        const decoded = jwtDecode(data);
+        localStorage.setItem("user_id", decoded.user_id);
         Swal.fire({
           icon: "success",
           title: "Operación exitosa",
@@ -43,11 +50,7 @@ function Login() {
           allowOutsideClick: false,
           showCancelButton: false,
         }).then(() => {
-          localStorage.setItem("token_access", response.access);
-          localStorage.setItem("token_refresh", response.refresh);
-          let data = localStorage.getItem("token_access");
-          const decoded = jwtDecode(data);
-          localStorage.setItem("user_id", decoded.user_id);
+          setLogin(true);
           if (decoded.rol === "Estudiante") {
             navigate("/Student");
           }
