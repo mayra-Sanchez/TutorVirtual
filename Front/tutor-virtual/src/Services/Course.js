@@ -35,14 +35,15 @@ const listCoursesProfessor = async () => {
   return response.data;
 };
 
-const deleteCourseProfessor = async (ID) => {
+const deleteCourseProfessor = async (ID, body) => {
   const config = {
     headers: {
       Authorization: `Bearer ${tokenAccess()}`,
     },
   };
-  const response = await Axios.delete(
+  const response = await Axios.post(
     endpoints.Professor.deleteCourses(ID),
+    body,
     config
   );
   return response.data;

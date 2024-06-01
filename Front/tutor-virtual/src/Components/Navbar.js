@@ -21,26 +21,41 @@ function Navbar({ image, role, href }) {
     const requestBody = {
       refresh: refreshToken,
     };
-
-    logout(requestBody).then((response) => {
-      try {
-        localStorage.removeItem("token_access");
-        localStorage.removeItem("token_refresh");
-        localStorage.removeItem("user_id");
-        setLogin(false);
-        Swal.fire({
-          icon: "success",
-          title: "Operación exitosa",
-          text: "Se ha cerrado sesión",
-          confirmButtonText: "Continuar",
-          allowOutsideClick: false,
-          showCancelButton: false,
-        }).then(() => {
-          navigate("/");
+    Swal.fire({
+      title: "Atención, estás seguro de realizar esta acción",
+      text: "Vas a cerrar sesión",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      showLoaderOnConfirm: true,
+      cancelButtonColor: "#d33",
+      confirmButtonText: `Si, salir`,
+      allowOutsideClick: false,
+      cancelButtonText: "No, cancelar",
+      preConfirm: () => {
+        return new Promise((resolve, reject) => {
+          logout(requestBody)
+            .then(() => {
+              localStorage.removeItem("token_access");
+              localStorage.removeItem("token_refresh");
+              localStorage.removeItem("user_id");
+              setLogin(false);
+              Swal.fire({
+                icon: "success",
+                title: "Operación exitosa",
+                text: "Se ha cerrado sesión",
+                confirmButtonText: "Continuar",
+                allowOutsideClick: false,
+                showCancelButton: false,
+              }).then(() => {
+                navigate("/");
+              });
+            })
+            .catch((err) => {
+              onError(err);
+            });
         });
-      } catch (error) {
-        onError(error);
-      }
+      },
     });
   };
 

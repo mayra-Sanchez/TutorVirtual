@@ -17,18 +17,18 @@ function ListCoursesProfessor() {
 
   useEffect(() => {
     setLoanding(true);
-    const fetchData = async () => {
-      try {
-        const data = await listCoursesProfessor();
-        setCourses(data);
-        setLoanding(false);
-      } catch (error) {
-        console.error("Error fetching courses:", error);
-      }
-    };
-
     fetchData();
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const data = await listCoursesProfessor();
+      setCourses(data);
+      setLoanding(false);
+    } catch (error) {
+      console.error("Error fetching courses:", error);
+    }
+  };
 
   const changeRoute = () => {
     navigate("/Professor/create");
@@ -54,7 +54,15 @@ function ListCoursesProfessor() {
     return formattedDate;
   };
 
-  const handleDelete = (idCourse) => {
+  const handleDelete = (idCourse, name, description, context) => {
+    const idUser = localStorage.getItem("user_id");
+    const data = {
+      idCourse: idCourse,
+      name: name,
+      description: description,
+      context: context,
+      instructor: idUser,
+    };
     console.log("EL ID DEL PRODUCTO", idCourse);
     const ID = idCourse;
     Swal.fire({
@@ -72,23 +80,23 @@ function ListCoursesProfessor() {
       preConfirm: () => {
         return new Promise((resolve, reject) => {
           console.log("EL ID QUE PASO ACÁ", ID);
-
-          // deleteCourseProfessor(ID)
-          //   .then(() => {
-          //     Swal.fire({
-          //       icon: "success",
-          //       title: "Operación exitosa",
-          //       text: "El curso fue eliminado correctamente",
-          //       confirmButtonText: "Continuar",
-          //       allowOutsideClick: false,
-          //       showCancelButton: false,
-          //     }).then(() => {
-          //       window.location.reload();
-          //     });
-          //   })
-          //   .catch((err) => {
-          //     onError(err);
-          //   });
+          console.log("la data que se va a mandar", data);
+          deleteCourseProfessor(ID, data)
+            .then(() => {
+              Swal.fire({
+                icon: "success",
+                title: "Operación exitosa",
+                text: "El curso fue eliminado correctamente",
+                confirmButtonText: "Continuar",
+                allowOutsideClick: false,
+                showCancelButton: false,
+              }).then(() => {
+                fetchData();
+              });
+            })
+            .catch((err) => {
+              onError(err);
+            });
         });
       },
     });
@@ -129,7 +137,14 @@ function ListCoursesProfessor() {
                     <div className="container-delete">
                       <button
                         className="button-delete-course"
-                        onClick={() => handleDelete(course.id)}
+                        onClick={() =>
+                          handleDelete(
+                            course.id,
+                            course.name,
+                            course.description,
+                            course.context
+                          )
+                        }
                       >
                         <RiDeleteBin6Line className="icon-delete" />
                       </button>
