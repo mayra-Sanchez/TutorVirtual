@@ -1,12 +1,15 @@
 import Axios from "axios";
-import { endpoints, tokenAccess } from "./index.js";
+import { endpoints, tokenRefresh } from "./index.js";
 
-//Esto no está funcionando alv
-const refreshToken = async (body) => {
+const refreshToken = async () => {
   const config = {
     headers: {
-      Authorization: `Bearer ${tokenAccess()}`,
+      "Content-Type": "application/json",
     },
+  };
+  const refreshToken = tokenRefresh();
+  const body = {
+    refresh: refreshToken,
   };
   try {
     const response = await Axios.post(
@@ -14,18 +17,14 @@ const refreshToken = async (body) => {
       body,
       config
     );
-    localStorage.setItem("token_access", response.data.access_token);
-    localStorage.setItem("token_refresh", response.data.refresh_token);
     console.log("Tokens actualizados en localStorage");
+    localStorage.removeItem("token_access");
+    localStorage.removeItem("token_refresh");
+
+    return response.data;
   } catch (error) {
     console.error("Error al refrescar tokens:", error);
   }
 };
 
-refreshToken();
-
-const intervalId = setInterval(() => {
-  refreshToken();
-}, 5 * 60 * 1000);
-
-export { refreshToken, intervalId };
+export { refreshToken };

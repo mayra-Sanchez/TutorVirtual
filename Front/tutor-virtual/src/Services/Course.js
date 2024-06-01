@@ -35,4 +35,18 @@ const listCoursesProfessor = async () => {
   return response.data;
 };
 
-export { addCourse, listCourses, listCoursesProfessor };
+const deleteCourseProfessor = async (ID, body) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${tokenAccess()}`,
+    },
+  };
+  const response = await Axios.post(
+    endpoints.Professor.deleteCourses(ID),
+    body,
+    config
+  );
+  return response.data;
+};
+
+export { addCourse, listCourses, listCoursesProfessor, deleteCourseProfessor };
