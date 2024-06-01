@@ -24,6 +24,7 @@ const endpoints = {
   Professor: {
     registerCourse: `${URL}/course/instructor/create`,
     listCourses: `${URL}/course/instructor/list`,
+    deleteCourses: (ID) => `${URL}/course/instructor/delete/${ID}`,
   },
 };
 

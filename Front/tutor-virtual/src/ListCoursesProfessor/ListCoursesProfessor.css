@@ -16,8 +16,26 @@
     cursor: pointer;
 }
 
+.container-delete{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.button-delete-course{
+  border: none;
+  background-color: transparent;
+}
+
 .title-teacher{
     font-size: 18px;
+}
+
+.icon-delete{
+  display: flex;
+  height: 35px;
+  width: 20px;
+  color: rgba(190, 25, 25, 0.938);
 }
 
 .card-title-teacher, .card-text-teacher {

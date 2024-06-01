@@ -23,7 +23,7 @@ function AppRouter() {
           localStorage.setItem("token_access", response.access);
           localStorage.setItem("token_refresh", response.refresh);
         });
-      }, 30000);
+      }, 240000);
     }
 
     return () => clearInterval(intervalId);
