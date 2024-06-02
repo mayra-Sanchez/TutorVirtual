@@ -13,7 +13,7 @@ function Professor() {
   const navigate = useNavigate();
   const { transcript, isListening, startListening, stopListening } =
     useSpeechApi();
-  const user_id = localStorage.getItem("user_id");
+    const user_id = parseInt(localStorage.getItem("user_id"), 10);
   const [courseData, setCourseData] = useState({
     name: "",
     instructor: user_id,
