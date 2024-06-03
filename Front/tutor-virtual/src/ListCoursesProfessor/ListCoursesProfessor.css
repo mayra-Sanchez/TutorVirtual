@@ -42,3 +42,20 @@
     margin-bottom: 2px; 
 }
 
+.icon-edit{
+  display: flex;
+  height: 35px;
+  width: 20px;
+  color: rgba(190, 25, 25, 0.938);
+}
+
+.container-edit{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.button-edit-course{
+  border: none;
+  background-color: transparent;
+}

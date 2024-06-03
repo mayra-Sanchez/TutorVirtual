@@ -5,20 +5,27 @@ const addCourse = async (body) => {
   const config = {
     headers: {
       Authorization: `Bearer ${tokenAccess()}`,
+      "Content-Type": "application/json",
     },
   };
-  const response = await Axios.post(
-    endpoints.Professor.registerCourse,
-    body,
-    config
-  );
-  return response.data;
+
+  try {
+    const response = await Axios.post(
+      endpoints.Professor.registerCourse,
+      body,
+      config
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error adding course:", error);
+    throw error;
+  }
 };
 
 const listCourses = async (body) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${tokenAccess}`,
+      Authorization: `Bearer ${tokenAccess()}`,
     },
   };
   const response = await Axios.get(endpoints.student.coursesList, body, config);
@@ -49,4 +56,18 @@ const deleteCourseProfessor = async (ID, body) => {
   return response.data;
 };
 
-export { addCourse, listCourses, listCoursesProfessor, deleteCourseProfessor };
+const modifyCourseProfessor = async (ID, body) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${tokenAccess()}`,
+    },
+  };
+  const response = await Axios.put(
+    endpoints.Professor.modifyCourse(ID),
+    body,
+    config
+  );
+  return response.data;
+};
+
+export { addCourse, listCourses, listCoursesProfessor, deleteCourseProfessor, modifyCourseProfessor };

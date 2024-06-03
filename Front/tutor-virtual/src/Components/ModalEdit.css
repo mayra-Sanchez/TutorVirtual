@@ -1,4 +1,6 @@
-/* ModalEdit.css */
+.dialog-open {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo opaco */
+}
 
 .modal-container {
     display: flex;
@@ -14,7 +16,7 @@
     padding-right: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centro los inputs */
+    align-items: center; /* Centrar los inputs */
 }
 
 .inputs-container-modal::-webkit-scrollbar {
@@ -39,19 +41,26 @@
     width: 100%;
     margin-bottom: 20px;
     display: flex;
-    justify-content: center; /* Centro el contenido del input */
+    align-items: center;
+}
+
+.label-modal {
+    font-size: 20px;
+    margin-right: 10px;
+    min-width: 150px;
+    text-align: right;
 }
 
 .input-with-icon-modal {
     position: relative;
     width: 100%;
     display: flex;
-    justify-content: center; /* Centro el input */
+    justify-content: center;
 }
 
 .input-modal {
     font-size: 20px;
-    width: 100%;
+    width: calc(100% - 170px); /* Ajustar el ancho */
     height: 50px;
     padding: 10px;
     border: none;
@@ -86,8 +95,10 @@
 }
 
 .modal-header {
+    margin-top: 15px;
     text-align: center;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .modal-title {
@@ -98,14 +109,15 @@
 
 .close-button {
     color: #aaa;
-    float: right;
     font-size: 28px;
     font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
 }
 
 .close-button:hover,
 .close-button:focus {
     color: black;
-    text-decoration: none;
-    cursor: pointer;
 }

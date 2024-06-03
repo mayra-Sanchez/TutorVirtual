@@ -87,6 +87,7 @@ function Navbar({ image, role, href }) {
                   Cursos
                 </a>
                 <img
+                
                   src={settingsIcon}
                   alt="Settings"
                   className="settingsIcon"

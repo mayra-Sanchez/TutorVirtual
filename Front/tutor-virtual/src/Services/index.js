@@ -14,7 +14,7 @@ const endpoints = {
     loginUser: `${URL}/users/login`,
     logout: `${URL}/users/logout`,
     tokenRefresh: `${URL}/users/token/refresh`,
-    // getUserDetails: (userId) => `${URL}/users/${userId}`,
+    getUserDetails: (userId) => `${URL}/users/retrieve/${userId}`,
     update: (userId) => `${URL}/users/update/${userId}`,
   },
   student: {
@@ -25,6 +25,7 @@ const endpoints = {
     registerCourse: `${URL}/course/instructor/create`,
     listCourses: `${URL}/course/instructor/list`,
     deleteCourses: (ID) => `${URL}/course/instructor/delete/${ID}`,
+    modifyCourse: (ID) => `${URL}/course/instructor/modify/${ID}`,
   },
 };
 

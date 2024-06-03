@@ -8,12 +8,15 @@ import {
 import Navbar from "../Components/Navbar";
 import Swal from "sweetalert2";
 import "./ListCoursesProfessor.css";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import { RiDeleteBin6Line, RiEditBoxLine } from "react-icons/ri";
+import EditCourseModal from "../Components/EditCourseModal";
 
 function ListCoursesProfessor() {
   const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
   const [loading, setLoanding] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
   useEffect(() => {
     setLoanding(true);
@@ -113,6 +116,17 @@ function ListCoursesProfessor() {
     });
   };
 
+  // Función para abrir el modal de edición
+  const openEditModal = (course) => {
+    setSelectedCourse(course);
+    setIsModalOpen(true);
+  };
+
+  // Función para cerrar el modal de edición
+  const closeEditModal = () => {
+    setSelectedCourse(null);
+    setIsModalOpen(false);
+  };
   return (
     <>
       <Navbar href={"/Student"} image={Image} role={"users"} />
@@ -148,6 +162,12 @@ function ListCoursesProfessor() {
                       >
                         <RiDeleteBin6Line className="icon-delete" />
                       </button>
+                      <button
+                        className="button-edit-course"
+                        onClick={() => openEditModal(course)}
+                      >
+                        <RiEditBoxLine className="icon-edit" />
+                      </button>
                     </div>
                     <label className="card-title-teacher">
                       <h2 className="title-teacher">Nombre del curso:</h2>{" "}
@@ -175,6 +195,13 @@ function ListCoursesProfessor() {
               +
             </button>
           </div>
+          {/* Modal de edición */}
+          {isModalOpen && (
+            <EditCourseModal
+              course={selectedCourse}
+              closeModal={closeEditModal}
+            />
+          )}
         </>
       )}
     </>
