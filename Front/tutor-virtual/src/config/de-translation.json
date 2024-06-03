@@ -125,5 +125,23 @@
         "successText": "Die Änderungen wurden erfolgreich gespeichert.",
         "errorTitle": "Fehler",
         "errorText": "Beim Speichern der Änderungen ist ein Problem aufgetreten. Bitte versuchen Sie es erneut."
+    },
+    "student": {
+        "title": "Kurse",
+        "loading": "Wird geladen...",
+        "chatConfirmationTitle": "Achtung, sind Sie sicher, dass Sie dies tun möchten?",
+        "chatConfirmationText": "Sie sind dabei, ein Gespräch mit Ihrem Tutor zu beginnen.",
+        "confirmButtonText": "Bestätigen.",
+        "cancelButtonText": "Abbrechen",
+        "errorTitle": "Fehler",
+        "errorText": "Ein Fehler ist aufgetreten, bitte versuchen Sie es erneut",
+        "errorTextLimit": "Sie können keine Fragen mit mehr als 40 Wörtern stellen",
+        "contentLabel": "Schreiben Sie hier Ihre Frage",
+        "sendButtonText": "Senden",
+        "listeningText": "Hören...",
+        "listenButtonText": "Hören",
+        "stopButtonText": "Stop",
+        "chatSuccessText": "Ihre Frage wurde erfolgreich gesendet",
+        "chatSuccessTitle": "Erfolg."
     }
 }

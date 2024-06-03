@@ -125,5 +125,23 @@
         "successText": "The changes were saved successfully.",
         "errorTitle": "Error",
         "errorText": "There was a problem saving the changes. Please try again."
+    },
+    "student": {
+        "title": "Courses",
+        "loading": "Loading...",
+        "chatConfirmationTitle": "Attention, are you sure you want to do this?",
+        "chatConfirmationText": "You are about to start a conversation with your tutor.",
+        "confirmButtonText": "Confirm.",
+        "cancelButtonText": "Cancel",
+        "errorTitle": "Error",
+        "errorText": "An error occurred, please try again",
+        "errorTextLimit": "You cannot ask questions with more than 40 words",
+        "contentLabel": "Write your question here",
+        "sendButtonText": "Send",
+        "listeningText": "Listening...",
+        "listenButtonText": "Listening",
+        "stopButtonText": "Stop",
+        "chatSuccessText": "Your question has been successfully sent",
+        "chatSuccessTitle": "Success."
     }
 }

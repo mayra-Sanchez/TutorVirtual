@@ -125,5 +125,23 @@
         "successText": "Les modifications ont été enregistrées avec succès.",
         "errorTitle": "Erreur",
         "errorText": "Il y a eu un problème lors de l'enregistrement des modifications. Veuillez réessayer."
+    },
+    "student": {
+        "title": "Cours",
+        "loading": "Chargement...",
+        "chatConfirmationTitle": "Attention, êtes-vous sûr de vouloir faire cela ?",
+        "chatConfirmationText": "Vous êtes sur le point de commencer une conversation avec votre tuteur.",
+        "confirmButtonText": "Confirmer.",
+        "cancelButtonText": "Annuler",
+        "errorTitle": "Erreur",
+        "errorText": "Une erreur s'est produite, veuillez réessayer",
+        "errorTextLimit": "Vous ne pouvez pas poser de questions de plus de 40 mots",
+        "contentLabel": "Écrivez votre question ici",
+        "sendButtonText": "Envoyer",
+        "listeningText": "Écoute...",
+        "listenButtonText": "Écoute",
+        "stopButtonText": "Arrêter",
+        "chatSuccessText": "Votre question a été envoyée avec succès",
+        "chatSuccessTitle": "Succès."
     }
 }

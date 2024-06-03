@@ -125,5 +125,23 @@
         "successText": "परिवर्तन सफलतापूर्वक सहेजे गए।",
         "errorTitle": "त्रुटि",
         "errorText": "परिवर्तन सहेजते समय समस्या हुई। कृपया पुनः प्रयास करें।"
+    },
+    "student": {
+        "title": "कोर्सेज़",
+        "loading": "लोड हो रहा है...",
+        "chatConfirmationTitle": "ध्यान दें, क्या आप वाकई इसे करना चाहते हैं?",
+        "chatConfirmationText": "आप अपने ट्यूटर के साथ एक बातचीत शुरू करने वाले हैं।",
+        "confirmButtonText": "पुष्टि करें।",
+        "cancelButtonText": "रद्द करें",
+        "errorTitle": "त्रुटि",
+        "errorText": "कोई त्रुटि आ गई है, कृपया पुनः प्रयास करें",
+        "errorTextLimit": "आप 40 शब्दों से अधिक वाले प्रश्न नहीं पूछ सकते",
+        "contentLabel": "अपना प्रश्न यहाँ लिखें",
+        "sendButtonText": "भेजें",
+        "listeningText": "सुन रहे हैं...",
+        "listenButtonText": "सुनें",
+        "stopButtonText": "रोकें",
+        "chatSuccessText": "आपका प्रश्न सफलतापूर्वक भेज दिया गया है",
+        "chatSuccessTitle": "सफलता।"
     }
 }

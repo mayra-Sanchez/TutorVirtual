@@ -125,5 +125,23 @@
         "successText": "Los cambios se guardaron correctamente.",
         "errorTitle": "Error",
         "errorText": "Hubo un problema al guardar los cambios. Por favor, intente de nuevo."
+    },
+    "student": {
+        "title": "Cursos",
+        "loading": "Cargando...",
+        "chatConfirmationTitle": "Atención, ¿estás seguro de que quieres hacer esto?",
+        "chatConfirmationText": "Estás a punto de iniciar una conversación con tu tutor",
+        "confirmButtonText": "Confirmar",
+        "cancelButtonText": "Cancelar",
+        "errorTitle": "Error",
+        "errorText": "Ocurrió un error, por favor intente de nuevo",
+        "errorTextLimit": "No puedes realizar preguntas con más de 40 palabras",
+        "contentLabel": "Escribe tu pregunta aquí",
+        "sendButtonText": "Enviar",
+        "listeningText": "Escuchando...",
+        "listenButtonText": "Escuchar",
+        "stopButtonText": "Detener",
+        "chatSuccessText": "Tu pregunta ha sido enviada correctamente",
+        "chatSuccessTitle": "Éxito"
     }
 }

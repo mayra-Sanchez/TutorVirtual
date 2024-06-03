@@ -1,9 +1,10 @@
+import React, { useState, useEffect } from "react";
 import Navbar from "../../Components/Navbar";
 import Image from "../../Resources/Student.png";
 import Dice from "../../Resources/dice.png";
 import Arrow from "../../Resources/arrow.png";
 import { listCourses } from "../../Services/Course";
-import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next"; 
 import { chatTutor } from "../../Services/Tutor";
 import { useParams } from "react-router-dom";
 import Microfono from "../../Resources/microphone.png";
@@ -12,6 +13,7 @@ import "./ChatStudent.css";
 
 function ChatStudent() {
   const { selectedCourseId } = useParams();
+  const { t } = useTranslation(); 
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -110,15 +112,15 @@ function ChatStudent() {
           <div className="course-container2">
             <div className="card_course">
               <div className="info_course">
-                <h1>Curso</h1>
+                <h1>{t("course.title")}</h1>
                 <br />
                 {course && <p className="ptext">{course.name}</p>}
                 <br />
-                <h1>Instructor</h1>
+                <h1>{t("instructor.title")}</h1>
                 <br />
                 {course && <p className="ptext">{course.instructor_name}</p>}
                 <br />
-                <h1>Descripción del curso</h1>
+                <h1>{t("description.title")}</h1>
                 <br />
                 {course && <p className="ptext">{course.description}</p>}
               </div>
@@ -144,7 +146,7 @@ function ChatStudent() {
             <div className="questions">
               {error ? (
                 <span className="error">
-                  No puedes realizar preguntas con más de 40 palabras
+                  {t("error.message")}
                 </span>
               ) : (
                 <div className="input-container">

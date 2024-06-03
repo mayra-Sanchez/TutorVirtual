@@ -125,5 +125,23 @@
         "successText": "更改已成功保存。",
         "errorTitle": "错误",
         "errorText": "保存更改时出现问题，请重试。"
+    }, 
+    "student": {
+        "title": "课程",
+        "loading": "加载中...",
+        "chatConfirmationTitle": "注意，您确定要这样做吗？",
+        "chatConfirmationText": "您即将开始与您的导师对话。",
+        "confirmButtonText": "确认。",
+        "cancelButtonText": "取消",
+        "errorTitle": "错误",
+        "errorText": "出现错误，请重试",
+        "errorTextLimit": "您不能提问超过40个字",
+        "contentLabel": "在这里写下您的问题",
+        "sendButtonText": "发送",
+        "listeningText": "正在倾听...",
+        "listenButtonText": "倾听",
+        "stopButtonText": "停止",
+        "chatSuccessText": "您的问题已成功发送",
+        "chatSuccessTitle": "成功。"
     }
 }

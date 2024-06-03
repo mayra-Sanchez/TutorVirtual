@@ -125,5 +125,23 @@
         "successText": "Изменения успешно сохранены.",
         "errorTitle": "Ошибка",
         "errorText": "При сохранении изменений произошла ошибка. Пожалуйста, попробуйте еще раз."
+    },
+    "student": {
+        "title": "Курсы",
+        "loading": "Загрузка...",
+        "chatConfirmationTitle": "Внимание, уверены ли вы, что хотите это сделать?",
+        "chatConfirmationText": "Вы собираетесь начать разговор со своим репетитором.",
+        "confirmButtonText": "Подтвердить.",
+        "cancelButtonText": "Отмена",
+        "errorTitle": "Ошибка",
+        "errorText": "Произошла ошибка, пожалуйста, попробуйте еще раз",
+        "errorTextLimit": "Вы не можете задавать вопросы более чем из 40 слов",
+        "contentLabel": "Напишите ваш вопрос здесь",
+        "sendButtonText": "Отправить",
+        "listeningText": "Прослушивание...",
+        "listenButtonText": "Слушать",
+        "stopButtonText": "Стоп",
+        "chatSuccessText": "Ваш вопрос успешно отправлен",
+        "chatSuccessTitle": "Успех."
     }
 }

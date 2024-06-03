@@ -125,5 +125,23 @@
         "successText": "As alterações foram salvas com sucesso.",
         "errorTitle": "Erro",
         "errorText": "Houve um problema ao salvar as alterações. Por favor, tente novamente."
+    },
+    "student": {
+        "title": "Cursos",
+        "loading": "Carregando...",
+        "chatConfirmationTitle": "Atenção, tem certeza de que deseja fazer isso?",
+        "chatConfirmationText": "Você está prestes a iniciar uma conversa com seu tutor.",
+        "confirmButtonText": "Confirmar.",
+        "cancelButtonText": "Cancelar",
+        "errorTitle": "Erro",
+        "errorText": "Ocorreu um erro, por favor, tente novamente",
+        "errorTextLimit": "Você não pode fazer perguntas com mais de 40 palavras",
+        "contentLabel": "Escreva sua pergunta aqui",
+        "sendButtonText": "Enviar",
+        "listeningText": "Ouvindo...",
+        "listenButtonText": "Ouvir",
+        "stopButtonText": "Parar",
+        "chatSuccessText": "Sua pergunta foi enviada com sucesso",
+        "chatSuccessTitle": "Sucesso."
     }
 }
