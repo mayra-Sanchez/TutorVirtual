@@ -1,30 +1,68 @@
-/* EditCourseModal.css */
-
-.modal-container {
+.modal-container-course {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    z-index: 1000; 
 }
 
-.inputs-container-modal {
+body.dialog-open::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(173, 216, 230, 0.8); 
+    z-index: 999;  
+}
+
+
+.p-dialog .p-dialog-header .p-dialog-header-icon {
+    position: absolute;
+    top: 10px; 
+    right: 10px; 
+    z-index: 1001; 
+}
+
+.inputs-container-modal-course {
     max-height: 400px;
     overflow-y: auto;
     padding-right: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.inputs-container-modal-course {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .form-control-modal {
-    width: 100%;
+    display: flex;
+    align-items: center;
     margin-bottom: 20px;
+    width: 100%;
+}
+
+.label-modal {
+    font-size: 20px;
+    margin-right: 10px;
+    width: 20%;
+    text-align: left;
 }
 
 .input-modal {
     font-size: 20px;
-    width: 100%;
+    width: 70%;
     height: 50px;
     padding: 10px;
     border: none;
@@ -34,16 +72,21 @@
     box-sizing: border-box;
 }
 
+.form-control-modal.long-input .input-modal {
+    width: 70%;
+    height: 100px;
+}
+
 .button-container-modal {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     margin-top: 20px;
 }
 
 .button-modal {
-    width: 200px;
+    width: 150px;
     height: 50px;
     color: white;
     background-color: #DD4D42;
@@ -54,16 +97,33 @@
     justify-content: center;
     align-items: center;
     border: none;
-    font-size: 25px;
+    font-size: 20px;
+    margin: 0 10px;
 }
 
-.modal-header {
+.button-modal.cancel-button {
+    background-color: #6c757d;
+}
+
+.modal-header-course {
+    margin-top: 10px;
     text-align: center;
     margin-bottom: 20px;
 }
 
-.modal-title {
+.modal-title-course {
     font-size: 40px;
     font-weight: bold;
     color: #012B36;
+}
+
+.modal-subtitle-course {
+    font-size: 30px;
+    color: #012B36;
+}
+
+.error-message {
+    color: red;
+    font-size: 18px;
+    margin-bottom: 20px;
 }
