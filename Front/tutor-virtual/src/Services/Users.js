@@ -55,19 +55,19 @@ const updateUser = async (userId, body) => {
     throw error.response.data;
   }
 };
-// const getUserData = async (userId) => {
-//   const config = {
-//     headers: {
-//       "Content-Type": "application/json",
-//       "Authorization": `Bearer ${tokenAccess()}`,
-//     },
-//   };
-//   try {
-//     const response = await Axios.get(`${endpoints.users.update}${userId}`, config);
-//     return response.data;
-//   } catch (error) {
-//     throw error.response.data;
-//   }
-// };
 
-export { createUser, login, logout, updateUser };
+const getUserData = async (userId) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${tokenAccess()}`,
+    },
+  };
+  try {
+    const response = await Axios.get(endpoints.users.getUserDetails(userId), config); 
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};
+
+export { createUser, login, logout, updateUser, getUserData };
