@@ -4,8 +4,10 @@ import Swal from "sweetalert2";
 import { modifyCourseProfessor } from "../Services/Course";
 import "./EditCourseModal.css";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 function EditCourseModal({ course, closeModal }) {
+  const { t } = useTranslation();
   const [editedCourse, setEditedCourse] = useState({
     name: course.name,
     description: course.description,
@@ -30,14 +32,14 @@ function EditCourseModal({ course, closeModal }) {
       await modifyCourseProfessor(course.id, editedCourse);
       Swal.fire({
         icon: 'success',
-        title: 'Curso actualizado',
-        text: 'El curso ha sido actualizado correctamente.',
+        title: t('professor.successTitle'),
+        text: t('professor.successText'),
       }).then(() => {
         navigate("/Professor");
       });
       closeModal();
     } catch (error) {
-      setError("Error al actualizar el curso. Por favor, intenta de nuevo.");
+      setError(t('professor.errorText'));
       console.error("Error updating course:", error);
     }
   };
@@ -60,44 +62,44 @@ function EditCourseModal({ course, closeModal }) {
       onHide={closeModal}
     >
       <div className="modal-header-course">
-        <label className="modal-title-course">Editar curso <br/></label>
+        <label className="modal-title-course">{t('professor.courseCreationTitle2')} <br/></label>
         <label className="modal-subtitle-course">{editedCourse.name}</label>
       </div>
       <form onSubmit={handleSubmit} className="modal-container-course">
         <div className="inputs-container-modal-course">
           {error && <div className="error-message">{error}</div>}
           <div className="form-control-modal">
-            <label htmlFor="name" className="label-modal">Nombre</label>
+            <label htmlFor="name" className="label-modal">{t('professor.courseNameLabel')}</label>
             <input
               id="name"
               name="name"
               className="input-modal"
               type="text"
-              placeholder="Nombre del curso"
+              placeholder={t('professor.courseNamePlaceholder')}
               onChange={handleChange}
               value={editedCourse.name}
               required
             />
           </div>
           <div className="form-control-modal">
-            <label htmlFor="description" className="label-modal">Descripción</label>
+            <label htmlFor="description" className="label-modal">{t('professor.courseDescriptionLabel')}</label>
             <textarea
               id="description"
               name="description"
               className="input-modal"
-              placeholder="Descripción del curso"
+              placeholder={t('professor.courseDescriptionPlaceholder')}
               onChange={handleChange}
               value={editedCourse.description}
               required
             />
           </div>
           <div className="form-control-modal long-input">
-            <label htmlFor="context" className="label-modal">Contexto</label>
+            <label htmlFor="context" className="label-modal">{t('professor.courseContextLabel2')}</label>
             <textarea
               id="context"
               name="context"
               className="input-modal"
-              placeholder="Contexto del curso"
+              placeholder={t('professor.courseContextPlaceholder')}
               onChange={handleChange}
               value={editedCourse.context}
               required
@@ -106,10 +108,10 @@ function EditCourseModal({ course, closeModal }) {
         </div>
         <div className="button-container-modal">
           <button className="button-modal" type="submit">
-            Guardar cambios
+            {t('professor.registerButton2')}
           </button>
           <button className="button-modal cancel-button" type="button" onClick={handleCancel}>
-            Cancelar
+            {t('cancel')}
           </button>
         </div>
       </form>

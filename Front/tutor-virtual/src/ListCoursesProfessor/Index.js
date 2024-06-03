@@ -1,25 +1,24 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import Image from "../Resources/Professor.png";
-import {
-  deleteCourseProfessor,
-  listCoursesProfessor,
-} from "../Services/Course";
+import { deleteCourseProfessor, listCoursesProfessor } from "../Services/Course";
 import Navbar from "../Components/Navbar";
 import Swal from "sweetalert2";
 import "./ListCoursesProfessor.css";
 import { RiDeleteBin6Line, RiEditBoxLine } from "react-icons/ri";
 import EditCourseModal from "../Components/EditCourseModal";
+import { useTranslation } from "react-i18next";
 
 function ListCoursesProfessor() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
-  const [loading, setLoanding] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
 
   useEffect(() => {
-    setLoanding(true);
+    setLoading(true);
     fetchData();
   }, []);
 
@@ -27,7 +26,7 @@ function ListCoursesProfessor() {
     try {
       const data = await listCoursesProfessor();
       setCourses(data);
-      setLoanding(false);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching courses:", error);
     }
@@ -40,19 +39,11 @@ function ListCoursesProfessor() {
   const handleDate = (date) => {
     const courseCreationDate = new Date(date);
 
-    // Obtenemos los valores del día, mes y año
     const day = courseCreationDate.getDate();
     const month = courseCreationDate.getMonth() + 1;
     const year = courseCreationDate.getFullYear();
 
-    const formattedDate =
-      (day < 10 ? "0" : "") +
-      day +
-      "-" +
-      (month < 10 ? "0" : "") +
-      month +
-      "-" +
-      year;
+    const formattedDate = `${day < 10 ? "0" : ""}${day}-${month < 10 ? "0" : ""}${month}-${year}`;
 
     return formattedDate;
   };
@@ -66,31 +57,28 @@ function ListCoursesProfessor() {
       context: context,
       instructor: idUser,
     };
-    console.log("EL ID DEL PRODUCTO", idCourse);
-    const ID = idCourse;
+
     Swal.fire({
-      title: "Atención, estás seguro de realizar esta acción",
-      text: "Vas a eliminar un curso",
+      title: t("courses.deleteCoursePrompt"),
+      text: t("courses.deleteCourseConfirmation"),
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       showLoaderOnConfirm: true,
       cancelButtonColor: "#d33",
-      confirmButtonText: `Si, eliminar`,
+      confirmButtonText: t("courses.confirmButton"),
       allowOutsideClick: false,
-      cancelButtonText: "No, cancelar",
+      cancelButtonText: t("courses.cancelButton"),
 
       preConfirm: () => {
         return new Promise((resolve, reject) => {
-          console.log("EL ID QUE PASO ACÁ", ID);
-          console.log("la data que se va a mandar", data);
-          deleteCourseProfessor(ID, data)
+          deleteCourseProfessor(idCourse, data)
             .then(() => {
               Swal.fire({
                 icon: "success",
-                title: "Operación exitosa",
-                text: "El curso fue eliminado correctamente",
-                confirmButtonText: "Continuar",
+                title: t("courses.successTitle"),
+                text: t("courses.successText"),
+                confirmButtonText: t("courses.continueButton"),
                 allowOutsideClick: false,
                 showCancelButton: false,
               }).then(() => {
@@ -108,9 +96,9 @@ function ListCoursesProfessor() {
   const onError = (error) => {
     Swal.fire({
       icon: "error",
-      title: "Algo salió mal",
-      text: error || "Ocurrió un error al crear el usuario, intenta de nuevo",
-      confirmButtonText: "Continuar",
+      title: t("courses.errorTitle"),
+      text: error || t("courses.errorText"),
+      confirmButtonText: t("courses.continueButton"),
       allowOutsideClick: false,
       showCancelButton: false,
     });
@@ -127,17 +115,18 @@ function ListCoursesProfessor() {
     setSelectedCourse(null);
     setIsModalOpen(false);
   };
+
   return (
     <>
       <Navbar href={"/Student"} image={Image} role={"users"} />
       <div className="titleStudent">
-        <h2>Cursos</h2>
+        <h2>{t("courses.title")}</h2>
       </div>
       {loading ? (
         <div className="loading">
           <div className="loader">
             <div className="scanner">
-              <span>Cargando...</span>
+              <span>{t("courses.loading")}</span>
             </div>
           </div>
         </div>
@@ -170,15 +159,15 @@ function ListCoursesProfessor() {
                       </button>
                     </div>
                     <label className="card-title-teacher">
-                      <h2 className="title-teacher">Nombre del curso:</h2>{" "}
+                      <h2 className="title-teacher">{t("courses.courseName")}:</h2>{" "}
                       {course.name}
                     </label>
                     <div className="card-text-teacher">
-                      <h2 className="title-teacher">Descripción:</h2>{" "}
+                      <h2 className="title-teacher">{t("courses.courseDescription")}:</h2>{" "}
                       {course.description}
                     </div>
                     <div className="card-text-teacher">
-                      <h2 className="title-teacher">Fecha de creación:</h2>{" "}
+                      <h2 className="title-teacher">{t("courses.courseCreationDate")}:</h2>{" "}
                       {handleDate(course.creation_date)}
                     </div>
                   </div>
