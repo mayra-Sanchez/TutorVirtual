@@ -10,9 +10,30 @@
     align-items: center;
   }
 
-  .h10{
-    font-weight: bold;
+  .course-container-scroll-student {
+    overflow-y: auto;
+    max-height: 500px;
+    min-height: 400px;
+    margin-left: 2%;
+    margin-right: 2%;
   }
+  
+  .course-container-scroll-student::-webkit-scrollbar {
+    width: 12px;
+    padding: 10px 20px;
+    margin-top: 50px;
+  }
+  
+  .course-container-scroll-student::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 6px;
+  }
+  
+  .course-container-scroll-student::-webkit-scrollbar-thumb {
+    background-color: #DD4D42;
+    border-radius: 6px;
+  }
+  
 
   .modal {
     background-color: white;
@@ -57,3 +78,23 @@
     margin-bottom: 5px; 
   }
   
+  .container-add-fav{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: -10px;
+  }
+  .button-add-fav{
+    border: none;
+    background-color: transparent;
+  }
+  .icon-add-fav{
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+  }
+
+  .colored-toast {
+    background-color: green !important;
+    color: white;
+  }
+

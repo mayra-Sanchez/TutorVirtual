@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./CourseCard.css";
-import { listCourses } from "../Services/Course";
+import { addCoursesFavorites, listCourses } from "../Services/Course";
+import { IoIosStarOutline } from "react-icons/io";
+import Swal from "sweetalert2";
 
 //Component courses
 const CourseCard = ({ courseId, name, teacher, creationDate, description }) => {
@@ -48,20 +50,63 @@ const CourseCard = ({ courseId, name, teacher, creationDate, description }) => {
     "-" +
     year;
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-right",
+    iconColor: "white",
+    customClass: {
+      popup: "colored-toast",
+    },
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+  });
+
+  const addFavorites = () => {
+    // const body = {
+    //   id: courseId,
+    //   name: name,
+    // };
+    // addCoursesFavorites(body).then(() => {
+    //   Toast.fire({
+    //     icon: "success",
+    //     title: "Curso añadido a favoritos",
+    //   });
+    // });
+    Toast.fire({
+      icon: "success",
+      title: "Curso añadido a favoritos",
+    });
+  };
+
   return (
     <>
       {course && (
-        <div className="card" onClick={openModal}>
-          <div className="card-body">
-            <h5 className="card-title">
-              <h10>Nombre del curso:</h10> {name}
-            </h5>
-            <h6 className="card-subtitle mb-2 text-muted">
-              Profesor: {teacher}
-            </h6>
-            <p className="card-text">
-              <h10>Creado:</h10> {date}
-            </p>
+        <div className="course-container-scroll-student">
+          <div className="course-container-teacher">
+            <div className="container-add-fav">
+              <button className="button-add-fav">
+                <IoIosStarOutline
+                  className="icon-add-fav"
+                  onClick={() => addFavorites()}
+                />
+              </button>
+            </div>
+            <div className="card-body-teacher" onClick={openModal}>
+              <label className="card-title-teacher">
+                <h2 className="title-teacher">Nombre del curso:</h2> {name}
+              </label>
+              <div className="card-text-teacher">
+                <h2 className="title-teacher">Profesor:</h2> {teacher}
+              </div>
+              <div className="card-text-teacher">
+                <h2 className="title-teacher">Descripción:</h2>{" "}
+                {course.description}
+              </div>
+              <div className="card-text-teacher">
+                <h2 className="title-teacher">Fecha de creación:</h2> {date}
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -77,10 +122,7 @@ const CourseCard = ({ courseId, name, teacher, creationDate, description }) => {
             <p>Creado: {date}</p>
             <p>Descripción: {description}</p>
             <br></br>
-            <Link
-              to={`/Student/${selectedCourseId}/Tutor`}
-              className="ask-btn"
-            >
+            <Link to={`/Student/${selectedCourseId}/Tutor`} className="ask-btn">
               Preguntale al tutor
             </Link>
           </div>

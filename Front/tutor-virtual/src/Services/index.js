@@ -20,6 +20,7 @@ const endpoints = {
   student: {
     coursesList: `${URL}/course/student/list`,
     chatTutor: (id_course) => `${URL}/course/student/${id_course}/chat`,
+    addFavorites: `${URL}/course/student/favorites`,
   },
   Professor: {
     registerCourse: `${URL}/course/instructor/create`,

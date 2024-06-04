@@ -31,22 +31,23 @@
     font-size: 18px;
 }
 
-.icon-delete{
+.icon-delete, .icon-edit{
   display: flex;
   height: 35px;
   width: 20px;
+  cursor: pointer;
+}
+
+.icon-delete{
   color: rgba(190, 25, 25, 0.938);
+}
+
+.icon-edit{
+  color: rgba(18, 93, 159, 0.938);
 }
 
 .card-title-teacher, .card-text-teacher {
     margin-bottom: 2px; 
-}
-
-.icon-edit{
-  display: flex;
-  height: 35px;
-  width: 20px;
-  color: rgba(190, 25, 25, 0.938);
 }
 
 .container-edit{

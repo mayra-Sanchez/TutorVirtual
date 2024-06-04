@@ -126,6 +126,7 @@ function ListCoursesProfessor() {
   const closeEditModal = () => {
     setSelectedCourse(null);
     setIsModalOpen(false);
+    fetchData();
   };
   return (
     <>
