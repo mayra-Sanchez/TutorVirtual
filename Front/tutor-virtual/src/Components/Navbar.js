@@ -1,19 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { logout } from "../Services/Users";
 import ModalEdit from "./ModalEdit";
 import "./Navbar.css";
-import settingsIcon from "./settings-icon.svg";
 import { useContext } from "react";
 import { LoginContext } from "../Components/Context/LoginContext";
+import { Menu } from "primereact/menu";
+import { IoSettingsOutline } from "react-icons/io5";
+import "primereact/resources/themes/saga-blue/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 
 function Navbar({ image, role, href }) {
   const { setLogin } = useContext(LoginContext);
-  const [visible, setVisible] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  const showDialog = () => setVisible(true);
-  const hideDialog = () => setVisible(false);
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
 
   const navigate = useNavigate();
   const handleLogout = async () => {
@@ -70,6 +74,26 @@ function Navbar({ image, role, href }) {
     });
     console.log("Esto está ocurriendo", error);
   };
+
+  const menu = useRef(null);
+
+  const items = [
+    {
+      label: "Actualizar info",
+      icon: "pi pi-refresh",
+      command: openModal,
+    },
+    {
+      label: "Cerrar sesión",
+      icon: "pi pi-sign-out",
+      command: handleLogout,
+    },
+  ];
+
+  const showMenu = (event) => {
+    menu.current.toggle(event);
+  };
+
   return (
     <>
       <nav
@@ -86,25 +110,10 @@ function Navbar({ image, role, href }) {
                 <a href={href} className="navbar-home">
                   Cursos
                 </a>
-                <img
-                
-                  src={settingsIcon}
-                  alt="Settings"
-                  className="settingsIcon"
-                  onClick={showDialog}
-                  style={{
-                    marginLeft: "20px",
-                    marginRight: "40px",
-                    cursor: "pointer",
-                  }}
-                />
-                <a
-                  href={"javasvript:void(0)"}
-                  onClick={handleLogout}
-                  className="navbar-home"
-                >
-                  Cerrar sesión
-                </a>
+                <button onClick={showMenu} className="button-settings">
+                  <IoSettingsOutline className="icon-settings" />
+                </button>
+                <Menu model={items} popup ref={menu} className="custom-menu" />
               </li>
             ) : (
               <li className="navbarItems d-flex align-items-center">
@@ -116,7 +125,7 @@ function Navbar({ image, role, href }) {
           </ul>
         </div>
       </nav>
-      <ModalEdit visible={visible} onHide={hideDialog} />
+      <ModalEdit visible={showModal} onHide={closeModal} />
     </>
   );
 }
