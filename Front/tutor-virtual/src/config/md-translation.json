@@ -11,7 +11,8 @@
         "logoutSuccessText": "您已成功登出",
         "continueButtonText": "继续",
         "errorTitle": "出了点问题",
-        "logoutErrorText": "登出时出现了错误"
+        "logoutErrorText": "登出时出现了错误",
+        "updateInfo": "更新信息"
     },
     "login": {
         "title": "登录",

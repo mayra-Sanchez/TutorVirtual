@@ -11,7 +11,8 @@
         "logoutSuccessText": "आपने सफलतापूर्वक लॉग आउट किया है",
         "continueButtonText": "जारी रखें",
         "errorTitle": "कुछ गलत हुआ",
-        "logoutErrorText": "लॉग आउट करते समय कुछ त्रुटि हुई"
+        "logoutErrorText": "लॉग आउट करते समय कुछ त्रुटि हुई",
+        "updateInfo": "जानकारी अपडेट करें"
     },
     "login": {
         "title": "लॉग इन",

@@ -11,7 +11,8 @@
         "logoutSuccessText": "Vous vous êtes déconnecté avec succès",
         "continueButtonText": "Continuer",
         "errorTitle": "Quelque chose s'est mal passé",
-        "logoutErrorText": "Une erreur s'est produite lors de la déconnexion"
+        "logoutErrorText": "Une erreur s'est produite lors de la déconnexion",
+        "updateInfo": "Mettre à jour les informations"
     },
     "login": {
         "title": "Connexion",

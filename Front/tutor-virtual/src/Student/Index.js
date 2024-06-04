@@ -24,7 +24,6 @@ function Student() {
     };
 
     fetchData();
-
   }, []);
 
   return (
@@ -49,7 +48,7 @@ function Student() {
                 <CourseCard
                   courseId={course.id}
                   name={course.name}
-                  teacher={course.instructor_name}
+                  teacher={course.instructor}
                   creationDate={course.creation_date}
                   description={course.description}
                 />
@@ -57,7 +56,6 @@ function Student() {
             ))}
           </div>
         </div>
-
       )}
     </>
   );

@@ -11,7 +11,8 @@
         "logoutSuccessText": "You have logged out successfully",
         "continueButtonText": "Continue",
         "errorTitle": "Something went wrong",
-        "logoutErrorText": "An error occurred while logging out"
+        "logoutErrorText": "An error occurred while logging out",
+        "updateInfo": "Update information"
     },
     "login": {
         "title": "Log in",

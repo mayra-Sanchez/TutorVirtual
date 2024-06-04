@@ -11,7 +11,8 @@
         "logoutSuccessText": "Você saiu com sucesso",
         "continueButtonText": "Continuar",
         "errorTitle": "Algo deu errado",
-        "logoutErrorText": "Ocorreu um erro ao sair"
+        "logoutErrorText": "Ocorreu um erro ao sair",
+        "updateInfo": "Atualizar informações"
     },
     "login": {
         "title": "Entrar",

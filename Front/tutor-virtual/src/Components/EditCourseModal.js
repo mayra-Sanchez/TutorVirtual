@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Dialog } from "primereact/dialog";
+import { AiOutlineClose } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { modifyCourseProfessor } from "../Services/Course";
 import "./EditCourseModal.css";
@@ -56,66 +56,79 @@ function EditCourseModal({ course, closeModal }) {
   }, []);
 
   return (
-    <Dialog
-      visible={true}
-      style={{ width: "50vw", background: "white", borderRadius: "10px" }}
-      onHide={closeModal}
-    >
-      <div className="modal-header-course">
-        <label className="modal-title-course">{t('professor.courseCreationTitle2')} <br/></label>
-        <label className="modal-subtitle-course">{editedCourse.name}</label>
+    <div className="modal-overlay-course">
+      <div className="modal-course">
+        <button className="close-btn" onClick={closeModal}>
+          <AiOutlineClose />
+        </button>
+        <div className="modal-header">
+          <label className="modal-title-course">
+            {t('professor.courseCreationTitle2')} <br />
+          </label>
+          <label className="modal-subtitle-course">{editedCourse.name}</label>
+        </div>
+        <form onSubmit={handleSubmit} className="modal-container">
+          <div className="inputs-container-modal">
+            {error && <div className="error-message">{error}</div>}
+            <div className="form-control-modal">
+              <label htmlFor="name" className="label-modal">
+                {t('professor.courseNameLabel')}
+              </label>
+              <input
+                id="name"
+                name="name"
+                className="input-moda-name"
+                type="text"
+                placeholder={t('professor.courseNamePlaceholder')}
+                onChange={handleChange}
+                value={editedCourse.name}
+                required
+              />
+            </div>
+            <div className="form-control-modal">
+              <label htmlFor="description" className="label-modal">
+                {t('professor.courseDescriptionLabel')}
+              </label>
+              <textarea
+                id="description"
+                name="description"
+                className="input-modal"
+                placeholder={t('professor.courseDescriptionPlaceholder')}
+                onChange={handleChange}
+                value={editedCourse.description}
+                required
+              />
+            </div>
+            <div className="form-control-modal long-input">
+              <label htmlFor="context" className="label-modal">
+                {t('professor.courseContextLabel2')}
+              </label>
+              <textarea
+                id="context"
+                name="context"
+                className="input-modal"
+                placeholder={t('professor.courseContextPlaceholder')}
+                onChange={handleChange}
+                value={editedCourse.context}
+                required
+              />
+            </div>
+          </div>
+          <div className="button-container-modal">
+            <button className="button-modal" type="submit">
+              {t('professor.registerButton2')}
+            </button>
+            <button
+              className="button-modal cancel-button"
+              type="button"
+              onClick={handleCancel}
+            >
+              {t('cancel')}
+            </button>
+          </div>
+        </form>
       </div>
-      <form onSubmit={handleSubmit} className="modal-container-course">
-        <div className="inputs-container-modal-course">
-          {error && <div className="error-message">{error}</div>}
-          <div className="form-control-modal">
-            <label htmlFor="name" className="label-modal">{t('professor.courseNameLabel')}</label>
-            <input
-              id="name"
-              name="name"
-              className="input-modal"
-              type="text"
-              placeholder={t('professor.courseNamePlaceholder')}
-              onChange={handleChange}
-              value={editedCourse.name}
-              required
-            />
-          </div>
-          <div className="form-control-modal">
-            <label htmlFor="description" className="label-modal">{t('professor.courseDescriptionLabel')}</label>
-            <textarea
-              id="description"
-              name="description"
-              className="input-modal"
-              placeholder={t('professor.courseDescriptionPlaceholder')}
-              onChange={handleChange}
-              value={editedCourse.description}
-              required
-            />
-          </div>
-          <div className="form-control-modal long-input">
-            <label htmlFor="context" className="label-modal">{t('professor.courseContextLabel2')}</label>
-            <textarea
-              id="context"
-              name="context"
-              className="input-modal"
-              placeholder={t('professor.courseContextPlaceholder')}
-              onChange={handleChange}
-              value={editedCourse.context}
-              required
-            />
-          </div>
-        </div>
-        <div className="button-container-modal">
-          <button className="button-modal" type="submit">
-            {t('professor.registerButton2')}
-          </button>
-          <button className="button-modal cancel-button" type="button" onClick={handleCancel}>
-            {t('cancel')}
-          </button>
-        </div>
-      </form>
-    </Dialog>
+    </div>
   );
 }
 

@@ -22,13 +22,13 @@ const addCourse = async (body) => {
   }
 };
 
-const listCourses = async (body) => {
+const listCourses = async () => {
   const config = {
     headers: {
       Authorization: `Bearer ${tokenAccess()}`,
     },
   };
-  const response = await Axios.get(endpoints.student.coursesList, body, config);
+  const response = await Axios.get(endpoints.student.coursesList, config);
   return response.data;
 };
 
@@ -70,4 +70,25 @@ const modifyCourseProfessor = async (ID, body) => {
   return response.data;
 };
 
-export { addCourse, listCourses, listCoursesProfessor, deleteCourseProfessor, modifyCourseProfessor };
+const addCoursesFavorites = async (body) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${tokenAccess()}`,
+    },
+  };
+  const response = await Axios.post(
+    endpoints.student.addFavorites,
+    body,
+    config
+  );
+  return response.data;
+};
+
+export {
+  addCourse,
+  listCourses,
+  listCoursesProfessor,
+  deleteCourseProfessor,
+  modifyCourseProfessor,
+  addCoursesFavorites,
+};

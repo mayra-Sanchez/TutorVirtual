@@ -11,7 +11,8 @@
         "logoutSuccessText": "Вы успешно вышли",
         "continueButtonText": "Продолжить",
         "errorTitle": "Что-то пошло не так",
-        "logoutErrorText": "При выходе произошла ошибка"
+        "logoutErrorText": "При выходе произошла ошибка",
+        "updateInfo": "Обновить информацию"
     },
     "login": {
         "title": "Войти",

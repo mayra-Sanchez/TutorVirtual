@@ -11,7 +11,8 @@
         "logoutSuccessText": "Sie haben sich erfolgreich abgemeldet",
         "continueButtonText": "Weiter",
         "errorTitle": "Etwas ist schief gelaufen",
-        "logoutErrorText": "Beim Abmelden ist ein Fehler aufgetreten"
+        "logoutErrorText": "Beim Abmelden ist ein Fehler aufgetreten",
+        "updateInfo": "Informationen aktualisieren"
     },
     "login": {
         "title": "Anmelden",

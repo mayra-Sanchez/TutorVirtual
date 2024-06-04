@@ -11,7 +11,8 @@
         "logoutSuccessText": "Has cerrado sesión correctamente",
         "continueButtonText": "Continuar",
         "errorTitle": "Algo salió mal",
-        "logoutErrorText": "Ocurrió un error al cerrar sesión"
+        "logoutErrorText": "Ocurrió un error al cerrar sesión",
+        "updateInfo": "Actualizar información"
     },
     "login": {
         "title": "Iniciar sesión",

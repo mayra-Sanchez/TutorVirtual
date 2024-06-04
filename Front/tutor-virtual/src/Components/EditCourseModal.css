@@ -1,23 +1,26 @@
-.modal-container-course {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    z-index: 1000; 
-}
-
-body.dialog-open::before {
-    content: "";
+.modal-overlay-course {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(173, 216, 230, 0.8); 
-    z-index: 999;  
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.modal-course{
+    background-color: white;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center; 
+    cursor: pointer;
+    height: 65%;
+    width: 600px;
+}
 
 .p-dialog .p-dialog-header .p-dialog-header-icon {
     position: absolute;
@@ -60,16 +63,24 @@ body.dialog-open::before {
     text-align: left;
 }
 
-.input-modal {
+.input-modal, .input-moda-name{
     font-size: 20px;
     width: 70%;
-    height: 50px;
     padding: 10px;
     border: none;
     background-color: #E9E4E4;
-    color: #5C5A5A;
+    color: #000000;
     border-radius: 10px;
     box-sizing: border-box;
+    resize: none;
+}
+
+.input-modal{
+    height: 90px;
+}
+
+.input-moda-name{
+    height: 50px;
 }
 
 .form-control-modal.long-input .input-modal {
