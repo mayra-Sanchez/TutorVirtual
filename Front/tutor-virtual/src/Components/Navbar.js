@@ -78,7 +78,6 @@ function Navbar({ image, role, href }) {
     i18n.changeLanguage(lng);
   };
 
-
   const menu = useRef(null);
 
   const items = [
@@ -100,7 +99,10 @@ function Navbar({ image, role, href }) {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#FFFFFF", width: "100%" }}>
+      <nav
+        className="navbar navbar-expand-lg"
+        style={{ backgroundColor: "#FFFFFF", width: "100%" }}
+      >
         <div className="container-fluid d-flex justify-content-between align-items-center">
           <ul className="navbarListado d-flex">
             <a href="/">
@@ -120,10 +122,24 @@ function Navbar({ image, role, href }) {
               <option value="pt">Portugués</option>
               <option value="rs">Pусский</option>
             </select>
-            {role === "users" ? (
+            {role === "professor" ? (
               <li className="navbarItems">
                 <a href={href} className="navbar-home">
                   {t("navbar.courses")}
+                </a>
+                <button onClick={showMenu} className="button-settings">
+                  <IoSettingsOutline className="icon-settings" />
+                </button>
+                <Menu model={items} popup ref={menu} className="custom-menu" />
+              </li>
+            ) : role === "student" ? (
+              <li className="navbarItems">
+                <a href={href} className="navbar-home">
+                  {t("navbar.courses")}
+                </a>
+                <a href={"/Student/favs"} className="navbar-home">
+                  Favoritos
+                  {/* falta traduccir */}
                 </a>
                 <button onClick={showMenu} className="button-settings">
                   <IoSettingsOutline className="icon-settings" />

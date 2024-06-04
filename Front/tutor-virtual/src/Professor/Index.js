@@ -99,36 +99,38 @@ function Professor() {
 
   return (
     <>
-      <Navbar href={"/Professor"} image={Image} role={"users"} />
+      <Navbar href={"/Professor"} image={Image} role={"professor"} />
       <div className="container">
-        <h1 className="title">{t("professor.courseCreationTitle")}</h1> 
+        <h1 className="title">{t("professor.courseCreationTitle")}</h1>
         <form className="forms-container" onSubmit={handleSubmit}>
           <div className="form1">
             <h2 className="title2">{t("professor.registerTitle")}</h2>
             <div className="input-group">
               <span className="spanName">
-                {t("professor.courseNameLabel")}: <span className="redStar"> *</span>
+                {t("professor.courseNameLabel")}:{" "}
+                <span className="redStar"> *</span>
               </span>
               <input
                 type="text"
                 className="form-control"
                 name="name"
                 onChange={handleChange}
-                placeholder={t("professor.courseNamePlaceholder")} 
+                placeholder={t("professor.courseNamePlaceholder")}
                 required
               />
             </div>
             <div className="input-group">
               <span className="spanName">
-                {t("professor.courseDescriptionLabel")}: <span className="redStar"> *</span>
+                {t("professor.courseDescriptionLabel")}:{" "}
+                <span className="redStar"> *</span>
               </span>
               <textarea
-                rows="7"
+                rows="5"
                 type="text"
                 className="form-control"
                 name="description"
                 onChange={handleChange}
-                placeholder={t("professor.courseDescriptionPlaceholder")} 
+                placeholder={t("professor.courseDescriptionPlaceholder")}
                 required
               />
             </div>
@@ -137,7 +139,8 @@ function Professor() {
             <div className="form2">
               <div className="input-group">
                 <span className="spanName">
-                  {t("professor.courseContextLabel")}: <span className="redStar"> *</span>
+                  {t("professor.courseContextLabel")}:{" "}
+                  <span className="redStar"> *</span>
                 </span>
                 <textarea
                   rows="14"
@@ -181,4 +184,3 @@ function Professor() {
 }
 
 export default Professor;
-

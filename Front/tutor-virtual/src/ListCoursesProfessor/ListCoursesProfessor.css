@@ -60,3 +60,29 @@
   border: none;
   background-color: transparent;
 }
+
+.button-add-course{
+  color: white;
+  background-color: #DD4D42;
+  border-radius:10px;
+  padding: 10px;
+  cursor: pointer;
+  margin: 30px;
+  margin-right: 1px;
+  margin-left: 50px;
+  display: flex;
+  justify-content: center;
+  border: none;
+  filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.4));
+  font-size: 25px;
+}
+  
+  .button-add-course:hover{
+    background-color: #A6A6A6;
+  }
+
+.add-new-course-container{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2%;
+}

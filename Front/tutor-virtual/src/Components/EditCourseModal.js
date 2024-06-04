@@ -31,15 +31,15 @@ function EditCourseModal({ course, closeModal }) {
     try {
       await modifyCourseProfessor(course.id, editedCourse);
       Swal.fire({
-        icon: 'success',
-        title: t('professor.successTitle'),
-        text: t('professor.successText'),
+        icon: "success",
+        title: t("professor.successTitle"),
+        text: t("professor.successText"),
       }).then(() => {
         navigate("/Professor");
       });
       closeModal();
     } catch (error) {
-      setError(t('professor.errorText'));
+      setError(t("professor.errorText"));
       console.error("Error updating course:", error);
     }
   };
@@ -63,23 +63,23 @@ function EditCourseModal({ course, closeModal }) {
         </button>
         <div className="modal-header">
           <label className="modal-title-course">
-            {t('professor.courseCreationTitle2')} <br />
+            {t("professor.courseCreationTitle2")} <br />
           </label>
           <label className="modal-subtitle-course">{editedCourse.name}</label>
         </div>
-        <form onSubmit={handleSubmit} className="modal-container">
+        <form onSubmit={handleSubmit} className="modal-container-edit-course">
           <div className="inputs-container-modal">
             {error && <div className="error-message">{error}</div>}
             <div className="form-control-modal">
               <label htmlFor="name" className="label-modal">
-                {t('professor.courseNameLabel')}
+                {t("professor.courseNameLabel")}
               </label>
               <input
                 id="name"
                 name="name"
                 className="input-moda-name"
                 type="text"
-                placeholder={t('professor.courseNamePlaceholder')}
+                placeholder={t("professor.courseNamePlaceholder")}
                 onChange={handleChange}
                 value={editedCourse.name}
                 required
@@ -87,13 +87,13 @@ function EditCourseModal({ course, closeModal }) {
             </div>
             <div className="form-control-modal">
               <label htmlFor="description" className="label-modal">
-                {t('professor.courseDescriptionLabel')}
+                {t("professor.courseDescriptionLabel")}
               </label>
               <textarea
                 id="description"
                 name="description"
                 className="input-modal"
-                placeholder={t('professor.courseDescriptionPlaceholder')}
+                placeholder={t("professor.courseDescriptionPlaceholder")}
                 onChange={handleChange}
                 value={editedCourse.description}
                 required
@@ -101,13 +101,13 @@ function EditCourseModal({ course, closeModal }) {
             </div>
             <div className="form-control-modal long-input">
               <label htmlFor="context" className="label-modal">
-                {t('professor.courseContextLabel2')}
+                {t("professor.courseContextLabel2")}
               </label>
               <textarea
                 id="context"
                 name="context"
                 className="input-modal"
-                placeholder={t('professor.courseContextPlaceholder')}
+                placeholder={t("professor.courseContextPlaceholder")}
                 onChange={handleChange}
                 value={editedCourse.context}
                 required
@@ -116,14 +116,14 @@ function EditCourseModal({ course, closeModal }) {
           </div>
           <div className="button-container-modal">
             <button className="button-modal" type="submit">
-              {t('professor.registerButton2')}
+              {t("professor.registerButton2")}
             </button>
             <button
               className="button-modal cancel-button"
               type="button"
               onClick={handleCancel}
             >
-              {t('cancel')}
+              {t("cancel")}
             </button>
           </div>
         </form>

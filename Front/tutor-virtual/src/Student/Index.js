@@ -4,10 +4,10 @@ import Image from "../Resources/Student.png";
 import "./Student.css";
 import CourseCard from "../Components/CourseCard.js";
 import { listCourses } from "../Services/Course.js";
-import { useTranslation } from "react-i18next"; 
+import { useTranslation } from "react-i18next";
 
 function Student() {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -28,15 +28,15 @@ function Student() {
 
   return (
     <>
-      <Navbar href={"/Student"} image={Image} role={"users"} />
+      <Navbar href={"/Student"} image={Image} role={"student"} />
       <div className="titleStudent">
-        <h2>{t("student.courses")}</h2> 
+        <h2>{t("student.courses")}</h2>
       </div>
       {loading ? (
         <div className="loading">
           <div className="loader">
             <div className="scanner">
-              <span>{t("loading")}</span> 
+              <span>{t("loading")}</span>
             </div>
           </div>
         </div>

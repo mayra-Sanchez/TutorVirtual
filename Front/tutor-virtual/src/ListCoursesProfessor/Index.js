@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import Image from "../Resources/Professor.png";
-import { deleteCourseProfessor, listCoursesProfessor } from "../Services/Course";
+import {
+  deleteCourseProfessor,
+  listCoursesProfessor,
+} from "../Services/Course";
 import Navbar from "../Components/Navbar";
 import Swal from "sweetalert2";
 import "./ListCoursesProfessor.css";
@@ -43,7 +46,9 @@ function ListCoursesProfessor() {
     const month = courseCreationDate.getMonth() + 1;
     const year = courseCreationDate.getFullYear();
 
-    const formattedDate = `${day < 10 ? "0" : ""}${day}-${month < 10 ? "0" : ""}${month}-${year}`;
+    const formattedDate = `${day < 10 ? "0" : ""}${day}-${
+      month < 10 ? "0" : ""
+    }${month}-${year}`;
 
     return formattedDate;
   };
@@ -104,13 +109,11 @@ function ListCoursesProfessor() {
     });
   };
 
-  // Función para abrir el modal de edición
   const openEditModal = (course) => {
     setSelectedCourse(course);
     setIsModalOpen(true);
   };
 
-  // Función para cerrar el modal de edición
   const closeEditModal = () => {
     setSelectedCourse(null);
     setIsModalOpen(false);
@@ -119,7 +122,7 @@ function ListCoursesProfessor() {
 
   return (
     <>
-      <Navbar href={"/Student"} image={Image} role={"users"} />
+      <Navbar href={"/Professor"} image={Image} role={"professor"} />
       <div className="titleStudent">
         <h2>{t("courses.title")}</h2>
       </div>
@@ -160,15 +163,21 @@ function ListCoursesProfessor() {
                       </button>
                     </div>
                     <label className="card-title-teacher">
-                      <h2 className="title-teacher">{t("courses.courseName")}:</h2>{" "}
+                      <h2 className="title-teacher">
+                        {t("courses.courseName")}:
+                      </h2>{" "}
                       {course.name}
                     </label>
                     <div className="card-text-teacher">
-                      <h2 className="title-teacher">{t("courses.courseDescription")}:</h2>{" "}
+                      <h2 className="title-teacher">
+                        {t("courses.courseDescription")}:
+                      </h2>{" "}
                       {course.description}
                     </div>
                     <div className="card-text-teacher">
-                      <h2 className="title-teacher">{t("courses.courseCreationDate")}:</h2>{" "}
+                      <h2 className="title-teacher">
+                        {t("courses.courseCreationDate")}:
+                      </h2>{" "}
                       {handleDate(course.creation_date)}
                     </div>
                   </div>
@@ -176,16 +185,15 @@ function ListCoursesProfessor() {
               ))}
             </div>
           </div>
-          <div>
+          <div className="add-new-course-container">
             <button
               type="submit"
-              className="buttonRegister"
+              className="button-add-course"
               onClick={changeRoute}
             >
               +
             </button>
           </div>
-          {/* Modal de edición */}
           {isModalOpen && (
             <EditCourseModal
               course={selectedCourse}
