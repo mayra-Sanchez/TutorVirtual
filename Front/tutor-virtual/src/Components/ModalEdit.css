@@ -8,11 +8,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Ajuste la opacidad aquí */
+    background: rgba(0, 0, 0, 0.7); 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Asegura que el modal esté por encima de todo */
+    z-index: 1000; 
 }
 
 .modal-edit-user{
@@ -42,7 +42,7 @@
     padding-right: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrar los inputs */
+    align-items: center; 
 }
 
 .inputs-container-modal::-webkit-scrollbar {
@@ -86,7 +86,7 @@
 
 .input-modal {
     font-size: 20px;
-    width: calc(100% - 170px); /* Ajustar el ancho */
+    width: calc(100% - 170px); 
     height: 50px;
     padding: 10px;
     border: none;

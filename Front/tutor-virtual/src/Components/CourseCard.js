@@ -3,11 +3,19 @@ import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./CourseCard.css";
 import { addCoursesFavorites, listCourses } from "../Services/Course";
+import { RiDeleteBin6Line, RiEditBoxLine } from "react-icons/ri";
 import { IoIosStarOutline } from "react-icons/io";
 import Swal from "sweetalert2";
 
 //Component courses
-const CourseCard = ({ courseId, name, teacher, creationDate, description }) => {
+const CourseCard = ({
+  componet,
+  courseId,
+  name,
+  teacher,
+  creationDate,
+  description,
+}) => {
   const [course, setCourse] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedCourseId, setSelectedCourseId] = useState(null);
@@ -81,34 +89,85 @@ const CourseCard = ({ courseId, name, teacher, creationDate, description }) => {
 
   return (
     <>
-      {course && (
-        <div className="course-container-scroll-student">
+      {componet === "favs" && (
+        <div className="course-container-scroll-teacher">
           <div className="course-container-teacher">
-            <div className="container-add-fav">
-              <button className="button-add-fav">
-                <IoIosStarOutline
-                  className="icon-add-fav"
-                  onClick={() => addFavorites()}
-                />
-              </button>
-            </div>
-            <div className="card-body-teacher" onClick={openModal}>
-              <label className="card-title-teacher">
-                <h2 className="title-teacher">Nombre del curso:</h2> {name}
-              </label>
-              <div className="card-text-teacher">
-                <h2 className="title-teacher">Profesor:</h2> {teacher}
-              </div>
-              <div className="card-text-teacher">
-                <h2 className="title-teacher">Descripción:</h2>{" "}
-                {course.description}
-              </div>
-              <div className="card-text-teacher">
-                <h2 className="title-teacher">Fecha de creación:</h2> {date}
+            <div className="course-card-teacher">
+              <div className="card-body-teacher">
+                <div className="container-delete">
+                  <button
+                    className="button-delete-course"
+                    // onClick={() =>
+                    //   handleDelete(
+                    //     course.id,
+                    //     course.name,
+                    //     course.description,
+                    //     course.context
+                    //   )
+                    // }
+                  >
+                    <RiDeleteBin6Line className="icon-delete" />
+                  </button>
+                </div>
+                <label className="card-title-teacher">
+                  <h2 className="title-teacher">Nombre del curso:</h2> {name}
+                </label>
+                <div className="card-text-teacher">
+                  <h2 className="title-teacher">Profesor:</h2> {description}
+                </div>
+                <div className="card-text-teacher">
+                  <h2 className="title-teacher">Descripción:</h2> {description}
+                </div>
+
+                <div className="card-text-teacher">
+                  <h2 className="title-teacher">Fecha de creación:</h2>{" "}
+                  {creationDate}
+                </div>
               </div>
             </div>
           </div>
         </div>
+      )}
+
+      {!componet && (
+        <div className="course-container-scroll-teacher">
+          <div className="course-container-teacher">
+            <div className="course-card-teacher">
+              <div className="card-body-teacher">
+                <div className="container-add-fav">
+                  <button className="button-add-fav" onClick={addFavorites}>
+                    <IoIosStarOutline className="icon-add-fav" />
+                  </button>
+                </div>
+                <div className="card-body-student-courses" onClick={openModal}>
+                  <label className="card-title-teacher">
+                    <h2 className="title-teacher">Nombre del curso:</h2> {name}
+                  </label>
+                  <div className="card-text-teacher">
+                    <h2 className="title-teacher">Profesor:</h2> {teacher}
+                  </div>
+                  <div className="card-text-teacher">
+                    <h2 className="title-teacher">Descripción:</h2>{" "}
+                    {description}
+                  </div>
+                  <div className="card-text-teacher">
+                    <h2 className="title-teacher">Fecha de creación:</h2> {date}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        // <div className="course-container-scroll-student">
+        //   <div className="course-container-student">
+        //     <div className="container-add-fav">
+        //       <button className="button-add-fav" onClick={addFavorites}>
+        //         <IoIosStarOutline className="icon-add-fav" />
+        //       </button>
+        //     </div>
+
+        //   </div>
+        // </div>
       )}
 
       {showModal && (

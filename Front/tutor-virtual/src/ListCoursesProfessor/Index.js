@@ -136,7 +136,7 @@ function ListCoursesProfessor() {
         </div>
       ) : (
         <>
-          <div className="course-container-scroll">
+          <div className="course-container-scroll-teacher">
             <div className="course-container-teacher">
               {courses.map((course) => (
                 <div key={course.id} className="course-card-teacher">

@@ -1,5 +1,29 @@
+.course-container-scroll-teacher {
+  overflow-y: auto;
+  max-height: 500px;
+  min-height: 25%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.course-container-scroll-teacher::-webkit-scrollbar {
+  width: 12px;
+  padding: 10px 20px;
+  margin-top: 50px;
+}
+
+.course-container-scroll-teacher::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 6px;
+}
+
+.course-container-scroll-teacher::-webkit-scrollbar-thumb {
+  background-color: #DD4D42;
+  border-radius: 6px;
+}
+
 .course-container-teacher{
-    display: grid;
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 10px;
