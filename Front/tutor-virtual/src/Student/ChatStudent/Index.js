@@ -101,11 +101,7 @@ function ChatStudent() {
 
   return (
     <>
-      <Navbar
-        href={`/Student/${selectedCourseId}/Tutor`}
-        image={Image}
-        role={"student"}
-      />
+      <Navbar href={`/Student`} image={Image} role={"student"} />
       <br />
       <div className="container_chat_student">
         <div className="left-column">

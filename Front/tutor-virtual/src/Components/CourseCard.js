@@ -2,10 +2,16 @@ import React, { useState, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./CourseCard.css";
-import { addCoursesFavorites, listCourses } from "../Services/Course";
+import {
+  addCoursesFavorites,
+  deleteCourseFav,
+  listCourses,
+  listCoursesFavorites,
+} from "../Services/Course";
 import { RiDeleteBin6Line, RiEditBoxLine } from "react-icons/ri";
 import { IoIosStarOutline } from "react-icons/io";
 import Swal from "sweetalert2";
+import { useTranslation } from "react-i18next";
 
 //Component courses
 const CourseCard = ({
@@ -16,23 +22,35 @@ const CourseCard = ({
   creationDate,
   description,
 }) => {
-  const [course, setCourse] = useState(null);
+  // const [course, setCourse] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedCourseId, setSelectedCourseId] = useState(null);
 
   useEffect(() => {
-    const fetchCourse = async () => {
-      try {
-        const courses = await listCourses();
-        const selectedCourse = courses.find((c) => c.id === courseId);
-        setCourse(selectedCourse);
-      } catch (error) {
-        console.error("Error fetching course:", error);
-      }
-    };
-
     fetchCourse();
-  }, [courseId]);
+    // fetchCourseFavs();
+  }, []);
+
+  const fetchCourse = async () => {
+    try {
+      await listCourses();
+      // const courses = await listCourses();
+      // const selectedCourse = courses.find((c) => c.id === courseId);
+      // setCourse(selectedCourse);
+    } catch (error) {
+      console.error("Error fetching course:", error);
+    }
+  };
+
+  // const fetchCourseFavs = async () => {
+  //   try {
+  //     await listCoursesFavorites();
+  //     const selectedCourse = coursesFav.find((c) => c.id === courseId);
+  //     setCourse(selectedCourse);
+  //   } catch (error) {
+  //     console.log("error fetching fav course", error)
+  //   }
+  // }
 
   const openModal = () => {
     setShowModal(true);
@@ -70,23 +88,79 @@ const CourseCard = ({
     timerProgressBar: true,
   });
 
-  const addFavorites = () => {
-    // const body = {
-    //   id: courseId,
-    //   name: name,
-    // };
-    // addCoursesFavorites(body).then(() => {
+  const addFavorites = async () => {
+    // const coursesFav = await listCoursesFavorites();
+    // const exitsCourse = coursesFav.some((curso) => curso.id === courseId);
+    // if (exitsCourse) {
     //   Toast.fire({
-    //     icon: "success",
-    //     title: "Curso añadido a favoritos",
+    //     icon: "warning",
+    //     title: "El curso ya existe en favoritos",
     //   });
-    // });
+    // } else {
+    //   const body = {
+    //     id: courseId,
+    //     name: name,
+    //   };
+    //   addCoursesFavorites(body).then(() => {
+    //     Toast.fire({
+    //       icon: "success",
+    //       title: "Curso añadido a favoritos",
+    //     });
+    //   });
+    // }
+
     Toast.fire({
       icon: "success",
       title: "Curso añadido a favoritos",
     });
   };
 
+  const handleDelete = (idCourse) => {
+    Swal.fire({
+      title: "¿Estás seguro de hacer esto?",
+      text: "Vas a elimar el curso de favoritos",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      showLoaderOnConfirm: true,
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, eliminar",
+      allowOutsideClick: false,
+      cancelButtonText: "No, cancelar",
+
+      preConfirm: () => {
+        return new Promise((resolve, reject) => {
+          deleteCourseFav(idCourse)
+            .then(() => {
+              Swal.fire({
+                icon: "success",
+                title: "Curso eliminado exitosamente",
+                // text: "",
+                confirmButtonText: "Continuar",
+                allowOutsideClick: false,
+                showCancelButton: false,
+              }).then(() => {
+                // fetchData();
+              });
+            })
+            .catch((err) => {
+              onError(err);
+            });
+        });
+      },
+    });
+  };
+
+  const onError = (error) => {
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: error || "Error al eliminar el curso",
+      confirmButtonText: "Continuar",
+      allowOutsideClick: false,
+      showCancelButton: false,
+    });
+  };
   return (
     <>
       {componet === "favs" && (
@@ -99,29 +173,28 @@ const CourseCard = ({
                     className="button-delete-course"
                     // onClick={() =>
                     //   handleDelete(
-                    //     course.id,
-                    //     course.name,
-                    //     course.description,
-                    //     course.context
+                    //     courseId
                     //   )
                     // }
                   >
                     <RiDeleteBin6Line className="icon-delete" />
                   </button>
                 </div>
-                <label className="card-title-teacher">
-                  <h2 className="title-teacher">Nombre del curso:</h2> {name}
-                </label>
-                <div className="card-text-teacher">
-                  <h2 className="title-teacher">Profesor:</h2> {description}
-                </div>
-                <div className="card-text-teacher">
-                  <h2 className="title-teacher">Descripción:</h2> {description}
-                </div>
+                <div onClick={openModal}>
+                  <label className="card-title-teacher">
+                    <h2 className="title-teacher">Nombre del curso:</h2> {name}
+                  </label>
+                  <div className="card-text-teacher">
+                    <h2 className="title-teacher">Profesor:</h2> {description}
+                  </div>
+                  <div className="card-text-teacher">
+                    <h2 className="title-teacher">Descripción:</h2>{" "}
+                    {description}
+                  </div>
 
-                <div className="card-text-teacher">
-                  <h2 className="title-teacher">Fecha de creación:</h2>{" "}
-                  {creationDate}
+                  <div className="card-text-teacher">
+                    <h2 className="title-teacher">Fecha de creación:</h2> {date}
+                  </div>
                 </div>
               </div>
             </div>
@@ -158,16 +231,6 @@ const CourseCard = ({
             </div>
           </div>
         </div>
-        // <div className="course-container-scroll-student">
-        //   <div className="course-container-student">
-        //     <div className="container-add-fav">
-        //       <button className="button-add-fav" onClick={addFavorites}>
-        //         <IoIosStarOutline className="icon-add-fav" />
-        //       </button>
-        //     </div>
-
-        //   </div>
-        // </div>
       )}
 
       {showModal && (
@@ -177,8 +240,8 @@ const CourseCard = ({
               <AiOutlineClose />
             </button>
             <h2>Nomre del curso: {name}</h2>
-            <h3>Profesor: {teacher}</h3>
-            <p>Creado: {date}</p>
+            <h3>Nombre del profesor: {teacher}</h3>
+            <p>Fecha de creación: {date}</p>
             <p>Descripción: {description}</p>
             <br></br>
             <Link to={`/Student/${selectedCourseId}/Tutor`} className="ask-btn">

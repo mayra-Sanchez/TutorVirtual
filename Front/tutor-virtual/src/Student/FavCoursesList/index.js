@@ -12,6 +12,22 @@ function FavCoursesList() {
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
     },
+    {
+      id: 6,
+      name: "profesor2",
+      instructor: 2,
+      creation_date: "01-02-24",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    },
+    {
+      id: 4,
+      name: "profesor3",
+      instructor: 3,
+      creation_date: "01-02-24",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    },
   ];
 
   // useEffect(() => {

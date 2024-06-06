@@ -21,6 +21,9 @@ const endpoints = {
     coursesList: `${URL}/course/student/list`,
     chatTutor: (id_course) => `${URL}/course/student/${id_course}/chat`,
     addFavorites: `${URL}/course/student/favorites`,
+    listFavorites: `${URL}/course/student/list/favorites`,
+    deleteFavorites: (id_course) =>
+      `${URL}/course/student/favorite/delete/${id_course}`,
   },
   Professor: {
     registerCourse: `${URL}/course/instructor/create`,
