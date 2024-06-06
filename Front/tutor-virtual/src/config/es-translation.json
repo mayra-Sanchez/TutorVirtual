@@ -12,7 +12,8 @@
         "continueButtonText": "Continuar",
         "errorTitle": "Algo salió mal",
         "logoutErrorText": "Ocurrió un error al cerrar sesión",
-        "updateInfo": "Actualizar información"
+        "updateInfo": "Actualizar información", 
+        "favoritos": "Favoritos"
     },
     "login": {
         "title": "Iniciar sesión",
@@ -99,12 +100,13 @@
     "courses": {
         "loading": "Cargando...",
         "title": "Cursos",
+        "title2": "Cursos favoritos",
         "deleteCoursePrompt": "Atención, ¿estás seguro de que quieres realizar esta acción?",
         "deleteCourseConfirmation": "Estás a punto de eliminar un curso",
         "successTitle": "Operación exitosa",
-        "successText": "El curso se eliminó correctamente",
+        "successText": "El curso fue eliminado exitosamente",
         "errorTitle": "Algo salió mal",
-        "errorText": "Ocurrió un error al eliminar el curso, por favor intente de nuevo",
+        "errorText": "Ocurrió un error al eliminar el curso, por favor intenta de nuevo",
         "continueButton": "Continuar",
         "cancelButton": "No, cancelar",
         "confirmButton": "Sí, eliminar",
@@ -143,6 +145,7 @@
         "listenButtonText": "Escuchar",
         "stopButtonText": "Detener",
         "chatSuccessText": "Tu pregunta ha sido enviada correctamente",
-        "chatSuccessTitle": "Éxito"
+        "chatSuccessTitle": "Éxito",
+        "buttonconfirmation": "Preguntale al tutor"
     }
 }

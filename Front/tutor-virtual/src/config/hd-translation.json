@@ -12,7 +12,8 @@
         "continueButtonText": "जारी रखें",
         "errorTitle": "कुछ गलत हुआ",
         "logoutErrorText": "लॉग आउट करते समय कुछ त्रुटि हुई",
-        "updateInfo": "जानकारी अपडेट करें"
+        "updateInfo": "जानकारी अपडेट करें",
+        "favoritos": "पसंदीदा"
     },
     "login": {
         "title": "लॉग इन",
@@ -98,17 +99,18 @@
     },
     "courses": {
         "loading": "लोड हो रहा है...",
-        "title": "कोर्स",
-        "deleteCoursePrompt": "ध्यान दें, क्या आप इस कार्रवाई को करना चाहते हैं?",
-        "deleteCourseConfirmation": "आप एक कोर्स को हटाने वाले हैं",
-        "successTitle": "सफल कार्रवाई",
-        "successText": "कोर्स को सफलतापूर्वक हटा दिया गया है",
-        "errorTitle": "कुछ गलत हुआ",
-        "errorText": "कोर्स हटाते समय कुछ त्रुटि हुई, कृपयया पुनः प्रयास करें",
+        "title": "पाठ्यक्रम",
+        "title2": "पसंदीदा पाठ्यक्रम",
+        "deleteCoursePrompt": "ध्यान दें, क्या आप यह क्रिया करना चाहते हैं?",
+        "deleteCourseConfirmation": "आप एक पाठ्यक्रम हटाने वाले हैं",
+        "successTitle": "सफल ऑपरेशन",
+        "successText": "पाठ्यक्रम सफलतापूर्वक हटाया गया",
+        "errorTitle": "कुछ गलत हो गया",
+        "errorText": "पाठ्यक्रम को हटाने में त्रुटि हुई, कृपया पुनः प्रयास करें",
         "continueButton": "जारी रखें",
         "cancelButton": "नहीं, रद्द करें",
-        "confirmButton": "हां, हटाएं",
-        "courseName": "कोर्स का नाम",
+        "confirmButton": "हाँ, हटाएं",
+        "courseName": "पाठ्यक्रम का नाम",
         "courseDescription": "विवरण",
         "courseCreationDate": "निर्माण तिथि"
     },
@@ -143,6 +145,7 @@
         "listenButtonText": "सुनें",
         "stopButtonText": "रोकें",
         "chatSuccessText": "आपका प्रश्न सफलतापूर्वक भेज दिया गया है",
-        "chatSuccessTitle": "सफलता।"
+        "chatSuccessTitle": "सफलता।",
+        "buttonconfirmation": "ट्यूटर से पूछें"
     }
 }

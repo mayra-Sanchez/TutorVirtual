@@ -22,6 +22,9 @@ const CourseCard = ({
   creationDate,
   description,
 }) => {
+
+  const { t } = useTranslation();
+
   // const [course, setCourse] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedCourseId, setSelectedCourseId] = useState(null);
@@ -104,7 +107,8 @@ const CourseCard = ({
     //   addCoursesFavorites(body).then(() => {
     //     Toast.fire({
     //       icon: "success",
-    //       title: "Curso añadido a favoritos",
+    //       title: t("courses.successTitle"),
+    //       text: t("courses.successText"),
     //     });
     //   });
     // }
@@ -117,26 +121,26 @@ const CourseCard = ({
 
   const handleDelete = (idCourse) => {
     Swal.fire({
-      title: "¿Estás seguro de hacer esto?",
-      text: "Vas a elimar el curso de favoritos",
+      title: t("courses.deleteCoursePrompt"),
+      text: t("courses.deleteCourseConfirmation"),
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       showLoaderOnConfirm: true,
       cancelButtonColor: "#d33",
-      confirmButtonText: "Si, eliminar",
+      confirmButtonText: t("courses.confirmButton"),
       allowOutsideClick: false,
-      cancelButtonText: "No, cancelar",
-
+      cancelButtonText: t("courses.cancelButton"),
+     
       preConfirm: () => {
         return new Promise((resolve, reject) => {
           deleteCourseFav(idCourse)
             .then(() => {
               Swal.fire({
                 icon: "success",
-                title: "Curso eliminado exitosamente",
-                // text: "",
-                confirmButtonText: "Continuar",
+                title: t("courses.successTitle"),
+                text: t("courses.successText"),
+                confirmButtonText: t("courses.continueButton"),
                 allowOutsideClick: false,
                 showCancelButton: false,
               }).then(() => {
@@ -171,29 +175,29 @@ const CourseCard = ({
                 <div className="container-delete">
                   <button
                     className="button-delete-course"
-                    // onClick={() =>
-                    //   handleDelete(
-                    //     courseId
-                    //   )
-                    // }
+                    // onClick={() => handleDelete(courseId)}
                   >
                     <RiDeleteBin6Line className="icon-delete" />
                   </button>
                 </div>
                 <div onClick={openModal}>
                   <label className="card-title-teacher">
-                    <h2 className="title-teacher">Nombre del curso:</h2> {name}
+                    <h2 className="title-teacher">
+                      {t("courses.courseName")}:
+                    </h2> 
+                    {name}
                   </label>
                   <div className="card-text-teacher">
-                    <h2 className="title-teacher">Profesor:</h2> {description}
-                  </div>
-                  <div className="card-text-teacher">
-                    <h2 className="title-teacher">Descripción:</h2>{" "}
+                    <h2 className="title-teacher">
+                      {t("courses.courseDescription")}:
+                    </h2> 
                     {description}
                   </div>
-
                   <div className="card-text-teacher">
-                    <h2 className="title-teacher">Fecha de creación:</h2> {date}
+                    <h2 className="title-teacher">
+                      {t("courses.courseCreationDate")}:
+                    </h2> 
+                    {date}
                   </div>
                 </div>
               </div>
@@ -214,17 +218,22 @@ const CourseCard = ({
                 </div>
                 <div className="card-body-student-courses" onClick={openModal}>
                   <label className="card-title-teacher">
-                    <h2 className="title-teacher">Nombre del curso:</h2> {name}
+                    <h2 className="title-teacher">
+                      {t("courses.courseName")}:
+                    </h2> 
+                    {name}
                   </label>
                   <div className="card-text-teacher">
-                    <h2 className="title-teacher">Profesor:</h2> {teacher}
-                  </div>
-                  <div className="card-text-teacher">
-                    <h2 className="title-teacher">Descripción:</h2>{" "}
+                    <h2 className="title-teacher">
+                      {t("courses.courseDescription")}:
+                    </h2> 
                     {description}
                   </div>
                   <div className="card-text-teacher">
-                    <h2 className="title-teacher">Fecha de creación:</h2> {date}
+                    <h2 className="title-teacher">
+                      {t("courses.courseCreationDate")}:
+                    </h2> 
+                    {date}
                   </div>
                 </div>
               </div>
@@ -239,13 +248,21 @@ const CourseCard = ({
             <button className="close-btn" onClick={closeModal}>
               <AiOutlineClose />
             </button>
-            <h2>Nomre del curso: {name}</h2>
-            <h3>Nombre del profesor: {teacher}</h3>
-            <p>Fecha de creación: {date}</p>
-            <p>Descripción: {description}</p>
-            <br></br>
+            <h2>
+              {t("courses.courseName")}: {name}
+            </h2>
+            <h3>
+              {t("courses.courseDescription")}: {teacher}
+            </h3>
+            <p>
+              {t("courses.courseCreationDate")}: {date}
+            </p>
+            <p>
+              {t("courses.courseDescription")}: {description}
+            </p>
+            <br />
             <Link to={`/Student/${selectedCourseId}/Tutor`} className="ask-btn">
-              Preguntale al tutor
+              {t("student.buttonconfirmation")}
             </Link>
           </div>
         </div>

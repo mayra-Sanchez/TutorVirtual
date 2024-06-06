@@ -1,8 +1,12 @@
 import Navbar from "../../Components/Navbar";
 import Image from "../../Resources/Student.png";
 import CourseCard from "../../Components/CourseCard";
+import { useTranslation } from "react-i18next";
 
 function FavCoursesList() {
+
+  const { t } = useTranslation();
+
   const data = [
     {
       id: 1,
@@ -48,7 +52,7 @@ function FavCoursesList() {
     <>
       <Navbar href={"/Student"} image={Image} role={"student"} />;
       <div className="titleStudent">
-        <h2>Cursos favoritos</h2>
+      <h2>{t('courses.title2')}</h2>
       </div>
       <div className="course-container-scroll">
         <div className="course-container">

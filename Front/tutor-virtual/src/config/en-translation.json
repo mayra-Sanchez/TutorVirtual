@@ -12,7 +12,8 @@
         "continueButtonText": "Continue",
         "errorTitle": "Something went wrong",
         "logoutErrorText": "An error occurred while logging out",
-        "updateInfo": "Update information"
+        "updateInfo": "Update information",
+        "favoritos": "Favorites"
     },
     "login": {
         "title": "Log in",
@@ -99,6 +100,7 @@
     "courses": {
         "loading": "Loading...",
         "title": "Courses",
+        "title2": "Favorite courses",
         "deleteCoursePrompt": "Attention, are you sure you want to perform this action",
         "deleteCourseConfirmation": "You are about to delete a course",
         "successTitle": "Successful operation",
@@ -143,6 +145,7 @@
         "listenButtonText": "Listening",
         "stopButtonText": "Stop",
         "chatSuccessText": "Your question has been successfully sent",
-        "chatSuccessTitle": "Success."
+        "chatSuccessTitle": "Success.",
+        "buttonconfirmation": "Ask the tutor"
     }
 }

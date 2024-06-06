@@ -12,7 +12,8 @@
         "continueButtonText": "Continuer",
         "errorTitle": "Quelque chose s'est mal passé",
         "logoutErrorText": "Une erreur s'est produite lors de la déconnexion",
-        "updateInfo": "Mettre à jour les informations"
+        "updateInfo": "Mettre à jour les informations",
+        "favoritos": "Favoris"
     },
     "login": {
         "title": "Connexion",
@@ -99,11 +100,12 @@
     "courses": {
         "loading": "Chargement...",
         "title": "Cours",
+        "title2": "Cours favoris",
         "deleteCoursePrompt": "Attention, êtes-vous sûr de vouloir effectuer cette action?",
         "deleteCourseConfirmation": "Vous êtes sur le point de supprimer un cours",
         "successTitle": "Opération réussie",
         "successText": "Le cours a été supprimé avec succès",
-        "errorTitle": "Quelque chose s'est mal passé",
+        "errorTitle": "Quelque chose a mal tourné",
         "errorText": "Une erreur s'est produite lors de la suppression du cours, veuillez réessayer",
         "continueButton": "Continuer",
         "cancelButton": "Non, annuler",
@@ -143,6 +145,7 @@
         "listenButtonText": "Écoute",
         "stopButtonText": "Arrêter",
         "chatSuccessText": "Votre question a été envoyée avec succès",
-        "chatSuccessTitle": "Succès."
+        "chatSuccessTitle": "Succès.",
+        "buttonconfirmation": "Demandez au tuteur"
     }
 }

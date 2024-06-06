@@ -12,7 +12,8 @@
         "continueButtonText": "Weiter",
         "errorTitle": "Etwas ist schief gelaufen",
         "logoutErrorText": "Beim Abmelden ist ein Fehler aufgetreten",
-        "updateInfo": "Informationen aktualisieren"
+        "updateInfo": "Informationen aktualisieren",
+        "favoritos": "Favoriten"
     },
     "login": {
         "title": "Anmelden",
@@ -99,13 +100,14 @@
     "courses": {
         "loading": "Laden...",
         "title": "Kurse",
-        "deleteCoursePrompt": "Achtung, sind Sie sicher, dass Sie diese Aktion durchführen möchten?",
+        "title2": "Lieblingskurse",
+        "deleteCoursePrompt": "Achtung, sind Sie sicher, dass Sie diese Aktion ausführen möchten?",
         "deleteCourseConfirmation": "Sie sind dabei, einen Kurs zu löschen",
-        "successTitle": "Erfolg",
+        "successTitle": "Erfolgreiche Operation",
         "successText": "Der Kurs wurde erfolgreich gelöscht",
         "errorTitle": "Etwas ist schief gelaufen",
         "errorText": "Beim Löschen des Kurses ist ein Fehler aufgetreten, bitte versuchen Sie es erneut",
-        "continueButton": "Weiter",
+        "continueButton": "Fortfahren",
         "cancelButton": "Nein, abbrechen",
         "confirmButton": "Ja, löschen",
         "courseName": "Kursname",
@@ -143,6 +145,7 @@
         "listenButtonText": "Hören",
         "stopButtonText": "Stop",
         "chatSuccessText": "Ihre Frage wurde erfolgreich gesendet",
-        "chatSuccessTitle": "Erfolg."
+        "chatSuccessTitle": "Erfolg.",
+        "buttonconfirmation": "Fragen Sie den Tutor"
     }
 }

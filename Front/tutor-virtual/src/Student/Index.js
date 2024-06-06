@@ -30,7 +30,7 @@ function Student() {
     <>
       <Navbar href={"/Student"} image={Image} role={"student"} />
       <div className="titleStudent">
-        <h2>{t("student.courses")}</h2>
+        <h2>{t("student.title")}</h2>
       </div>
       {loading ? (
         <div className="loading">

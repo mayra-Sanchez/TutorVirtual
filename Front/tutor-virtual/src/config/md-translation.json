@@ -12,7 +12,8 @@
         "continueButtonText": "继续",
         "errorTitle": "出了点问题",
         "logoutErrorText": "登出时出现了错误",
-        "updateInfo": "更新信息"
+        "updateInfo": "更新信息",
+        "favoritos": "收藏"
     },
     "login": {
         "title": "登录",
@@ -99,12 +100,13 @@
     "courses": {
         "loading": "加载中...",
         "title": "课程",
-        "deleteCoursePrompt": "注意，您确定要执行此操作吗？",
+        "title2": "最喜欢的课程",
+        "deleteCoursePrompt": "注意，你确定要执行此操作吗？",
         "deleteCourseConfirmation": "您即将删除一门课程",
         "successTitle": "操作成功",
         "successText": "课程已成功删除",
-        "errorTitle": "出了点问题",
-        "errorText": "删除课程时出现了错误，请重试",
+        "errorTitle": "出了些问题",
+        "errorText": "删除课程时发生错误，请重试",
         "continueButton": "继续",
         "cancelButton": "不，取消",
         "confirmButton": "是的，删除",
@@ -143,6 +145,7 @@
         "listenButtonText": "倾听",
         "stopButtonText": "停止",
         "chatSuccessText": "您的问题已成功发送",
-        "chatSuccessTitle": "成功。"
+        "chatSuccessTitle": "成功。",
+        "buttonconfirmation": "询问导师"
     }
 }

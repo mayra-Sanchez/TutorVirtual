@@ -12,7 +12,8 @@
         "continueButtonText": "Продолжить",
         "errorTitle": "Что-то пошло не так",
         "logoutErrorText": "При выходе произошла ошибка",
-        "updateInfo": "Обновить информацию"
+        "updateInfo": "Обновить информацию",
+        "favoritos": "Избранное"
     },
     "login": {
         "title": "Войти",
@@ -99,14 +100,15 @@
     "courses": {
         "loading": "Загрузка...",
         "title": "Курсы",
+        "title2": "Избранные курсы",
         "deleteCoursePrompt": "Внимание, вы уверены, что хотите выполнить это действие?",
         "deleteCourseConfirmation": "Вы собираетесь удалить курс",
-        "successTitle": "Успех",
-        "successText": "Курс успешно удален",
+        "successTitle": "Операция успешна",
+        "successText": "Курс был успешно удален",
         "errorTitle": "Что-то пошло не так",
-        "errorText": "При удалении курса произошла ошибка, пожалуйста, попробуйте еще раз",
+        "errorText": "Произошла ошибка при удалении курса, пожалуйста, попробуйте снова",
         "continueButton": "Продолжить",
-        "cancelButton": "Нет, отменить",
+        "cancelButton": "Нет, отмена",
         "confirmButton": "Да, удалить",
         "courseName": "Название курса",
         "courseDescription": "Описание",
@@ -143,6 +145,7 @@
         "listenButtonText": "Слушать",
         "stopButtonText": "Стоп",
         "chatSuccessText": "Ваш вопрос успешно отправлен",
-        "chatSuccessTitle": "Успех."
+        "chatSuccessTitle": "Успех.",
+        "buttonconfirmation": "Спросите у репетитора"
     }
 }

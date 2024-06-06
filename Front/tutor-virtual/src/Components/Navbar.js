@@ -138,8 +138,7 @@ function Navbar({ image, role, href }) {
                   {t("navbar.courses")}
                 </a>
                 <a href={"/Student/favs"} className="navbar-home">
-                  Favoritos
-                  {/* falta traduccir */}
+                  {t("navbar.favoritos")}
                 </a>
                 <button onClick={showMenu} className="button-settings">
                   <IoSettingsOutline className="icon-settings" />
