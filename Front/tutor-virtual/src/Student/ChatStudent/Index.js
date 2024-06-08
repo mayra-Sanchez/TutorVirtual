@@ -108,14 +108,15 @@ function ChatStudent() {
           <div className="course-container2">
             <div className="card_course">
               <div className="info_course">
-                <h1>{t("courses.courseName")}</h1> 
+                <h1>{t("courses.courseName")}</h1>
                 <br />
                 {course && <p className="ptext">{course.name}</p>}
                 <br />
-                {/* <h1>{t("courses.title")}</h1>
+                <h1>instructor</h1>
+                {/* Es el nombre del profe */}
                 <br />
                 {course && <p className="ptext">{course.instructor}</p>}
-                <br /> */}
+                <br />
                 <h1>{t("courses.courseDescription")}</h1>
                 <br />
                 {course && <p className="ptext">{course.description}</p>}
