@@ -70,8 +70,7 @@ function CourseCard({
       await addCoursesFavorites(body);
       Toast1.fire({
         icon: "success",
-        title: t("courses.successTitle"),
-        text: t("courses.successText"),
+        title: t("courses.successText"),
       });
     }
   };
