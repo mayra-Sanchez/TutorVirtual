@@ -1,51 +1,49 @@
-.imageNav{
-  height: 75%;
-  width: 40%;
+.imageNav {
+  height: auto;
+  width: 150px; 
   padding: 10px;
   margin-top: 5%;
 }
 
 .navbarListado {
-    list-style: none;
-    display: flex;
-    color: #000000;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbarItems {
-    display: flex;
-    margin-left: auto; 
-    margin-top: 45px;
-    padding: 20px;
-  }
-  
-  .navbar-home {
-    text-decoration: none;
-    color: #000000;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 20px;
-    margin-top: 5%;
-  }
-  
-  .settingsIcon {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-  }
-  
-  .custom-menu .p-menu {
-    background-color: white;
-    border: 1px solid #ccc; /* Opcional: para agregar un borde */
+  list-style: none;
+  display: flex;
+  align-items: center; 
+  color: #000000;
+  margin: 0;
+  padding: 0;
 }
 
-.custom-menu .p-menuitem-link {
-    color: black; /* Cambia el color del texto si es necesario */
+.navbarItems {
+  display: flex;
+  margin-left: auto;
+  margin-top: 45px;
+  padding: 20px;
 }
 
-.custom-menu .p-menuitem-link:hover {
-    background-color: #f5f5f5; /* Cambia el color de fondo al pasar el ratón si es necesario */
+.navbar-home {
+  text-decoration: none;
+  color: #000000;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  margin-right: 20px;
 }
+
+.settingsIcon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.language-select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 40px; 
+  margin-left: 20px; 
+}
+
 .button-settings-container{
   padding: 1px;
 }

@@ -1,14 +1,14 @@
 import image from "../Resources/LogoAPP (2).png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Login.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { Loading } from "../Components/loading";
 import { jwtDecode } from "jwt-decode";
-import { useContext } from "react";
 import { LoginContext } from "../Components/Context/LoginContext";
 import { login } from "../Services/Users";
+import { useTranslation } from "react-i18next";
 
 function Login() {
   const { setLogin } = useContext(LoginContext);
@@ -18,62 +18,64 @@ function Login() {
     email: "",
     password: "",
   });
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const togglePassword = () => {
     setIsVisible(!isVisible);
   };
-  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setData({
       ...data,
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const dataLogin = {
-      ...data,
-    };
-    login(dataLogin).then((response) => {
-      try {
+    login(data)
+      .then((response) => {
         setLoading(false);
         localStorage.setItem("token_access", response.access);
         localStorage.setItem("token_refresh", response.refresh);
-        let data = localStorage.getItem("token_access");
-        const decoded = jwtDecode(data);
+        const decoded = jwtDecode(response.access);
         localStorage.setItem("user_id", decoded.user_id);
         Swal.fire({
           icon: "success",
-          title: "Operación exitosa",
-          text: "Tu inicio de sesión fue exitoso",
-          confirmButtonText: "Continuar",
+          title: t("login.successTitle"),
+          text: t("login.successText"),
+          confirmButtonText: t("login.continueButtonText"),
           allowOutsideClick: false,
           showCancelButton: false,
         }).then(() => {
           setLogin(true);
           if (decoded.rol === "Estudiante") {
             navigate("/Student");
-          }
-          if (decoded.rol === "Profesor") {
+          } else if (decoded.rol === "Profesor") {
             navigate("/Professor");
           }
         });
-      } catch (error) {
+      })
+      .catch((error) => {
         onError(error);
-      }
-    });
+      });
   };
+
   const onError = (error) => {
+    setLoading(false);
     Swal.fire({
       icon: "error",
-      title: "Algo salió mal",
-      text: "Ocurrió un error al iniciar sesión",
-      confirmButtonText: "Continuar",
+      title: t("login.errorTitle"),
+      text: t("login.errorText"),
+      confirmButtonText: t("login.continueButtonText"),
       allowOutsideClick: false,
       showCancelButton: false,
     });
     console.log("Esto está ocurriendo", error);
   };
+
   return loading ? (
     <Loading />
   ) : (
@@ -84,16 +86,16 @@ function Login() {
       <div className="login-form-container">
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="title-form">
-            <label className="title-login">Iniciar sesión</label>
+            <label className="title-login">{t("login.title")}</label>
           </div>
           <div className="form-container">
             <input
               className="input-gmail"
               type="email"
-              name="email" // Corregir el nombre del campo
+              name="email"
               value={data.email}
               onChange={handleChange}
-              placeholder="Correo electronico"
+              placeholder={t("login.emailPlaceholder")}
             />
             <div className="input-with-icon">
               <input
@@ -102,7 +104,7 @@ function Login() {
                 value={data.password}
                 onChange={handleChange}
                 className="input-password"
-                placeholder="Contraseña"
+                placeholder={t("login.passwordPlaceholder")}
               />
               <button
                 type="button"
@@ -114,11 +116,13 @@ function Login() {
             </div>
           </div>
           <div className="button-container">
-            <button className="button-login">Iniciar sesión</button>
+            <button className="button-login" type="submit">
+              {t("login.loginButton")}
+            </button>
             <p className="text-register">
-              ¿No tienes una cuenta?{" "}
+              {t("login.noAccount")}{" "}
               <a className="link-register" href="/Registro">
-                Registrate
+                {t("login.registerLink")}
               </a>
             </p>
           </div>

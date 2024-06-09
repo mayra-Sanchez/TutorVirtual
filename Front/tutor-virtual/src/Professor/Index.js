@@ -8,12 +8,14 @@ import { useSpeechApi } from "../Components/Hooks/SpeechApi.js";
 import activate from "../Resources/microphone.png";
 import Swal from "sweetalert2";
 import "./Professor.css";
+import { useTranslation } from "react-i18next"; // Importa useTranslation
 
 function Professor() {
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation(); // Obtén las funciones de traducción
   const { transcript, isListening, startListening, stopListening } =
     useSpeechApi();
-    const user_id = parseInt(localStorage.getItem("user_id"), 10);
+  const user_id = parseInt(localStorage.getItem("user_id"), 10);
   const [courseData, setCourseData] = useState({
     name: "",
     instructor: user_id,
@@ -48,28 +50,26 @@ function Professor() {
       ...courseData,
     };
 
-    console.log("LA INFO", data);
-
     Swal.fire({
-      title: "Atención, estás seguro de realizar esta acción",
-      text: "Vas a registrar un nuevo curso",
+      title: t("professor.confirmationTitle"), // Usa la función de traducción para las cadenas
+      text: t("professor.registerText"),
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       showLoaderOnConfirm: true,
       cancelButtonColor: "#d33",
-      confirmButtonText: `Confirmar`,
+      confirmButtonText: t("professor.confirmButtonText"),
       allowOutsideClick: false,
-      cancelButtonText: "Cancelar",
+      cancelButtonText: t("navbar.cancelButtonText"), // Usa la función de traducción para las cadenas
       preConfirm: () => {
         return new Promise((resolve, reject) => {
           addCourse(data)
             .then((response) => {
               Swal.fire({
                 icon: "success",
-                title: "Operación exitosa",
-                text: "Ha registrado el curso de forma exitosa",
-                confirmButtonText: "Continuar",
+                title: t("navbar.successTitle"),
+                text: t("professor.successText"),
+                confirmButtonText: t("navbar.continueButtonText"),
                 allowOutsideClick: false,
                 showCancelButton: false,
               }).then(() => {
@@ -77,7 +77,7 @@ function Professor() {
               });
             })
             .catch((err) => {
-              onError("Error al crear el curso, intenta de nuevo.");
+              onError(t("professor.errorText")); // Usa la función de traducción para las cadenas
               console.log(err);
             });
         });
@@ -88,9 +88,9 @@ function Professor() {
   const onError = (error) => {
     Swal.fire({
       icon: "error",
-      title: "Algo salió mal",
-      text: "Ocurrió un error al crear el curso, intentalo de nuevo",
-      confirmButtonText: "Continuar",
+      title: t("navbar.errorTitle"),
+      text: error, // Usa la función de traducción para las cadenas
+      confirmButtonText: t("navbar.continueButtonText"),
       allowOutsideClick: false,
       showCancelButton: false,
     });
@@ -99,34 +99,38 @@ function Professor() {
 
   return (
     <>
-      <Navbar href={"/Professor"} image={Image} role={"users"} />
+      <Navbar href={"/Professor"} image={Image} role={"professor"} />
       <div className="container">
-        <h1 className="title">Creación del curso</h1>
+        <h1 className="title">{t("professor.courseCreationTitle")}</h1>
         <form className="forms-container" onSubmit={handleSubmit}>
           <div className="form1">
-            <h2 className="title2">Registro</h2>
+            <h2 className="title2">{t("professor.registerTitle")}</h2>
             <div className="input-group">
               <span className="spanName">
-                Nombre del curso: <span className="redStar"> *</span>
+                {t("professor.courseNameLabel")}:{" "}
+                <span className="redStar"> *</span>
               </span>
               <input
                 type="text"
                 className="form-control"
                 name="name"
                 onChange={handleChange}
+                placeholder={t("professor.courseNamePlaceholder")}
                 required
               />
             </div>
             <div className="input-group">
               <span className="spanName">
-                Descripcion del curso: <span className="redStar"> *</span>
+                {t("professor.courseDescriptionLabel")}:{" "}
+                <span className="redStar"> *</span>
               </span>
               <textarea
-                rows="7"
+                rows="5"
                 type="text"
                 className="form-control"
                 name="description"
                 onChange={handleChange}
+                placeholder={t("professor.courseDescriptionPlaceholder")}
                 required
               />
             </div>
@@ -135,7 +139,7 @@ function Professor() {
             <div className="form2">
               <div className="input-group">
                 <span className="spanName">
-                  Escribele al tutor virtual que temas se verán en el curso:{" "}
+                  {t("professor.courseContextLabel")}:{" "}
                   <span className="redStar"> *</span>
                 </span>
                 <textarea
@@ -146,6 +150,7 @@ function Professor() {
                   value={courseData.context}
                   onChange={handleChange}
                   disabled={isListening}
+                  placeholder={t("professor.courseContextPlaceholder")}
                   required
                 />
                 <button
@@ -160,8 +165,6 @@ function Professor() {
                         <div className="linea"></div>
                         <div className="linea"></div>
                         <div className="linea"></div>
-                        <div className="linea"></div>
-                        <div className="linea"></div>
                       </div>
                     </div>
                   ) : (
@@ -171,7 +174,7 @@ function Professor() {
               </div>
             </div>
             <button type="submit" className="buttonRegister">
-              Registrar
+              {t("professor.registerButton")} {/* Traduce el texto del botón */}
             </button>
           </div>
         </form>

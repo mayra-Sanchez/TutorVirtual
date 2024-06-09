@@ -1,56 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./CourseCard.css";
-import { addCoursesFavorites, listCourses } from "../Services/Course";
+import {
+  addCoursesFavorites,
+  deleteCourseFav,
+  listCoursesFavorites,
+} from "../Services/Course";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { IoIosStarOutline } from "react-icons/io";
 import Swal from "sweetalert2";
+import { useTranslation } from "react-i18next";
 
-//Component courses
-const CourseCard = ({ courseId, name, teacher, creationDate, description }) => {
-  const [course, setCourse] = useState(null);
+function CourseCard({
+  componet,
+  courseId,
+  name,
+  teacher,
+  creationDate,
+  description,
+  onCourseDeleted,
+}) {
+  const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
-  const [selectedCourseId, setSelectedCourseId] = useState(null);
 
-  useEffect(() => {
-    const fetchCourse = async () => {
-      try {
-        const courses = await listCourses();
-        const selectedCourse = courses.find((c) => c.id === courseId);
-        setCourse(selectedCourse);
-      } catch (error) {
-        console.error("Error fetching course:", error);
-      }
-    };
+  const formattedDate = new Date(creationDate).toLocaleDateString();
 
-    fetchCourse();
-  }, [courseId]);
-
-  const openModal = () => {
-    setShowModal(true);
-    setSelectedCourseId(courseId);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-    setSelectedCourseId(null);
-  };
-
-  var creation_date = creationDate;
-  var dateObj = new Date(creation_date);
-  var year = dateObj.getFullYear();
-  var month = dateObj.getMonth() + 1;
-  var day = dateObj.getDate();
-  var date =
-    (day < 10 ? "0" : "") +
-    day +
-    "-" +
-    (month < 10 ? "0" : "") +
-    month +
-    "-" +
-    year;
-
-  const Toast = Swal.mixin({
+  const Toast1 = Swal.mixin({
     toast: true,
     position: "top-right",
     iconColor: "white",
@@ -61,75 +37,155 @@ const CourseCard = ({ courseId, name, teacher, creationDate, description }) => {
     timer: 2000,
     timerProgressBar: true,
   });
+  const Toast2 = Swal.mixin({
+    toast: true,
+    position: "top-right",
+    iconColor: "white",
+    customClass: {
+      popup: "colored-toast2",
+    },
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+  });
 
-  const addFavorites = () => {
-    // const body = {
-    //   id: courseId,
-    //   name: name,
-    // };
-    // addCoursesFavorites(body).then(() => {
-    //   Toast.fire({
-    //     icon: "success",
-    //     title: "Curso añadido a favoritos",
-    //   });
-    // });
-    Toast.fire({
-      icon: "success",
-      title: "Curso añadido a favoritos",
-    });
+  const id_user = parseInt(localStorage.getItem("user_id"));
+
+  const addFavorites = async () => {
+    const coursesFav = await listCoursesFavorites();
+    const existsCourse = coursesFav.some(
+      (course) => course.course === courseId
+    );
+    if (existsCourse) {
+      Toast2.fire({
+        icon: "warning",
+        title: "El curso ya existe en favoritos",
+      });
+    } else {
+      const body = {
+        active: true,
+        student: id_user,
+        course: courseId,
+      };
+      await addCoursesFavorites(body);
+      Toast1.fire({
+        icon: "success",
+        title: t("courses.successText"),
+      });
+    }
   };
+
+  const handleDelete = async (courseId) => {
+    const data = {
+      active: true,
+      student: id_user,
+      course: courseId,
+    };
+    try {
+      await Swal.fire({
+        title: t("courses.deleteCoursePrompt"),
+        text: t("courses.deleteCourseConfirmation"),
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: t("courses.confirmButton"),
+        cancelButtonText: t("courses.cancelButton"),
+        preConfirm: async () => {
+          await deleteCourseFav(data);
+          Swal.fire({
+            icon: "success",
+            title: t("courses.successTitle"),
+            text: t("courses.successText"),
+            confirmButtonText: t("courses.continueButton"),
+          });
+          onCourseDeleted();
+        },
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: error || "Error al eliminar el curso",
+        confirmButtonText: "Continuar",
+      });
+    }
+  };
+
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
 
   return (
     <>
-      {course && (
-        <div className="course-container-scroll-student">
-          <div className="course-container-teacher">
-            <div className="container-add-fav">
-              <button className="button-add-fav">
-                <IoIosStarOutline
-                  className="icon-add-fav"
-                  onClick={() => addFavorites()}
-                />
-              </button>
-            </div>
-            <div className="card-body-teacher" onClick={openModal}>
-              <label className="card-title-teacher">
-                <h2 className="title-teacher">Nombre del curso:</h2> {name}
-              </label>
-              <div className="card-text-teacher">
-                <h2 className="title-teacher">Profesor:</h2> {teacher}
-              </div>
-              <div className="card-text-teacher">
-                <h2 className="title-teacher">Descripción:</h2>{" "}
-                {course.description}
-              </div>
-              <div className="card-text-teacher">
-                <h2 className="title-teacher">Fecha de creación:</h2> {date}
+      <div className="course-container-scroll-teacher">
+        <div className="course-container-teacher">
+          <div className="course-card-teacher">
+            <div className="card-body-teacher">
+              {componet === "favs" ? (
+                <div className="container-delete">
+                  <button
+                    className="button-delete-course"
+                    onClick={() => handleDelete(courseId)}
+                  >
+                    <RiDeleteBin6Line className="icon-delete" />
+                  </button>
+                </div>
+              ) : (
+                <div className="container-add-fav">
+                  <button className="button-add-fav" onClick={addFavorites}>
+                    <IoIosStarOutline className="icon-add-fav" />
+                  </button>
+                </div>
+              )}
+              <div onClick={openModal}>
+                <label className="card-title-teacher">
+                  <h2 className="title-teacher">{t("courses.courseName")}:</h2>
+                  {name}
+                </label>
+                <div className="card-text-teacher">
+                  <h2 className="title-teacher">
+                    {t("courses.courseDescription")}:
+                  </h2>
+                  {description}
+                </div>
+                <div className="card-text-teacher">
+                  <h2 className="title-teacher">
+                    {t("courses.courseCreationDate")}:
+                  </h2>
+                  {formattedDate}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      )}
-
+      </div>
       {showModal && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
             <button className="close-btn" onClick={closeModal}>
               <AiOutlineClose />
             </button>
-            <h2>Nomre del curso: {name}</h2>
-            <h3>Profesor: {teacher}</h3>
-            <p>Creado: {date}</p>
-            <p>Descripción: {description}</p>
-            <br></br>
-            <Link to={`/Student/${selectedCourseId}/Tutor`} className="ask-btn">
-              Preguntale al tutor
+            <h2>
+              {t("courses.courseName")}: {name}
+            </h2>
+            <h3>
+              {t("courses.courseDescription")}: {teacher}
+            </h3>
+            <p>
+              {t("courses.courseCreationDate")}: {formattedDate}
+            </p>
+            <p>
+              {t("courses.courseDescription")}: {description}
+            </p>
+            <br />
+            <Link to={`/Student/${courseId}/Tutor`} className="ask-btn">
+              {t("student.buttonconfirmation")}
             </Link>
           </div>
         </div>
       )}
     </>
   );
-};
+}
 
 export default CourseCard;
