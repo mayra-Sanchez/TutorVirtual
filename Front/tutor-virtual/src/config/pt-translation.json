@@ -104,7 +104,7 @@
         "deleteCoursePrompt": "Atenção, tem certeza de que deseja realizar esta ação?",
         "deleteCourseConfirmation": "Você está prestes a excluir um curso",
         "successTitle": "Operação bem-sucedida",
-        "successText": "O curso foi excluído com sucesso",
+        "successText": "O curso foi adicionado aos favoritos",
         "errorTitle": "Algo deu errado",
         "errorText": "Ocorreu um erro ao excluir o curso, por favor tente novamente",
         "continueButton": "Continuar",
@@ -112,7 +112,10 @@
         "confirmButton": "Sim, excluir",
         "courseName": "Nome do curso",
         "courseDescription": "Descrição",
-        "courseCreationDate": "Data de criação"
+        "courseCreationDate": "Data de criação",
+        "courseadded": " O curso já existe nos favoritos",
+        "courseInstructor":"Instrutor",
+        "coursesFAVnot": "Nenhum curso adicionado aos favoritos"
     },
     "modalEdit": {
         "title": "Atualizar informações",

@@ -14,7 +14,7 @@ import "./ChatStudent.css";
 
 function ChatStudent() {
   const { selectedCourseId } = useParams();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -113,9 +113,27 @@ function ChatStudent() {
     }
   }, [isButtonClicked]);
 
+  const getImageForRoleAndLanguage = () => {
+    const language = i18n.language;
+    const roleImages = {
+      student: {
+        en: require("../../Resources/student/ingles.png"),
+        fr: require("../../Resources/student/frances.png"),
+        es: require("../../Resources/student/español.png"),
+        de: require("../../Resources/student/aleman.png"),
+        md: require("../../Resources/student/mandarin.png"),
+        hd: require("../../Resources/student/hindi.png"),
+        pt: require("../../Resources/student/portugues.png"),
+        rs: require("../../Resources/student/ruso.png"),
+      }
+    };
+
+    return roleImages.student[language] || require("../../Resources/student/español.png")
+  };
+
   return (
     <>
-      <Navbar href={`/Student`} image={Image} role={"student"} />
+      <Navbar href={`/Student`} image={getImageForRoleAndLanguage()} role={"student"} />
       <br />
       <div className="container_chat_student">
         <div className="left-column">
@@ -126,7 +144,7 @@ function ChatStudent() {
                 <br />
                 {course && <p className="ptext">{course.name}</p>}
                 <br />
-                <h1>instructor</h1>
+                <h1>{t("courses.courseInstructor")}</h1>
                 <br />
                 {course && <p className="ptext">{course.instructor}</p>}
                 <br />

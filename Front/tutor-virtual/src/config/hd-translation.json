@@ -104,7 +104,7 @@
         "deleteCoursePrompt": "ध्यान दें, क्या आप यह क्रिया करना चाहते हैं?",
         "deleteCourseConfirmation": "आप एक पाठ्यक्रम हटाने वाले हैं",
         "successTitle": "सफल ऑपरेशन",
-        "successText": "पाठ्यक्रम सफलतापूर्वक हटाया गया",
+        "successText": "पाठ्यक्रम को पसंदीदा में जोड़ा गया",
         "errorTitle": "कुछ गलत हो गया",
         "errorText": "पाठ्यक्रम को हटाने में त्रुटि हुई, कृपया पुनः प्रयास करें",
         "continueButton": "जारी रखें",
@@ -112,7 +112,10 @@
         "confirmButton": "हाँ, हटाएं",
         "courseName": "पाठ्यक्रम का नाम",
         "courseDescription": "विवरण",
-        "courseCreationDate": "निर्माण तिथि"
+        "courseCreationDate": "निर्माण तिथि",
+        "courseadded": "पाठ्यक्रम पहले से ही पसंदीदा में है",
+        "courseInstructor":"प्रशिक्षक",
+        "coursesFAVnot": "कोई पाठ्यक्रम पसंदीदा में नहीं जोड़ा गया"
     },
     "modalEdit": {
         "title": "सूचना अपडेट करें",

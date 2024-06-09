@@ -104,7 +104,7 @@
         "deleteCoursePrompt": "Attention, are you sure you want to perform this action",
         "deleteCourseConfirmation": "You are about to delete a course",
         "successTitle": "Successful operation",
-        "successText": "The course was successfully deleted",
+        "successText": "The course was added to favorites",
         "errorTitle": "Something went wrong",
         "errorText": "An error occurred while deleting the course, please try again",
         "continueButton": "Continue",
@@ -112,7 +112,10 @@
         "confirmButton": "Yes, delete",
         "courseName": "Course name",
         "courseDescription": "Description",
-        "courseCreationDate": "Creation date"
+        "courseCreationDate": "Creation date",
+        "courseadded": "The course already exists in favorites",
+        "courseInstructor":"Instructor",
+        "coursesFAVnot": "No courses added to favorites"
     },
     "modalEdit": {
         "title": "Update Information",

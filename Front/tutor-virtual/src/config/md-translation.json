@@ -104,7 +104,7 @@
         "deleteCoursePrompt": "注意，你确定要执行此操作吗？",
         "deleteCourseConfirmation": "您即将删除一门课程",
         "successTitle": "操作成功",
-        "successText": "课程已成功删除",
+        "successText": "课程已添加到收藏夹",
         "errorTitle": "出了些问题",
         "errorText": "删除课程时发生错误，请重试",
         "continueButton": "继续",
@@ -112,7 +112,10 @@
         "confirmButton": "是的，删除",
         "courseName": "课程名称",
         "courseDescription": "描述",
-        "courseCreationDate": "创建日期"
+        "courseCreationDate": "创建日期",
+        "courseadded": "该课程已在收藏夹中",
+        "courseInstructor":"教练",
+        "coursesFAVnot": "没有添加到收藏夹的课程"
     },
     "modalEdit": {
         "title": "更新信息",

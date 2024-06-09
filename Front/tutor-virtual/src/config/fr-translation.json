@@ -104,7 +104,7 @@
         "deleteCoursePrompt": "Attention, êtes-vous sûr de vouloir effectuer cette action?",
         "deleteCourseConfirmation": "Vous êtes sur le point de supprimer un cours",
         "successTitle": "Opération réussie",
-        "successText": "Le cours a été supprimé avec succès",
+        "successText": "Le cours a été ajouté aux favoris",
         "errorTitle": "Quelque chose a mal tourné",
         "errorText": "Une erreur s'est produite lors de la suppression du cours, veuillez réessayer",
         "continueButton": "Continuer",
@@ -112,7 +112,10 @@
         "confirmButton": "Oui, supprimer",
         "courseName": "Nom du cours",
         "courseDescription": "Description",
-        "courseCreationDate": "Date de création"
+        "courseCreationDate": "Date de création",
+        "courseadded": "Le cours existe déjà dans les favoris",
+        "courseInstructor":"Instructeur",
+        "coursesFAVnot": "Aucun cours ajouté aux favoris"
     },
     "modalEdit": {
         "title": "Mettre à jour les informations",

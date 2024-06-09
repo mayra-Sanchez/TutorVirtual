@@ -104,7 +104,7 @@
         "deleteCoursePrompt": "Achtung, sind Sie sicher, dass Sie diese Aktion ausführen möchten?",
         "deleteCourseConfirmation": "Sie sind dabei, einen Kurs zu löschen",
         "successTitle": "Erfolgreiche Operation",
-        "successText": "Der Kurs wurde erfolgreich gelöscht",
+        "successText": "Der Kurs wurde zu den Favoriten hinzugefügt",
         "errorTitle": "Etwas ist schief gelaufen",
         "errorText": "Beim Löschen des Kurses ist ein Fehler aufgetreten, bitte versuchen Sie es erneut",
         "continueButton": "Fortfahren",
@@ -112,7 +112,10 @@
         "confirmButton": "Ja, löschen",
         "courseName": "Kursname",
         "courseDescription": "Beschreibung",
-        "courseCreationDate": "Erstellungsdatum"
+        "courseCreationDate": "Erstellungsdatum",
+        "courseadded": " Der Kurs ist bereits in den Favoriten",
+        "courseInstructor":"Ausbilder",
+        "coursesFAVnot": "Keine Kurse zu den Favoriten hinzugefügt"
     },
     "modalEdit": {
         "title": "Informationen aktualisieren",

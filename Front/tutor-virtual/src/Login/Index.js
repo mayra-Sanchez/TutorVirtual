@@ -1,4 +1,3 @@
-import image from "../Resources/LogoAPP (2).png";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Login.css";
 import { useState, useContext } from "react";
@@ -18,7 +17,7 @@ function Login() {
     email: "",
     password: "",
   });
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
   const togglePassword = () => {
@@ -76,12 +75,28 @@ function Login() {
     console.log("Esto está ocurriendo", error);
   };
 
+  const getImageForRoleAndLanguage = () => {
+    const language = i18n.language;
+    const roleImages = {
+      en: require("../Resources/logos/ingles.png"),
+      fr: require("../Resources/logos/frances.png"),
+      es: require("../Resources/logos/español.png"),
+      de: require("../Resources/logos/aleman.png"),
+      md: require("../Resources/logos/mandarin.png"),
+      hd: require("../Resources/logos/hindi.png"),
+      pt: require("../Resources/logos/portugues.png"),
+      rs: require("../Resources/logos/ruso.png"),
+    };
+
+    return roleImages[language] || require("../Resources/logos/español.png");
+  };
+
   return loading ? (
     <Loading />
   ) : (
     <div className="login-container">
       <div className="icon-container">
-        <img src={image} alt="Logo" className="Logo-app" />
+        <img src={getImageForRoleAndLanguage()} alt="Logo" className="Logo-app" />
       </div>
       <div className="login-form-container">
         <form className="login-form" onSubmit={handleSubmit}>

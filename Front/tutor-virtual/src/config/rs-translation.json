@@ -104,7 +104,7 @@
         "deleteCoursePrompt": "Внимание, вы уверены, что хотите выполнить это действие?",
         "deleteCourseConfirmation": "Вы собираетесь удалить курс",
         "successTitle": "Операция успешна",
-        "successText": "Курс был успешно удален",
+        "successText": "Курс добавлен в избранное",
         "errorTitle": "Что-то пошло не так",
         "errorText": "Произошла ошибка при удалении курса, пожалуйста, попробуйте снова",
         "continueButton": "Продолжить",
@@ -112,7 +112,10 @@
         "confirmButton": "Да, удалить",
         "courseName": "Название курса",
         "courseDescription": "Описание",
-        "courseCreationDate": "Дата создания"
+        "courseCreationDate": "Дата создания",
+        "courseadded": "Курс уже есть в избранном",
+        "courseInstructor":"Инструктор",
+        "coursesFAVnot": "Нет добавленных в избранное курсов"
     },
     "modalEdit": {
         "title": "Обновить информацию",

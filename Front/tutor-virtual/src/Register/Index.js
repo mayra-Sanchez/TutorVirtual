@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Register.css";
-import imagen from "../Resources/LogoAPP (2).png";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "../Services/Users";
@@ -8,7 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
 function Register() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [role, setRole] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   let navigate = useNavigate();
@@ -88,10 +87,26 @@ function Register() {
     });
   };
 
+  const getImageForRoleAndLanguage = () => {
+    const language = i18n.language;
+    const roleImages = {
+      en: require("../Resources/logos/ingles.png"),
+      fr: require("../Resources/logos/frances.png"),
+      es: require("../Resources/logos/español.png"),
+      de: require("../Resources/logos/aleman.png"),
+      md: require("../Resources/logos/mandarin.png"),
+      hd: require("../Resources/logos/hindi.png"),
+      pt: require("../Resources/logos/portugues.png"),
+      rs: require("../Resources/logos/ruso.png"),
+    };
+
+    return roleImages[language] || require("../Resources/logos/español.png");
+  };
+
   return (
     <div className="register-container">
       <div className="icon-container">
-        <img src={imagen} alt="Logo" className="Logo-app" />
+        <img src={getImageForRoleAndLanguage()} alt="Logo" className="Logo-app" />
       </div>
       <div className="card-container">
         <div className="card">

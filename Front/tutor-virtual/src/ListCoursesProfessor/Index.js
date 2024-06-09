@@ -13,7 +13,7 @@ import EditCourseModal from "../Components/EditCourseModal";
 import { useTranslation } from "react-i18next";
 
 function ListCoursesProfessor() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -120,9 +120,27 @@ function ListCoursesProfessor() {
     fetchData();
   };
 
+  const getImageForRoleAndLanguage = () => {
+    const language = i18n.language;
+    const roleImages = {
+      professor: {
+        en: require("../Resources/professor/Ingles.png"),
+        fr: require("../Resources/professor/Frances.png"),
+        es: require("../Resources/professor/español.png"),
+        de: require("../Resources/professor/Aleman.png"),
+        md: require("../Resources/professor/mandarin.png"),
+        hd: require("../Resources/professor/hindi.png"),
+        pt: require("../Resources/professor/portugues.png"),
+        rs: require("../Resources/professor/ruso.png"),
+      }
+    };
+
+    return roleImages.professor[language] || require("../Resources/student/español.png")
+  };
+
   return (
     <>
-      <Navbar href={"/Professor"} image={Image} role={"professor"} />
+      <Navbar href={"/Professor"} image={getImageForRoleAndLanguage()} role={"professor"} />
       <div className="titleStudent">
         <h2>{t("courses.title")}</h2>
       </div>

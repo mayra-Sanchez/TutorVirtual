@@ -8,11 +8,11 @@ import { useSpeechApi } from "../Components/Hooks/SpeechApi.js";
 import activate from "../Resources/microphone.png";
 import Swal from "sweetalert2";
 import "./Professor.css";
-import { useTranslation } from "react-i18next"; // Importa useTranslation
+import { useTranslation } from "react-i18next"; 
 
 function Professor() {
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation(); // Obtén las funciones de traducción
+  const { t, i18n } = useTranslation(); 
   const { transcript, isListening, startListening, stopListening } =
     useSpeechApi();
   const user_id = parseInt(localStorage.getItem("user_id"), 10);
@@ -97,9 +97,27 @@ function Professor() {
     console.log("este es el error", error);
   };
 
+  const getImageForRoleAndLanguage = () => {
+    const language = i18n.language;
+    const roleImages = {
+      professor: {
+        en: require("../Resources/professor/Ingles.png"),
+        fr: require("../Resources/professor/Frances.png"),
+        es: require("../Resources/professor/español.png"),
+        de: require("../Resources/professor/Aleman.png"),
+        md: require("../Resources/professor/mandarin.png"),
+        hd: require("../Resources/professor/hindi.png"),
+        pt: require("../Resources/professor/portugues.png"),
+        rs: require("../Resources/professor/ruso.png"),
+      }
+    };
+
+    return roleImages.professor[language] || require("../Resources/professor/español.png");
+  };
+
   return (
     <>
-      <Navbar href={"/Professor"} image={Image} role={"professor"} />
+      <Navbar href={"/Professor"} image={getImageForRoleAndLanguage()} role={"professor"} />
       <div className="container">
         <h1 className="title">{t("professor.courseCreationTitle")}</h1>
         <form className="forms-container" onSubmit={handleSubmit}>

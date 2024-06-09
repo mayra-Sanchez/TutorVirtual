@@ -8,7 +8,7 @@ import { listCoursesFavorites } from "../../Services/Course";
 function FavCoursesList() {
   const [coursesFav, setCoursesFav] = useState([]);
   const [noCourses, setNoCourses] = useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const fetchData = async () => {
     try {
@@ -31,9 +31,27 @@ function FavCoursesList() {
     fetchData();
   }, []);
 
+  const getImageForRoleAndLanguage = () => {
+    const language = i18n.language;
+    const roleImages = {
+      student: {
+        en: require("../../Resources/student/ingles.png"),
+        fr: require("../../Resources/student/frances.png"),
+        es: require("../../Resources/student/español.png"),
+        de: require("../../Resources/student/aleman.png"),
+        md: require("../../Resources/student/mandarin.png"),
+        hd: require("../../Resources/student/hindi.png"),
+        pt: require("../../Resources/student/portugues.png"),
+        rs: require("../../Resources/student/ruso.png"),
+      }
+    };
+
+    return roleImages.student[language] || require("../../Resources/student/español.png")
+  };
+
   return (
     <>
-      <Navbar href={"/Student"} image={Image} role={"student"} />
+      <Navbar href={"/Student"} image={getImageForRoleAndLanguage()} role={"student"} />
       <div className="titleStudent">
         <h2>{t("courses.title2")}</h2>
       </div>
@@ -41,7 +59,7 @@ function FavCoursesList() {
         {noCourses ? (
           <div className="course-container">
             <h1 className="h1-not-courses">
-              No hay cursos añadidos a favoritos
+              {t("courses.coursesFAVnot")}
             </h1>
           </div>
         ) : (

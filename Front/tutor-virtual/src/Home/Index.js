@@ -9,7 +9,7 @@ import "../Home/Home.css";
 
 // Function principal
 function Home() {
-  const { t } = useTranslation();
+  const { t, i18n} = useTranslation();
   const [showScrollButton, setShowScrollButton] = useState(false);
 
   useEffect(() => {
@@ -34,10 +34,26 @@ function Home() {
     });
   };
 
+  const getImageForRoleAndLanguage = () => {
+    const language = i18n.language;
+    const roleImages = {
+        en: require("../Resources/logonav/ingles.png"),
+        fr: require("../Resources/logonav/frances.png"),
+        es: require("../Resources/logonav/español.png"),
+        de: require("../Resources/logonav/aleman.png"),
+        md: require("../Resources/logonav/mandarin.png"),
+        hd: require("../Resources/logonav/hindi.png"),
+        pt: require("../Resources/logonav/portugues.png"),
+        rs: require("../Resources/logonav/ruso.png")
+      
+    };
+
+    return roleImages[language] || require("../Resources/logonav/español.png");
+  };
+
   return (
     <div className="App">
-      <Navbar href={"/"} image={Image} role={"home"} />
-      <div id="AboutUs" name="AboutUs" className="title"></div>
+      <Navbar href={"/"} image={getImageForRoleAndLanguage()} role={"home"} />
       <div className="about-us-container">
         <div className="about-us-content">
           <h2>{t("home.aboutUsTitle")}</h2>

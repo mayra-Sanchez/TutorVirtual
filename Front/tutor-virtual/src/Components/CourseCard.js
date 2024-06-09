@@ -59,7 +59,7 @@ function CourseCard({
     if (existsCourse) {
       Toast2.fire({
         icon: "warning",
-        title: "El curso ya existe en favoritos",
+        title: t("courses.courseadded"),
       });
     } else {
       const body = {
@@ -105,9 +105,9 @@ function CourseCard({
     } catch (error) {
       Swal.fire({
         icon: "error",
-        title: "Error",
-        text: error || "Error al eliminar el curso",
-        confirmButtonText: "Continuar",
+        title: t("modalEdit.errorTitle"),
+        text: error || t("courses.errorText"),
+        confirmButtonText: t("courses.continueButton"),
       });
     }
   };
