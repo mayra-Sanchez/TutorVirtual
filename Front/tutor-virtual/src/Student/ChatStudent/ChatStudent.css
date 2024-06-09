@@ -194,6 +194,24 @@ h1.course-description{
   filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.4));
 }
 
+.button-sound-container{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-sound{
+  border: none;
+  background-color: transparent;
+}
+
+.button-sound-icon{
+  color: #012B36;
+  height: 30px;
+  width: 20px;
+  cursor: pointer;
+}
+
+
 .imageButton {
   right: 10px; 
 }

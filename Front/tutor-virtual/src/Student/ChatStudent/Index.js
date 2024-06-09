@@ -9,6 +9,7 @@ import { chatTutor } from "../../Services/Tutor";
 import { useParams } from "react-router-dom";
 import Microfono from "../../Resources/microphone.png";
 import { useSpeechApi } from "../../Components/Hooks/SpeechApi.js";
+import { AiFillSound, AiOutlineSound } from "react-icons/ai";
 import "./ChatStudent.css";
 
 function ChatStudent() {
@@ -17,15 +18,12 @@ function ChatStudent() {
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
   const { transcript, isListening, startListening, stopListening } =
     useSpeechApi();
-
-  const [chat, setChat] = useState({
-    content: "",
-  });
-
+  const [chat, setChat] = useState({ content: "" });
   const [response, setResponse] = useState("");
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,23 +44,24 @@ function ChatStudent() {
     setChat({ ...chat, [e.target.name]: e.target.value });
   };
 
-  //For the speaker
   const speakTutorResponse = (text) => {
     if ("speechSynthesis" in window) {
       const synth = window.speechSynthesis;
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "es-ES";
       synth.speak(utterance);
+      setIsSpeaking(true);
+      utterance.onend = () => setIsSpeaking(false);
     }
   };
 
-  useEffect(() => {
-    if (response && response.answer) {
-      speakTutorResponse(response.answer);
+  const stopSpeaking = () => {
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
     }
-  }, [response]);
+  };
 
-  //For the listening
   useEffect(() => {
     if (!isListening) {
       setChat((prevData) => ({
@@ -82,7 +81,7 @@ function ChatStudent() {
 
   const sendChat = async () => {
     setLoading(true);
-    var word = chat.content.trim().split(/\s+/);
+    const word = chat.content.trim().split(/\s+/);
     if (word.length < 40) {
       setError(false);
       try {
@@ -99,6 +98,21 @@ function ChatStudent() {
     }
   };
 
+  const handleSoundButtonClick = () => {
+    if (isSpeaking) {
+      stopSpeaking();
+    } else {
+      speakTutorResponse(response.answer);
+    }
+    setIsButtonClicked(true);
+  };
+
+  useEffect(() => {
+    if (isButtonClicked) {
+      setIsButtonClicked(false);
+    }
+  }, [isButtonClicked]);
+
   return (
     <>
       <Navbar href={`/Student`} image={Image} role={"student"} />
@@ -113,7 +127,6 @@ function ChatStudent() {
                 {course && <p className="ptext">{course.name}</p>}
                 <br />
                 <h1>instructor</h1>
-                {/* Es el nombre del profe */}
                 <br />
                 {course && <p className="ptext">{course.instructor}</p>}
                 <br />
@@ -136,7 +149,21 @@ function ChatStudent() {
                     <div className="progress"></div>
                   </div>
                 ) : response && response.answer ? (
-                  <p>{response.answer}</p>
+                  <>
+                    <div className="button-sound-container">
+                      <button
+                        onClick={handleSoundButtonClick}
+                        className="button-sound"
+                      >
+                        {isSpeaking ? (
+                          <AiFillSound className="button-sound-icon" />
+                        ) : (
+                          <AiOutlineSound className="button-sound-icon" />
+                        )}
+                      </button>
+                    </div>
+                    <p>{response.answer}</p>
+                  </>
                 ) : null}
               </div>
             </div>
