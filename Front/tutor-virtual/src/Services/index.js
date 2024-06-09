@@ -1,10 +1,5 @@
-// let URL;
-
-// if (process.env.REACT_APP_API_URL) {
-//   URL = process.env.REACT_APP_API_URL;
-// } else {
-//   URL = "https://laboratorio1-pi2.onrender.com";
-// }
+//   URL = "https://tutor-virtual-back.onrender.com";
+//   URL = "http://127.0.0.1:8000"
 
 const URL = "http://127.0.0.1:8000";
 
@@ -20,7 +15,9 @@ const endpoints = {
   student: {
     coursesList: `${URL}/course/student/list`,
     chatTutor: (id_course) => `${URL}/course/student/${id_course}/chat`,
-    addFavorites: `${URL}/course/student/favorites`,
+    addFavorites: `${URL}/course/student/course/favorites/add`,
+    listFavorites: `${URL}/course/student/course/favorites/list`,
+    deleteFavorites: `${URL}/course/student/course/favorites/delete`,
   },
   Professor: {
     registerCourse: `${URL}/course/instructor/create`,

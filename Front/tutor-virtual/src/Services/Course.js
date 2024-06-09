@@ -84,6 +84,30 @@ const addCoursesFavorites = async (body) => {
   return response.data;
 };
 
+const listCoursesFavorites = async () => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${tokenAccess()}`,
+    },
+  };
+  const respone = await Axios.get(endpoints.student.listFavorites, config);
+  return respone.data;
+};
+
+const deleteCourseFav = async (body) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${tokenAccess()}`,
+    },
+  };
+  const respone = await Axios.post(
+    endpoints.student.deleteFavorites,
+    body,
+    config
+  );
+  return respone.data;
+};
+
 export {
   addCourse,
   listCourses,
@@ -91,4 +115,6 @@ export {
   deleteCourseProfessor,
   modifyCourseProfessor,
   addCoursesFavorites,
+  listCoursesFavorites,
+  deleteCourseFav,
 };

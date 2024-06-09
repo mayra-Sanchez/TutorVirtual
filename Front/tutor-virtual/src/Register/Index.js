@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./Register.css";
-import imagen from "../Resources/LogoAPP (2).png";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "../Services/Users";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 function Register() {
+  const { t, i18n } = useTranslation();
   const [role, setRole] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   let navigate = useNavigate();
@@ -41,25 +42,25 @@ function Register() {
     console.log(data);
 
     Swal.fire({
-      title: "Atención, estás seguro de realizar esta acción",
-      text: "Vas a registrarte como un nuevo usuario",
+      title: t("register.confirmationTitle"),
+      text: t("register.registerText"),
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       showLoaderOnConfirm: true,
       cancelButtonColor: "#d33",
-      confirmButtonText: `Confirmar`,
+      confirmButtonText: t("register.confirmButtonText"),
       allowOutsideClick: false,
-      cancelButtonText: "Cancelar",
+      cancelButtonText: t("register.cancelButtonText"),
       preConfirm: () => {
         return new Promise((resolve, reject) => {
           createUser(data)
             .then((response) => {
               Swal.fire({
                 icon: "success",
-                title: "Operación exitosa",
-                text: "Te has registrado correctamente",
-                confirmButtonText: "Continuar",
+                title: t("register.successTitle"),
+                text: t("register.successText"),
+                confirmButtonText: t("register.continueButtonText"),
                 allowOutsideClick: false,
                 showCancelButton: false,
               }).then(() => {
@@ -78,23 +79,39 @@ function Register() {
   const onError = (error) => {
     Swal.fire({
       icon: "error",
-      title: "Algo salió mal",
-      text: error || "Ocurrió un error al crear el usuario, intenta de nuevo",
-      confirmButtonText: "Continuar",
+      title: t("register.errorTitle"),
+      text: error || t("register.errorText"),
+      confirmButtonText: t("register.continueButtonText"),
       allowOutsideClick: false,
       showCancelButton: false,
     });
   };
 
+  const getImageForRoleAndLanguage = () => {
+    const language = i18n.language;
+    const roleImages = {
+      en: require("../Resources/logos/ingles.png"),
+      fr: require("../Resources/logos/frances.png"),
+      es: require("../Resources/logos/español.png"),
+      de: require("../Resources/logos/aleman.png"),
+      md: require("../Resources/logos/mandarin.png"),
+      hd: require("../Resources/logos/hindi.png"),
+      pt: require("../Resources/logos/portugues.png"),
+      rs: require("../Resources/logos/ruso.png"),
+    };
+
+    return roleImages[language] || require("../Resources/logos/español.png");
+  };
+
   return (
     <div className="register-container">
       <div className="icon-container">
-        <img src={imagen} alt="Logo" className="Logo-app" />
+        <img src={getImageForRoleAndLanguage()} alt="Logo" className="Logo-app" />
       </div>
       <div className="card-container">
         <div className="card">
           <div className="title-form-register">
-            <label className="title-register">Registro</label>
+            <label className="title-register">{t("register.registerTitle")}</label>
           </div>
           <form onSubmit={handleSubmit}>
             <div className="inputs-container-register">
@@ -105,11 +122,11 @@ function Register() {
                     name="first_name"
                     className="input-gmail-register"
                     type="text"
-                    placeholder="Nombre *"
+                    placeholder={t("register.firstNamePlaceholder")}
                     onChange={handleChange}
                     required
                   />
-                  <small>Por favor ingresa tu nombre</small>
+                  <small>{t("register.firstNameLabel")}</small>
                 </div>
               </div>
               <div className="input-with-icon-register">
@@ -119,11 +136,11 @@ function Register() {
                     name="last_name"
                     className="input-gmail-register"
                     type="text"
-                    placeholder="Apellido *"
+                    placeholder={t("register.lastNamePlaceholder")}
                     onChange={handleChange}
                     required
                   />
-                  <small>Por favor ingresa tu apellido</small>
+                  <small>{t("register.lastNameLabel")}</small>
                 </div>
               </div>
               <div className="input-with-icon-register">
@@ -133,11 +150,11 @@ function Register() {
                     name="email"
                     className="input-gmail-register"
                     type="email"
-                    placeholder="Correo electrónico *"
+                    placeholder={t("register.emailPlaceholder")}
                     onChange={handleChange}
                     required
                   />
-                  <small>Por favor ingresa tu correo electrónico</small>
+                  <small>{t("register.emailLabel")}</small>
                 </div>
               </div>
               <div className="input-with-icon-register">
@@ -147,7 +164,7 @@ function Register() {
                     name="password"
                     className="input-password-register"
                     type={isVisible ? "text" : "password"}
-                    placeholder="Contraseña *"
+                    placeholder={t("register.passwordPlaceholder")}
                     onChange={handleChange}
                     required
                   />
@@ -158,7 +175,7 @@ function Register() {
                   >
                     {isVisible ? <FaEyeSlash /> : <FaEye />}
                   </button>
-                  <small>Por favor ingresa tu contraseña</small>
+                  <small>{t("register.passwordLabel")}</small>
                 </div>
               </div>
               <div className="input-with-icon-register">
@@ -171,20 +188,20 @@ function Register() {
                     onChange={handleRoleChange}
                     required
                   >
-                    <option value="">Selecciona tu rol</option>
-                    <option value="Estudiante">Estudiante</option>
-                    <option value="Profesor">Profesor</option>
+                    <option value="">{t("register.selectRolePlaceholder")}</option>
+                    <option value="Estudiante">{t("register.studentOption")}</option>
+                    <option value="Profesor">{t("register.teacherOption")}</option>
                   </select>
-                  <small>Por favor seleccione su rol</small>
+                  <small>{t("register.selectRoleLabel")}</small>
                 </div>
               </div>
             </div>
             <div className="button-container-register">
               <button className="buttonregister" type="submit">
-                Crear cuenta
+                {t("register.createAccountButton")}
               </button>
               <p>
-                ¿Ya tienes cuenta? <a href="/Login">Iniciar sesión</a>
+                {t("register.haveAccountQuestion")} <a href="/Login">{t("register.loginLink")}</a>
               </p>
             </div>
           </form>

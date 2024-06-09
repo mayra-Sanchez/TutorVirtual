@@ -1,6 +1,32 @@
 .dialog-open {
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo opaco */
+    background-color: rgba(0, 0, 0, 0.5); 
 }
+
+.modal-overlay-edit-user{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+}
+
+.modal-edit-user{
+    background-color: white;
+    padding: 5px;
+    border-radius: 8px;
+    position: relative;
+    text-align: center; 
+    cursor: pointer;
+    height: 60%;
+    width: 40%;
+    z-index: 1001; 
+}
+
 
 .modal-container {
     display: flex;
@@ -16,7 +42,7 @@
     padding-right: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrar los inputs */
+    align-items: center; 
 }
 
 .inputs-container-modal::-webkit-scrollbar {
@@ -60,7 +86,7 @@
 
 .input-modal {
     font-size: 20px;
-    width: calc(100% - 170px); /* Ajustar el ancho */
+    width: calc(100% - 170px); 
     height: 50px;
     padding: 10px;
     border: none;
@@ -79,7 +105,7 @@
 }
 
 .button-modal {
-    width: 200px;
+    width: 1000px;
     height: 50px;
     color: white;
     background-color: #DD4D42;

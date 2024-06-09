@@ -11,29 +11,29 @@
   }
 
   .course-container-scroll-student {
-    overflow-y: auto;
     max-height: 500px;
     min-height: 400px;
     margin-left: 2%;
     margin-right: 2%;
   }
-  
-  .course-container-scroll-student::-webkit-scrollbar {
-    width: 12px;
-    padding: 10px 20px;
-    margin-top: 50px;
+
+  .course-container-student{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  
-  .course-container-scroll-student::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 6px;
+
+  .course-container-courses-fav{
+    height: 200px;
+    padding: 5px;
+    margin-top: 7%;
   }
-  
-  .course-container-scroll-student::-webkit-scrollbar-thumb {
-    background-color: #DD4D42;
-    border-radius: 6px;
-  }
-  
+
+  .card-body-student-courses {
+    padding: 8px;
+    cursor: pointer;
+    margin-top: -5%;
+}
 
   .modal {
     background-color: white;
@@ -57,7 +57,7 @@
   .ask-btn {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #DD4D42;
     color: white;
     border: none;
     text-decoration: none; 
@@ -66,7 +66,7 @@
   }
   
   .ask-btn:hover {
-    background-color: #0056b3;
+    background-color: #747577;
   }
 
   .card-body {
@@ -96,5 +96,15 @@
   .colored-toast {
     background-color: green !important;
     color: white;
+  }
+
+  .colored-toast2 {
+    background-color: rgb(196, 168, 29) !important;
+    color: white;
+  }
+
+  .h1-not-courses{
+    color: #fff;
+
   }
 

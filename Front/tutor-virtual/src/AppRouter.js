@@ -10,6 +10,7 @@ import { Login } from "./Login/Index";
 import { useEffect } from "react";
 import { refreshToken } from "./Services/token";
 import { LoginContext } from "./Components/Context/LoginContext";
+import FavCoursesList from "./Student/FavCoursesList/index";
 
 function AppRouter() {
   const { login } = useContext(LoginContext);
@@ -42,6 +43,7 @@ function AppRouter() {
           path="/Student/:selectedCourseId/Tutor"
           element={<ChatStudent />}
         />
+        <Route path="/Student/favs" element={<FavCoursesList />} />
       </Routes>
     </Router>
   );

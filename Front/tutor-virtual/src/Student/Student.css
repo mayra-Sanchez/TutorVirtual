@@ -11,7 +11,7 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 10px;
-  justify-content: center; /* Centra el grid horizontalmente */
+  justify-content: center; 
 }
 
 .course-card {
@@ -20,12 +20,10 @@
   padding: 10px;
 }
 
-
-
 .course-container-scroll {
   overflow-y: auto;
   max-height: 500px;
-  min-height: 400px;
+  min-height: 700px;
   margin-left: 2%;
   margin-right: 2%;
 }
