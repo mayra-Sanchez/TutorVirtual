@@ -162,7 +162,9 @@ function ChatStudent() {
                         )}
                       </button>
                     </div>
-                    <p>{response.answer}</p>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: response.answer }}
+                    ></div>
                   </>
                 ) : null}
               </div>
