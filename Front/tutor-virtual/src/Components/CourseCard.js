@@ -68,6 +68,7 @@ function CourseCard({
         course: courseId,
       };
       await addCoursesFavorites(body);
+      console.log("el body", body);
       Toast1.fire({
         icon: "success",
         title: t("courses.successText"),

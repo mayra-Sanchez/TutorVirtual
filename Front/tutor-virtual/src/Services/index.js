@@ -1,8 +1,12 @@
 //   URL = "https://tutor-virtual-back.onrender.com";
 //   URL = "http://127.0.0.1:8000"
+let URL;
 
-const URL = "http://127.0.0.1:8000";
-
+if (process.env.REACT_APP_API_URL) {
+  URL = process.env.REACT_APP_API_URL;
+} else {
+  URL = "https://tutor-virtual-back.onrender.com";
+}
 const endpoints = {
   users: {
     registerUser: `${URL}/users/create`,
