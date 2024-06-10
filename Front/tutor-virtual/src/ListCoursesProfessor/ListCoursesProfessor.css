@@ -1,0 +1,112 @@
+.course-container-scroll-teacher {
+  overflow-y: auto;
+  max-height: 500px;
+  min-height: 25%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.course-container-scroll-teacher::-webkit-scrollbar {
+  width: 12px;
+  padding: 10px 20px;
+  margin-top: 50px;
+}
+
+.course-container-scroll-teacher::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 6px;
+}
+
+.course-container-scroll-teacher::-webkit-scrollbar-thumb {
+  background-color: #DD4D42;
+  border-radius: 6px;
+}
+
+.course-container-teacher{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 10px;
+  justify-content: center;
+} 
+.course-card-teacher {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+.card-body-teacher {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.container-delete{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.button-delete-course{
+  border: none;
+  background-color: transparent;
+}
+
+.title-teacher{
+    font-size: 18px;
+}
+
+.icon-delete, .icon-edit{
+  display: flex;
+  height: 35px;
+  width: 20px;
+  cursor: pointer;
+}
+
+.icon-delete{
+  color: rgba(190, 25, 25, 0.938);
+}
+
+.icon-edit{
+  color: rgba(18, 93, 159, 0.938);
+}
+
+.card-title-teacher, .card-text-teacher {
+    margin-bottom: 2px; 
+}
+
+.container-edit{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.button-edit-course{
+  border: none;
+  background-color: transparent;
+}
+
+.button-add-course{
+  color: white;
+  background-color: #DD4D42;
+  border-radius:10px;
+  padding: 10px;
+  cursor: pointer;
+  margin: 30px;
+  margin-right: 1px;
+  margin-left: 50px;
+  display: flex;
+  justify-content: center;
+  border: none;
+  filter: drop-shadow(3px 5px 5px rgba(0, 0, 0, 0.4));
+  font-size: 25px;
+}
+  
+  .button-add-course:hover{
+    background-color: #A6A6A6;
+  }
+
+.add-new-course-container{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2%;
+}

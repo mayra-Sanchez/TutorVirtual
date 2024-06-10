@@ -1,21 +1,38 @@
-let URL;
+//   URL = "https://tutor-virtual-back.onrender.com";
+//   URL = "http://127.0.0.1:8000"
 
-if (process.env.REACT_APP_API_URL) {
-  URL = process.env.REACT_APP_API_URL;
-} else {
-  URL = "https://laboratorio1-pi2.onrender.com";
-}
+const URL = "http://127.0.0.1:8000";
 
 const endpoints = {
-  student: {
-    coursesList: `${URL}/course/list`,
-    chatTutor: (id_course) => `${URL}/course/student/${id_course}/chat`
+  users: {
+    registerUser: `${URL}/users/create`,
+    loginUser: `${URL}/users/login`,
+    logout: `${URL}/users/logout`,
+    tokenRefresh: `${URL}/users/token/refresh`,
+    getUserDetails: (userId) => `${URL}/users/retrieve/${userId}`,
+    update: (userId) => `${URL}/users/update/${userId}`,
   },
-  course: {
-    registerCourse: `${URL}/course/teacher/register`,
-  }
+  student: {
+    coursesList: `${URL}/course/student/list`,
+    chatTutor: (id_course) => `${URL}/course/student/${id_course}/chat`,
+    addFavorites: `${URL}/course/student/course/favorites/add`,
+    listFavorites: `${URL}/course/student/course/favorites/list`,
+    deleteFavorites: `${URL}/course/student/course/favorites/delete`,
+  },
+  Professor: {
+    registerCourse: `${URL}/course/instructor/create`,
+    listCourses: `${URL}/course/instructor/list`,
+    deleteCourses: (ID) => `${URL}/course/instructor/delete/${ID}`,
+    modifyCourse: (ID) => `${URL}/course/instructor/modify/${ID}`,
+  },
 };
 
-const token = () => {};
+const tokenAccess = () => {
+  return localStorage.getItem("token_access");
+};
 
-export { endpoints, token };
+const tokenRefresh = () => {
+  return localStorage.getItem("token_refresh");
+};
+
+export { endpoints, tokenAccess, tokenRefresh };

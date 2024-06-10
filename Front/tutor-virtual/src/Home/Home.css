@@ -1,6 +1,6 @@
 /* Home.css */
 .title {
-    margin-top: 40px;
+    margin-top: 30px;
     text-align: center;
     color: white;
     margin-bottom: 200px; 
@@ -49,7 +49,7 @@
     justify-content: space-between; 
     background-color: white;
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
     max-width: 800px;

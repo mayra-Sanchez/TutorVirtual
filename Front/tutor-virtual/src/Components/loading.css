@@ -1,0 +1,32 @@
+.loading-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    flex-direction: column;
+}
+
+.logo-loading{
+    width: 20vh; 
+    height: 100%; 
+    max-width: 100%; 
+}
+
+.logoContainer {
+  margin-top: 10%;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10px;
+  margin-bottom: 20px;
+  animation: rotate 3s infinite linear; 
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); 
+  }
+  to {
+    transform: rotate(360deg); 
+  }
+}
+  
