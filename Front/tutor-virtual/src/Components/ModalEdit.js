@@ -69,7 +69,7 @@ function ModalEdit({ visible, onHide }) {
           icon: "success",
           title: t("modalEdit.successTitle"),
           text: t("modalEdit.successText"),
-          confirmButtonText: t("modalEdit.continueButtonTex"),
+          confirmButtonText: t("modalEdit.continueButtonText"),
         });
       })
       .catch((error) => {
